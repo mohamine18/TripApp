@@ -1,9 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import TripList from '@/components/trips/TripList'
+import Home from '@/components/Home'
 import TripDetails from '@/components/trips/TripDetails'
 import Login from '@/components/users/Login'
-import Profile from '@/components/users/Profile'
 import TripPayment from '@/components/trips/TripPayment'
 
 Vue.use(Router)
@@ -13,7 +12,7 @@ export default new Router({
     {
       path: '/',
       name: 'Home',
-      component: TripList
+      component: Home
     },
     {
       path: '/Trip-Details',
@@ -24,11 +23,6 @@ export default new Router({
       path: '/Trip-Payment',
       name: 'Trip Payment',
       component: TripPayment
-    },
-    {
-      path: '/User-Profile',
-      name: 'Profile',
-      component: Profile
     },
     {
       path: '/Login',

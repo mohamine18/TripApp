@@ -1,26 +1,55 @@
 <template>
   <v-layout row>
     <v-flex xs12 sm6 offset-sm3>
-       <v-card
-         v-for="(perso,id) in personal"
-        :key="id"
-       >
+       <v-card>
         <v-card-media 
-        :src="perso.avatar"
-        height="300px"
+        :src="coverpicture"
+        height="250px"
         >
          <v-layout column >
-            <v-card-title>
-              <v-spacer></v-spacer>
-              <v-btn  color="primary" icon >
-                <v-icon >edit</v-icon>
-              </v-btn>
-            </v-card-title>
+            <v-flex
+            text-xs-center
+            layout
+            align-center
+            justify-center
+          >
+            <v-avatar :size="150" >
+              <img :src="avatar1">
+            </v-avatar>
+          </v-flex>
           </v-layout>
         </v-card-media>
-        <v-card-title class="primary--text headline titlestyle">
-           {{ perso.name }}
-        </v-card-title>
+         <v-list two-line>
+          <v-list-tile @click="" >
+            <v-list-tile-content>
+              <v-list-tile-title class="text headline">{{ name1 }}</v-list-tile-title>
+              <v-list-tile-sub-title>Edit My profile</v-list-tile-sub-title>
+            </v-list-tile-content>
+            <v-list-tile-action>
+              <v-icon>edit</v-icon>
+            </v-list-tile-action>
+          </v-list-tile>
+          <v-divider ></v-divider>
+          <v-list-tile @click="">
+            <v-list-tile-content>
+              <v-list-tile-title class="text title">My Trips</v-list-tile-title>
+              <v-list-tile-sub-title>All my Attended Trips</v-list-tile-sub-title>
+            </v-list-tile-content>
+            <v-list-tile-action>
+              <v-icon>receipt</v-icon>
+            </v-list-tile-action>
+          </v-list-tile>
+          <v-divider ></v-divider>
+          <v-list-tile @click="">
+            <v-list-tile-content>
+              <v-list-tile-title class="text title">Hikers</v-list-tile-title>
+              <v-list-tile-sub-title>Frequent Travelers Information</v-list-tile-sub-title>
+            </v-list-tile-content>
+            <v-list-tile-action>
+              <v-icon>group</v-icon>
+            </v-list-tile-action>
+          </v-list-tile>
+         </v-list>
        </v-card>
     </v-flex>
   </v-layout>
@@ -30,14 +59,9 @@
   export default {
     data () {
       return {
-        coverpicture:"https://i2.wp.com/www.wallpapersbyte.com/wp-content/uploads/2016/04/Nanpu-Bridge-Huangpu-River-In-China-Shanghai-WallpapersByte-com-1366x768.jpg?resize=620%2C349",
-        personal: [
-          { 
-            avatar:"data:image/jpeg;base64,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", 
-            name: 'Sahraoui Delhim', 
-            country: 'China', 
-            trips: '5' },
-        ],
+        coverpicture:"data:image/jpeg;base64,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",
+        avatar1:"https://i.pinimg.com/474x/7c/c7/a6/7cc7a630624d20f7797cb4c8e93c09c1--flat-icons-free-icon.jpg", 
+        name1: 'Sahraoui Delhim', 
         items2: [
           { icon: 'assignment', iconClass: 'blue white--text', title: 'Vacation itinerary', subtitle: 'Jan 20, 2014' },
           { icon: 'call_to_action', iconClass: 'amber white--text', title: 'Kitchen remodel', subtitle: 'Jan 10, 2014' }
@@ -55,5 +79,8 @@
  }
  .titlestyle {
    font-family: 'Montserrat', sans-serif;
+ }
+ .border {
+   border: 5px solid red;
  }
 </style>

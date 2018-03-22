@@ -1,58 +1,5 @@
 <template>
 <div>
-  <!--up Navigation large screen-->
-  <v-layout>
-      <v-toolbar color="primary" dense dark fixed app class="hidden-sm-and-down">
-        <v-toolbar-title d-block>Find Trip</v-toolbar-title>
-        <v-spacer></v-spacer>
-        <v-btn  v-for="(menuItem, i) in menuItems" :key="i"  :to="menuItem.to" flat>
-          <v-icon left v-html="menuItem.icon" ></v-icon> 
-         {{ menuItem.title }}
-        </v-btn>
-      </v-toolbar>
-  </v-layout>
-
-<!--up Navigation small screen-->
-  <v-layout>
-      <v-toolbar color="primary" dark dense fixed app flat class="hidden-md-and-up">
-        <v-toolbar-title style="width: 300px" class="ml-0 pl-3" d-block> 
-          <span >Find Trip</span>
-        </v-toolbar-title>
-        <v-spacer></v-spacer>
-        <v-menu offset-y >
-          <v-btn icon slot="activator">
-            <v-icon>apps</v-icon>
-          </v-btn>
-          <v-card>
-            <v-list>
-              <v-list-tile v-for="(item, i) in items" :key="i" @click="" value="true">
-                <v-list-tile-action>
-                  <v-icon v-html="item.icon"></v-icon>
-                </v-list-tile-action>
-                <v-list-tile-content>
-                  <v-list-tile-title v-text="item.text"></v-list-tile-title>
-                </v-list-tile-content>
-              </v-list-tile>
-            </v-list>
-            <v-divider></v-divider>
-            <v-list>
-            <v-list-tile>
-              <v-list-tile-action>
-                <v-switch v-model="message" color="primary"></v-switch>
-              </v-list-tile-action>
-              <v-list-tile-title>Switch to dark theme</v-list-tile-title>
-            </v-list-tile>
-          </v-list>
-          </v-card>
-          </v-menu>
-          <v-btn icon @click="">
-          <v-badge overlap color="secondary">
-            <span slot="badge">6</span>
-            <v-icon >notifications</v-icon>
-          </v-badge>
-        </v-btn>
-      </v-toolbar>
-</v-layout>
 
 <!--content-->
 <transition>
@@ -62,28 +9,7 @@
     </v-content>
   </keep-alive>
 </transition>
-<!-- Menu Dialogue-->
-<v-layout>
-      <v-dialog v-model="menudialog" width="250px">
-        <v-card>
-        <v-list>
-          <v-list-tile
-            value="true"
-            v-for="(item, i) in items"
-            :key="i"
-            @click=""
-          >
-            <v-list-tile-action>
-              <v-icon v-html="item.icon"></v-icon>
-            </v-list-tile-action>
-            <v-list-tile-content>
-              <v-list-tile-title v-text="item.text"></v-list-tile-title>
-            </v-list-tile-content>
-          </v-list-tile>
-        </v-list> 
-        </v-card>
-      </v-dialog>
-</v-layout>
+
 <!--Botoom Navigation-->
 <v-layout>
       <v-bottom-nav  
@@ -126,16 +52,6 @@ import UserProfile from '@/components/users/Profile'
 export default {
   data: () => ({
     currentView: 'trip-list',
-    menudialog: false,
-    message: false,
-    menuItems: [
-      { icon: "home", title: "Home", to:"/" },
-      { icon: "room", title: "Organize a meetup", to:"/" }
-    ],
-    items: [
-      { icon: "explore", text: "SeeYou Trips" },
-      { icon: "extension", text: "More services" }
-    ],
   }),
   components:{
     'trip-list': TripList,

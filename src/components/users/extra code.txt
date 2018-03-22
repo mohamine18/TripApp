@@ -1,0 +1,21 @@
+ <v-flex
+            text-xs-center
+            layout
+            align-center
+            justify-center
+            
+          >
+            <v-avatar :size="130" >
+              <img :src="perso.avatar">
+            </v-avatar>
+          </v-flex>
+
+
+          
+<style lang="stylus" scoped>
+  .media
+    height: 100%
+    margin: 0
+  .pic 
+     filter: blur(100%)
+</style>

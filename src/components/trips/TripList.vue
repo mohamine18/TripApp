@@ -10,18 +10,25 @@
             <!--Trip List-->
             <v-layout row wrap >
               <v-flex xs12 md6 lg4 v-for="card in cards" :key="card.title">
-                <v-card class="elevation-1" flat >
+                <v-card class="elevation-1"  >
                   <v-card-media
                     :src="card.src"
-                    height="150px"
+                    height="180px"
                   >
-                  
+                     <v-layout column class="media">
+                      <v-card-title>
+                        <v-spacer></v-spacer>
+                        <v-avatar class="primary" tile >
+                          <span class="white--text " v-text="card.date"></span>
+                        </v-avatar>
+                      </v-card-title>
+                     </v-layout>
                   </v-card-media>
-                    <v-card-media height="120px">
+                    <v-card-media height="100px">
                       <v-card-title>
                         <div>
                            <v-icon small>watch</v-icon>
-                          <span class="grey--text" v-text="card.date"></span><br>
+                          <span class="grey--text" v-text="card.time"></span><br>
                           <span class="headline" v-text="card.title"></span><br>
                           <span class="subheading" v-text="card.def"></span><br>
                           <span class="grey--text" v-text="card.location"></span>
@@ -60,7 +67,8 @@
             title: "Pre-fab homes",
             src:
               "http://www.openskydeals.com/wp-content/uploads/2015/04/499-punta-cana-all-inclusive-trip-wair-save-430.jpg",
-            date: "TUE, MAY 15 9:00 AM",
+            date: "15 MAY",
+            time: "TUE, 9:00 AM",
             def: "Event description from the organizer",
             location: "USTB, Beijing China",
             fav: false,
@@ -70,7 +78,8 @@
             title: "Favorite road trips",
             src:
               "https://captainsmanorinn.com/wp-content/uploads/2013/01/sandwhich-300x100.jpg",
-            date: "TUE, MAY 15 9:00 AM",
+            date: "15 MAY",
+            time: "TUE, 9:00 AM",
             def: "Event description from the organizer",
             location: "USTB, Beijing China",
             fav: false,
@@ -80,7 +89,8 @@
             title: "Best airlines",
             src:
               "https://www.korindotravel.com/wp-content/uploads/2017/03/west-borneo-trip-300x100.gif",
-            date: "TUE, MAY 15 9:00 AM",
+            date: "15 MAY",
+            time: "TUE, 9:00 AM",
             def: "Event description from the organizer",
             location: "USTB, Beijing China",
             fav: false,
@@ -90,7 +100,8 @@
             title: "Pre-fab homes1",
             src:
               "https://s-media-cache-ak0.pinimg.com/originals/c6/b4/02/c6b402ea6d8c6daf8b23ff3b37ed56db.jpg",
-            date: "TUE, MAY 15 9:00 AM",
+            date: "15 MAY",
+            time: "TUE, 9:00 AM",
             def: "Event description from the organizer",
             location: "USTB, Beijing China",
             fav: false,
@@ -100,7 +111,8 @@
             title: "Favorite road trips1",
             src:
               "https://www.uniquejungletours.com/wp-content/uploads/2017/05/3-Days-Trip-tanzania-300x100.jpg",
-            date: "TUE, MAY 15 9:00 AM",
+            date: "15 MAY",
+            time: "TUE, 9:00 AM",
             def: "Event description from the organizer",
             location: "USTB, Beijing China",
             fav: false,
@@ -110,7 +122,8 @@
             title: "Best airlines1",
             src:
               "https://captainsmanorinn.com/wp-content/uploads/2013/01/daytripstop-300x100.jpg",
-            date: "TUE, MAY 15 9:00 AM",
+            date: "15 MAY",
+            time: "TUE, 9:00 AM",
             def: "Event description from the organizer",
             location: "USTB, Beijing China",
             fav: false,

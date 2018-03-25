@@ -24,10 +24,5 @@ export default new Router({
       name: 'Trip Payment',
       component: TripPayment
     },
-    {
-      path: '/Login',
-      name: 'Login',
-      component: Login
-    },
   ],
 })

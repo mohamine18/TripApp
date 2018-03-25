@@ -1,9 +1,9 @@
 <template>
-<div>
+<div class="hidden-md-and-up">
     <!--up Navigation large screen-->
   <v-layout>
       <v-toolbar color="primary" dense dark fixed app class="hidden-sm-and-down">
-        <v-toolbar-title d-block>Find Trip</v-toolbar-title>
+        <v-toolbar-title d-block>Trip Finder</v-toolbar-title>
         <v-spacer></v-spacer>
         <v-btn  v-for="(menuItem, i) in menuItems" :key="i"  :to="menuItem.to" flat>
           <v-icon left v-html="menuItem.icon" ></v-icon> 
@@ -16,10 +16,12 @@
   <v-layout>
       <v-toolbar color="primary" dark dense fixed app flat class="hidden-md-and-up">
         <v-toolbar-title style="width: 300px" class="ml-0 pl-3" d-block> 
-          <span >Find Trip</span>
+          <span >Trip Finder</span>
         </v-toolbar-title>
         <v-spacer></v-spacer>
-        <v-menu offset-y >
+
+        <!--App Menu-->
+        <!--v-menu offset-y >
           <v-btn icon slot="activator">
             <v-icon>apps</v-icon>
           </v-btn>
@@ -44,14 +46,18 @@
             </v-list-tile>
           </v-list>
           </v-card>
-          </v-menu>
-          <v-btn icon @click="">
-          <v-badge overlap color="secondary">
-            <span slot="badge">6</span>
-            <v-icon >notifications</v-icon>
-          </v-badge>
+          </v-menu-->
+          <v-btn icon @click="loginDialog = ! loginDialog">
+            <v-icon >face</v-icon>
         </v-btn>
       </v-toolbar>
+</v-layout>
+
+<!-- login Dialogue-->
+<v-layout row justify-center>
+      <v-dialog v-model="loginDialog" >
+        <user-login></user-login>
+      </v-dialog>
 </v-layout>
 
 <!-- Menu Dialogue-->
@@ -105,11 +111,6 @@
             <span>Trip Finder</span>
             <v-icon>card_travel</v-icon>
           </v-btn>
-        <!--Favorite menu-->
-          <v-btn flat color="primary" value="trip-favorite" @click.native="currentView='trip-favorite'">
-            <span>favorite</span>
-            <v-icon>favorite</v-icon>
-          </v-btn>
         <!--ME menu-->
           <v-btn flat color="primary" value="user-profile" @click.native="currentView='user-profile'">
             <span>Me</span>
@@ -123,12 +124,13 @@
 <script>
 import TripList from '@/components/trips/TripList'
 import TripFinder from '@/components/trips/TripFinder'
-import TripFavorite from '@/components/trips/TripFavorite'
 import UserProfile from '@/components/users/Profile'
+import login from '@/components/users/Login'
 export default {
   data: () => ({
     currentView: 'trip-list',
     switchcolor: false,
+    loginDialog: false,
         menudialog: false,
         menuItems: [
           { icon: "home", title: "Home", to:"/" },
@@ -142,8 +144,8 @@ export default {
   components:{
     'trip-list': TripList,
     'trip-finder': TripFinder,
-    'trip-favorite': TripFavorite,
-    'user-profile': UserProfile
+    'user-profile': UserProfile,
+    'user-login' : login
   }
 };
 </script>

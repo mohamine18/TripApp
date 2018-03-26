@@ -1,6 +1,6 @@
 <template>
 <div class="hidden-md-and-up">
-  <v-layout>
+  <v-container >
       <v-toolbar color="primary" dark dense fixed  flat class="hidden-md-and-up">
         <v-btn icon to="/">
             <v-icon >chevron_left</v-icon>
@@ -9,30 +9,50 @@
           <span >Trip information</span>
         </v-toolbar-title>
       </v-toolbar>
-  </v-layout>
-  <v-layout column>
+  </v-container>
+  <v-layout column xs12 fill-height
+>
     <v-flex xs12>
       <v-card>
         <v-card-media
-          class="white--text"
-          height="300px"
-          src="https://img.wikinut.com/img/gycf69_-6rv_5fol/jpeg/724x5000/Best-Friends-Img-Src%3AImage%3A-FreeDigitalPhotos.net.jpeg"
+          height="250px"
+          src="https://justhistoryposts.files.wordpress.com/2017/07/great-wall-of-china-fact.jpg?w=816"
         >
+        
         </v-card-media>
+        <!--trip name and agent-->
           <v-container fill-height fluid>
             <v-layout fill-height>
               <v-flex xs12 align-left >
-                <span class="headline">{{ tripname }}</span><br>
+                <span class="headline"><b>{{ tripname }}</b></span><br>
                 <span class="grey--text">By {{ tripagent }}</span>
               </v-flex>
             </v-layout>
           </v-container>
           <v-divider></v-divider>
+          <!--trip forcast-->
+          <v-container fill-height fluid>
+            <v-layout justify-space-around fluid column>
+              <v-flex xs12>
+                <v-icon medium > info_outline </v-icon>
+                <span class="title">Trip Forecast</span>
+              </v-flex>
+              <v-flex xs12>
+                <span class="group pa-1">
+                  <v-icon >wi-yahoo-32</v-icon>
+                  <v-icon>wi-yahoo-35</v-icon>
+                  <v-icon>wi-yahoo-46</v-icon>
+                </span>
+              </v-flex>
+            </v-layout>
+          </v-container>
+
+          <!--trip date and time -->
            <v-container fill-height fluid>
             <v-layout fill-height column>
               <v-flex>
                 <v-icon medium > date_range </v-icon>
-                <span class="title">Date & Time</span><br> <br>
+                <span class="title">Date & Time</span>
               </v-flex>
               <v-flex xs12 >
                 <span class="body-2">{{ tripdate }}</span><br>
@@ -40,24 +60,24 @@
               </v-flex>
             </v-layout>
           </v-container>
-          
+          <!--trip location-->
            <v-container fill-height fluid>
             <v-layout fill-height column>
               <v-flex>
                 <v-icon medium > place </v-icon>
-                <span class="title">Location</span><br> <br>
+                <span class="title">Location</span>
               </v-flex>
               <v-flex xs12 >
                 <span class="body-2">{{ triplocation }}</span>
               </v-flex>
             </v-layout>
           </v-container>
-         
+         <!--trip Description-->
            <v-container fill-height fluid>
             <v-layout fill-height column>
               <v-flex>
                 <v-icon medium > chrome_reader_mode </v-icon>
-                <span class="title">Description</span><br> <br>
+                <span class="title">Description</span>
               </v-flex>
               <v-flex xs12 >
                 <span class="body-2">{{ tripdef }}</span>
@@ -90,3 +110,9 @@ export default {
 }
 </script>
 
+<style lang="stylus" scoped>
+  .group
+    display: flex
+    flex: 1
+    justify-content: space-around
+</style>

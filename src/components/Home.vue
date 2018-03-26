@@ -84,13 +84,14 @@
 </v-layout>
 
 <!--content-->
-<transition>
+
+
   <keep-alive>
     <v-content>
       <component v-bind:is="currentView"></component>
     </v-content>
   </keep-alive>
-</transition>
+
 
 <!--Botoom Navigation-->
 <v-layout>

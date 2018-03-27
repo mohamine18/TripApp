@@ -1,7 +1,7 @@
 <template>
 
-
-      <div id="formContent" class="hidden-md-and-up">
+<v-layout class="hidden-md-and-up" xs12 sm6>
+      <div id="formContent" >
         <!-- Tabs Titles -->
         <h2 class="active"> Sign In </h2>
 
@@ -29,7 +29,7 @@
         </div>
 
       </div>
-  
+  </v-layout>
 
 </template>
 

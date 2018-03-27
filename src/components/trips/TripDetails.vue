@@ -71,12 +71,12 @@
               <v-icon >fas fa-file-alt</v-icon>
             </v-list-tile-action>
             <v-list-tile-content>
-              <v-list-tile-title>Description</v-list-tile-title>
+              <v-list-tile-title >Description</v-list-tile-title>
             </v-list-tile-content>
           </v-list-tile>
         </v-list>
         <div class="destext">
-          <span class="body-2">{{ tripdef }}</span>
+          <span>{{ tripdef }}</span>
         </div>
         </v-card>
     </v-flex>
@@ -88,14 +88,42 @@
     <v-dialog v-model="sheet" fullscreen transition="dialog-bottom-transition" >
       <v-card>
         <v-toolbar dark color="accent" dense>
+          <v-toolbar-title>Register</v-toolbar-title>
+          <v-spacer></v-spacer>
           <v-btn icon @click.native="sheet = false" dark>
             <v-icon>close</v-icon>
           </v-btn>
-          <v-toolbar-title>Book The Trip</v-toolbar-title>
         </v-toolbar>
-        <v-card-title class="textsales">
-          <span class="textsales">Sales end on May 10</span>
-        </v-card-title>
+       
+         <v-stepper v-model="e6" vertical>
+              <v-stepper-step color="accent" step="1" :complete="e6 > 1">
+                Select an app
+                <small>Summarize if needed</small>
+              </v-stepper-step>
+              <v-stepper-content step="1">
+                <v-card color="grey lighten-1" class="mb-5" height="200px"></v-card>
+                <v-btn color="accent" @click.native="e6 = 2">Continue</v-btn>
+                <v-btn flat>Cancel</v-btn>
+              </v-stepper-content>
+              <v-stepper-step step="2" :complete="e6 > 2">Configure analytics for this app</v-stepper-step>
+              <v-stepper-content step="2">
+                <v-card color="grey lighten-1" class="mb-5" height="200px"></v-card>
+                <v-btn color="accent" @click.native="e6 = 3">Continue</v-btn>
+                <v-btn flat>Cancel</v-btn>
+              </v-stepper-content>
+              <v-stepper-step step="3" :complete="e6 > 3">Select an ad format and name ad unit</v-stepper-step>
+              <v-stepper-content step="3">
+                <v-card color="grey lighten-1" class="mb-5" height="200px"></v-card>
+                <v-btn color="accent" @click.native="e6 = 4">Continue</v-btn>
+                <v-btn flat>Cancel</v-btn>
+              </v-stepper-content>
+              <v-stepper-step step="4">View setup instructions</v-stepper-step>
+              <v-stepper-content step="4">
+                <v-card color="grey lighten-1" class="mb-5" height="200px"></v-card>
+                <v-btn color="accent" @click.native="e6 = 1">Continue</v-btn>
+                <v-btn flat>Cancel</v-btn>
+              </v-stepper-content>
+            </v-stepper>
       </v-card>
     </v-dialog>
 </div>
@@ -105,6 +133,7 @@
 export default {
   data () {
     return {
+      e6: 1,
       sheet: false,
       tripname: 'Beijing Great Wall',
       tripagent: 'SeeYou',
@@ -114,7 +143,8 @@ export default {
       tripdate: 'Sat, March 31, 2018',
       triptime: '8:00 am - 6:00 pm BT',
       triplocation:'Beijing Haidian district, china',
-      tripdef: 'The Hong Kong Stock Exchange has proposed the biggest overhaul of its IPO listing rules in over twenty years, including allowing dual class-listing and favorable listing terms for biotech companies. These changes are expected to make the HKEX the most attractive overseas listing option for mainland Chinese firms, and potentially help Hong Kong reclaim its leading position on the global IPO league table. At the same time, after a record 437 IPOs in mainland China, raising a total of RMB45 billion last year, the outlook for domestic IPOs by Chinese companies is increasingly uncertain as the regulatory approval process becomes more strenuous. That should spark greater interests by Chinese companies, especially those in biotech sector, to seek a public share float in the neighboring Special Administrative Region, Hong Kong.'
+      tripdef: 'The Hong Kong Stock Exchange has proposed the biggest overhaul of its IPO listing rules in over twenty years, including allowing dual class-listing and favorable listing terms for biotech companies. These changes are expected to make the HKEX the most attractive overseas listing option for mainland Chinese firms, and potentially help Hong Kong reclaim its leading position on the global IPO league table. At the same time, after a record 437 IPOs in mainland China, raising a total of RMB45 billion last year, the outlook for domestic IPOs by Chinese companies is increasingly uncertain as the regulatory approval process becomes more strenuous. That should spark greater interests by Chinese companies, especially those in biotech sector, to seek a public share float in the neighboring Special Administrative Region, Hong Kong.',
+      enddate: 'May 15',
     }
   }
 }
@@ -126,7 +156,5 @@ export default {
     margin-right:20px;
     padding-bottom:20px;
 }
-.textsales {
-  text-align: center;
-}
+
 </style>

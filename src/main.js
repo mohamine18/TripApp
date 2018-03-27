@@ -30,7 +30,7 @@ import {
   VTabs,
   VForm,
   VCheckbox,
-  VBottomSheet,
+  VStepper,
   transitions
 } from 'vuetify'
 import '../node_modules/vuetify/src/stylus/app.styl'
@@ -62,7 +62,7 @@ Vue.use(Vuetify, {
     VTabs,
     VForm,
     VCheckbox,
-    VBottomSheet,
+    VStepper,
     transitions
   },
   theme: {

@@ -161,7 +161,43 @@
               <!--Checkout-->
               <v-stepper-step color="accent" step="4" >Checkout</v-stepper-step>
               <v-stepper-content step="4">
-                <v-card color="grey lighten-1" class="mb-3" height="200px"></v-card>
+                    <v-list dense>
+                      <v-list-tile avatar>
+                        <v-list-tile-content>
+                          <v-list-tile-title class="body-1" >QTY:</v-list-tile-title>
+                        </v-list-tile-content>
+                        <v-list-tile-action>
+                          <v-list-tile-action-text class="body-1">{{ tripqty }}</v-list-tile-action-text>
+                        </v-list-tile-action>
+                      </v-list-tile>
+
+                      <v-list-tile avatar>
+                        <v-list-tile-content>
+                          <v-list-tile-title class="body-1" >Total Price:</v-list-tile-title>
+                        </v-list-tile-content>
+                        <v-list-tile-action>
+                          <v-list-tile-action-text class="body-1">{{ triptp }} &yen;</v-list-tile-action-text>
+                        </v-list-tile-action>
+                      </v-list-tile>
+
+                      <v-list-tile avatar>
+                        <v-list-tile-content>
+                          <v-list-tile-title class="body-1" >Discount Amount:</v-list-tile-title>
+                        </v-list-tile-content>
+                        <v-list-tile-action>
+                          <v-list-tile-action-text class="body-1">{{ tripda }} &yen;</v-list-tile-action-text>
+                        </v-list-tile-action>
+                      </v-list-tile>
+
+                      <v-list-tile avatar>
+                        <v-list-tile-content>
+                          <v-list-tile-title class="body-2" >Final Price:</v-list-tile-title>
+                        </v-list-tile-content>
+                        <v-list-tile-action>
+                          <v-list-tile-action-text class="primary--text body-2">{{ tripfp }} &yen;</v-list-tile-action-text>
+                        </v-list-tile-action>
+                      </v-list-tile>
+                    </v-list>
                 <v-btn color="success" block @click.native="">Checkout</v-btn>      
               </v-stepper-content>
             </v-stepper>
@@ -189,7 +225,11 @@ export default {
       tripconditioncode: '1',
       tripdate: 'Sat, March 31, 2018',
       triptime: '8:00 am - 6:00 pm BT',
-      tripprice: '222',
+      tripprice: '212',
+      tripqty: 0,
+      triptp: 0,
+      tripda: 0,
+      tripfp:0,
       tripdiscount:'5',
       triplocation:'Beijing Haidian district, china',
       tripdef: 'The Hong Kong Stock Exchange has proposed the biggest overhaul of its IPO listing rules in over twenty years, including allowing dual class-listing and favorable listing terms for biotech companies. These changes are expected to make the HKEX the most attractive overseas listing option for mainland Chinese firms, and potentially help Hong Kong reclaim its leading position on the global IPO league table. At the same time, after a record 437 IPOs in mainland China, raising a total of RMB45 billion last year, the outlook for domestic IPOs by Chinese companies is increasingly uncertain as the regulatory approval process becomes more strenuous. That should spark greater interests by Chinese companies, especially those in biotech sector, to seek a public share float in the neighboring Special Administrative Region, Hong Kong.',
@@ -213,6 +253,10 @@ export default {
       var totalpeople = this.people.length ;
       var price = this.people.length * parseInt(this.tripprice) ;
       var pricediscount = totalpeople * parseInt(this.tripprice) - parseInt(this.tripdiscount);
+      this.tripqty= totalpeople ;
+      this.triptp= price ;
+      this.tripda= this.tripdiscount ;
+      this.tripfp= pricediscount ;
     }
   }
 }
@@ -223,6 +267,9 @@ export default {
     margin-left:20px;
     margin-right:20px;
     padding-bottom:20px;
+}
+.spantext{
+  text-align: right;
 }
 
 </style>

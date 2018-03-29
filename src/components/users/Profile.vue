@@ -53,10 +53,20 @@
           <v-list-tile @click="">
             <v-list-tile-content>
               <v-list-tile-title class="text title">Favorites</v-list-tile-title>
-              <v-list-tile-sub-title>Favorite Trips and palces</v-list-tile-sub-title>
+              <v-list-tile-sub-title>Favorite Trips and Palces</v-list-tile-sub-title>
             </v-list-tile-content>
             <v-list-tile-action>
               <v-icon>favorite</v-icon>
+            </v-list-tile-action>
+          </v-list-tile>
+          <v-divider ></v-divider>
+          <v-list-tile @click="">
+            <v-list-tile-content>
+              <v-list-tile-title class="text title">Support</v-list-tile-title>
+              <v-list-tile-sub-title>Customer Support</v-list-tile-sub-title>
+            </v-list-tile-content>
+            <v-list-tile-action>
+              <v-icon>info</v-icon>
             </v-list-tile-action>
           </v-list-tile>
          </v-list>

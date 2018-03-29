@@ -31,6 +31,7 @@ import {
   VForm,
   VCheckbox,
   VStepper,
+  VExpansionPanel,
   transitions
 } from 'vuetify'
 import '../node_modules/vuetify/src/stylus/app.styl'
@@ -63,6 +64,7 @@ Vue.use(Vuetify, {
     VForm,
     VCheckbox,
     VStepper,
+    VExpansionPanel,
     transitions
   },
   theme: {

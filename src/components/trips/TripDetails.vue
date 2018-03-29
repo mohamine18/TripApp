@@ -62,6 +62,16 @@
               <v-list-tile-sub-title>{{ triplocation }}</v-list-tile-sub-title>             
             </v-list-tile-content>
           </v-list-tile>
+          <!--trip price-->
+          <v-list-tile avatar>
+            <v-list-tile-action>
+              <v-icon >fas fa-yen-sign</v-icon>
+            </v-list-tile-action>
+            <v-list-tile-content>
+              <v-list-tile-title>Trip Cost</v-list-tile-title>
+              <v-list-tile-sub-title>{{ tripprice }} &yen;</v-list-tile-sub-title>             
+            </v-list-tile-content>
+          </v-list-tile>
         </v-list>
         <v-divider></v-divider>
         <!--trip Description-->
@@ -92,7 +102,7 @@
         <v-toolbar dark color="accent" dense fixed>
           <v-toolbar-title>Register</v-toolbar-title>
           <v-spacer></v-spacer>
-          <v-btn icon @click.native="sheet = false" dark>
+          <v-btn icon @click.native="reset" dark>
             <v-icon>close</v-icon>
           </v-btn>
         </v-toolbar>
@@ -140,19 +150,19 @@
                 </v-btn>
               </v-stepper-content>
               <!--Rules and terms-->
-              <v-stepper-step color="accent" step="3" :complete="dialogswitcher > 3" >Rules and terms</v-stepper-step>
+              <v-stepper-step color="accent" step="3" :complete="dialogswitcher > 3" >Trip Rule Terms</v-stepper-step>
               <v-stepper-content step="3">
                 <div class="destext">
                   <p>{{ terms }}</p>
                 </div>
                  <v-checkbox label="Agree with this Disclaimer" v-model="checkbox" ></v-checkbox>
-                <v-btn color="accent" @click.native="dialogswitcher = 4" v-show="checkbox==true">Continue</v-btn>
+                <v-btn color="accent" @click.native="pricecalculator" v-show="checkbox==true">Continue</v-btn>
               </v-stepper-content>
               <!--Checkout-->
               <v-stepper-step color="accent" step="4" >Checkout</v-stepper-step>
               <v-stepper-content step="4">
                 <v-card color="grey lighten-1" class="mb-3" height="200px"></v-card>
-                <v-btn color="success" block @click.native="dialogswitcher = 1">Checkout</v-btn>      
+                <v-btn color="success" block @click.native="">Checkout</v-btn>      
               </v-stepper-content>
             </v-stepper>
       </v-card>
@@ -171,7 +181,6 @@ export default {
       people: ['Bouras Amine'],
       peopleitems: [ 'Bouras Amine', 'Xu Yue', 'Vivian', 'Ning Laoshi', 'Sahraoui'],
       dialogswitcher: 1,
-      hikersdialog: false,
       sheet: false,
       tripname: 'Beijing Great Wall',
       tripagent: 'SeeYou',
@@ -180,10 +189,30 @@ export default {
       tripconditioncode: '1',
       tripdate: 'Sat, March 31, 2018',
       triptime: '8:00 am - 6:00 pm BT',
+      tripprice: '222',
+      tripdiscount:'5',
       triplocation:'Beijing Haidian district, china',
       tripdef: 'The Hong Kong Stock Exchange has proposed the biggest overhaul of its IPO listing rules in over twenty years, including allowing dual class-listing and favorable listing terms for biotech companies. These changes are expected to make the HKEX the most attractive overseas listing option for mainland Chinese firms, and potentially help Hong Kong reclaim its leading position on the global IPO league table. At the same time, after a record 437 IPOs in mainland China, raising a total of RMB45 billion last year, the outlook for domestic IPOs by Chinese companies is increasingly uncertain as the regulatory approval process becomes more strenuous. That should spark greater interests by Chinese companies, especially those in biotech sector, to seek a public share float in the neighboring Special Administrative Region, Hong Kong.',
       enddate: 'May 15',
       terms: '1) Refund princepal: No refund within 24h of departure time. Minimum 20 participants to confirm this trip, otherwise trip leader will refund you. 2) If you are late to the meeting point, we are sorry but we wont wait for you, because this is collective activity. So no refund in this case. 3) For one-day trips, no refund 24 hours before the trip, because we have already booked the bus and leave the seat for you. 4) We wont bear any responsability if - you get injured because you didnt follow our guides instructions. - you get injured because you lied about your illness (heart disease, asthma etc...), which directly resulted to your injuries during the trip. - you fight with others. 5) One should be fully aware of the unpredictabilities that outdoor activities may have.'
+    }
+  },
+  methods: {
+    reset: function (event) {
+      if (event){
+        this.sheet = false;
+        this.cheked = false;
+        this.checkbox = false;
+        this.people= ['Bouras Amine'];
+        this.promocode = '';
+        this.dialogswitcher= 1
+      }
+    },
+    pricecalculator: function () {
+      this.dialogswitcher = 4;
+      var totalpeople = this.people.length ;
+      var price = this.people.length * parseInt(this.tripprice) ;
+      var pricediscount = totalpeople * parseInt(this.tripprice) - parseInt(this.tripdiscount);
     }
   }
 }

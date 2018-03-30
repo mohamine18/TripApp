@@ -17,10 +17,14 @@
     </v-container>
     <!--Profile items-->
     <v-layout row justify-center>
+
       <v-card flat class="grey lighten-5">
         <v-card-text>
           <v-container grid-list-md>
             <v-layout wrap>
+              <v-flex xs12 sm6 md4>
+                <v-subheader>General Information:</v-subheader>
+              </v-flex>
               <v-flex xs12 sm6 md4>
                 <v-text-field label="First name" required prepend-icon="far fa-user" v-model="userfirstname"></v-text-field>
               </v-flex>
@@ -51,7 +55,7 @@
                   <v-text-field
                     slot="activator"
                     label="Birthday date"
-                    v-model="date"
+                    v-model="userbirthday"
                     prepend-icon="fas fa-birthday-cake"
                     readonly
                   ></v-text-field>
@@ -75,6 +79,7 @@
                   v-model="usercountry"
                 ></v-select>
               </v-flex>
+              <v-subheader>Let us Tailor Your Trip Experience:</v-subheader>
               <v-flex xs12 sm6>
                 <v-select
                   label="Interests"
@@ -97,7 +102,6 @@
 <script>
 export default {
   data: () => ({
-    date: null,
     menu: false,
     userfirstname:'',
     userlastname : '',

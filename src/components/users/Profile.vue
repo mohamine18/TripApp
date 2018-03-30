@@ -60,7 +60,7 @@
             </v-list-tile-action>
           </v-list-tile>
           <v-divider ></v-divider>
-          <v-list-tile @click="">
+          <v-list-tile to="/User-support">
             <v-list-tile-content>
               <v-list-tile-title class="text title">Support</v-list-tile-title>
               <v-list-tile-sub-title>Customer Support</v-list-tile-sub-title>

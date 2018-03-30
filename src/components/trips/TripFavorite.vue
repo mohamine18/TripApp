@@ -13,6 +13,7 @@
               </v-container>
             <!--Trip List-->
             <v-layout row wrap >
+              <v-subheader>All My Favorite Trips</v-subheader>
               <v-flex xs12 md6 lg4 v-for="card in cards" :key="card.title">
                 <v-card class="elevation-1"  >
                   <v-card-media

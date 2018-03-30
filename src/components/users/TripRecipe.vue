@@ -19,20 +19,20 @@
       <v-layout row wrap>
         <v-subheader>All attended Trips</v-subheader>
           <v-flex xs12 v-for="(trip,i) in trips" :key="i">
-          <v-card :color="trip.color" class="white--text" flat>
-            <v-container fluid grid-list-lg>
+          <v-card  flat class="borderleft" v-bind:style="{ 'border-left-color': trip.color }">
+            <v-container fluid grid-list-lg >
               <v-layout row>
                 <v-flex xs7>
                   <div>
                     <span class="body-2">{{ trip.tripname }}</span><br>
-                    <span class="body-2">{{ trip.tripdate }}</span><br>
-                    <span class="body-2">{{ trip.tripstatu }}</span>
+                    <span class="body-2">{{ trip.tripdate }}</span> <br><br>
+                    <span class="body-2" v-bind:style="{ 'color': trip.color }">{{ trip.tripstatu }}</span>
                   </div>
                 </v-flex>
                 <v-flex xs5>
                   <v-card-media
                     :src="trip.img"
-                    height="125px"
+                    height="80px"
                     contain
                   ></v-card-media>
                 </v-flex>
@@ -48,17 +48,26 @@
 export default {
   data: () => ({
     trips:[
-      {tripname: 'Beijing Great Wall', tripdate: '2017-02-10', tripstatu:'UpComing', color:'info ',
+      {tripname: 'Beijing Great Wall', tripdate: '2017-02-10', tripstatu:'UpComing', color:'#2196F3',
       img:'https://www.apec.org/-/media/Images/NewsRelease/2017/0620_Tourism.jpg'},
-      {tripname: 'Beijing Potinical Garden', tripdate: '2017-02-11', tripstatu:'Cancled', color:'accent ',
+      {tripname: 'Beijing Potinical Garden', tripdate: '2017-02-11', tripstatu:'Cancled', color:'#FFA726',
       img:'http://www.travelnewsdigest.in/wp-content/uploads/2013/01/hurghada.jpg' },
-      {tripname: 'Beijing Summer Palace', tripdate: '2017-02-12', tripstatu:'Booked', color:'success ',
+      {tripname: 'Beijing Summer Palace', tripdate: '2017-02-12', tripstatu:'Booked', color:'#4CAF50',
       img:'https://static.independent.co.uk/s3fs-public/styles/story_medium/public/thumbnails/image/2017/05/12/16/cinq-terre.jpg' },
-      {tripname: 'Tianjin Eye', tripdate: '2017-02-13', tripstatu:'Refunded', color:'error ',
+      {tripname: 'Tianjin Eye', tripdate: '2017-02-13', tripstatu:'Refunded', color:'#FF5252',
       img:'https://static.independent.co.uk/s3fs-public/styles/article_small/public/thumbnails/image/2017/02/22/09/paris.jpg' },
-      {tripname: 'Xian Carottes', tripdate: '2017-02-14', tripstatu:'UpComing', color:'info ',
+      {tripname: 'Xian Carottes', tripdate: '2017-02-14', tripstatu:'UpComing', color:'#2196F3',
       img:'https://kerala.me/wp-content/uploads/2015/11/Tourism.jpg' }
     ]
   })
 }
 </script>
+<style scoped>
+.borderleft{
+  border-left: 4px solid;
+  border-right: 1px solid  #BDBDBD;
+  border-bottom: 1px solid  #BDBDBD;
+  border-top: 1px solid  #BDBDBD;
+  border-radius: 5px;
+}
+</style>

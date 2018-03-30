@@ -8,7 +8,7 @@ import TripPayment from '@/components/trips/TripPayment'
 import Editprofile from '@/components/users/Editprofile'
 import Hikersinfo from '@/components/users/Hikersinfo'
 import TripRecipe from '@/components/users/TripRecipe'
-
+import Usersupport from '@/components/users/Usersupport'
 Vue.use(Router)
 
 export default new Router({
@@ -47,6 +47,11 @@ export default new Router({
       path: '/Favorite-trips',
       name: 'trips-favorite',
       component: TripFavorite
+    },
+    {
+      path: '/User-support',
+      name: 'user-support',
+      component: Usersupport
     }
   ],
 })

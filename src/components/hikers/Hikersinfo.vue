@@ -10,7 +10,7 @@
           <span >Travelers Information</span>
         </v-toolbar-title>
         <v-spacer></v-spacer>
-        <v-btn icon to="#">
+        <v-btn icon to="/Add-Hiker-info">
           <v-icon >fas fa-user-plus</v-icon>
         </v-btn>
       </v-toolbar>
@@ -18,17 +18,16 @@
     <!--Travelers Information-->
     <v-container fluid grid-list-lg>
       <v-layout row wrap>
-        <v-subheader>Hikers Information:</v-subheader>
         <v-flex xs12 sm6 v-for="(hiker, i) in hikers" :key="i">
-           <v-card>
+           <v-card :style="{'border-radius': '5px'}" to="/Edit-Hiker-info">
              <v-list two-line >
                <v-list-tile >
                  <v-list-tile-content>
-                   <v-list-tile-title>{{ hiker.name }}</v-list-tile-title>
+                   <v-list-tile-title class="body-2">{{ hiker.name }}</v-list-tile-title>
                    <v-list-tile-sub-title>{{ hiker.idtype }}: {{ hiker.id }}</v-list-tile-sub-title>
                  </v-list-tile-content>
                  <v-list-tile-action>
-                   <v-icon color="primary">keyboard_arrow_right</v-icon>
+                   <v-icon color="primary">fas fa-caret-right</v-icon>
                  </v-list-tile-action>
                </v-list-tile>
              </v-list>

@@ -78,7 +78,7 @@
       </v-layout>
       <v-layout row wrap>
         <v-flex xs12 sm6 >
-           <v-card v-bind:style="{'border-radius':'15 px'}">
+           <v-card  to="/Frequently-Asked-Questions">
              <v-list two-line >
                <v-list-tile >
                  <v-list-tile-content>

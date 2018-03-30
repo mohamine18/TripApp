@@ -6,7 +6,7 @@
         <v-toolbar-title d-block>Trip Finder</v-toolbar-title>
         <v-spacer></v-spacer>
         <v-btn  v-for="(menuItem, i) in menuItems" :key="i"  :to="menuItem.to" flat>
-          <v-icon left v-html="menuItem.icon" ></v-icon> 
+          <v-icon left v-html="menuItem.icon" ></v-icon>
          {{ menuItem.title }}
         </v-btn>
       </v-toolbar>
@@ -15,7 +15,7 @@
 <!--up Navigation small screen-->
   <v-layout>
       <v-toolbar color="primary" dark dense fixed app flat class="hidden-md-and-up">
-        <v-toolbar-title style="width: 300px" class="ml-0 pl-3" d-block> 
+        <v-toolbar-title style="width: 300px" class="ml-0 pl-3" d-block>
           <span >Trip Finder</span>
         </v-toolbar-title>
         <v-spacer></v-spacer>
@@ -78,7 +78,7 @@
               <v-list-tile-title v-text="item.text"></v-list-tile-title>
             </v-list-tile-content>
           </v-list-tile>
-        </v-list> 
+        </v-list>
         </v-card>
       </v-dialog>
 </v-layout>
@@ -95,17 +95,17 @@
 
 <!--Botoom Navigation-->
 <v-layout>
-      <v-bottom-nav  
+      <v-bottom-nav
         :value="true"
         :active.sync="currentView"
-        color="white"  
+        color="white"
         fixed
         app
         class="hidden-md-and-up">
-        <!--Home menu-->  
-          <v-btn  color="primary" value="trip-list" flat @click.native="currentView='trip-list'" >         
+        <!--Home menu-->
+          <v-btn  color="primary" value="trip-list" flat @click.native="currentView='trip-list'" >
             <span>Home</span>
-            <v-icon flat>home</v-icon> 
+            <v-icon flat>home</v-icon>
           </v-btn>
         <!--hot trips-->
           <v-btn flat color="primary" value="trip-finder" @click.native="currentView='trip-finder'">

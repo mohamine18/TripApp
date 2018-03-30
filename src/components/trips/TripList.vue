@@ -10,7 +10,7 @@
             <!--Trip List-->
             <v-layout row wrap >
               <v-flex xs12 md6 lg4 v-for="card in cards" :key="card.title">
-                <v-card class="elevation-1"  >
+                <v-card class="elevation-1" flat to="/Trip-Details">
                   <v-card-media
                     :src="card.src"
                     height="180px"
@@ -23,11 +23,12 @@
                         </v-avatar>
                       </v-card-title>
                      </v-layout>
-                  </v-card-media>
-                    <v-card-media height="100px">
+                  </v-card-media >
+                    <v-card-media height="115px">
                       <v-card-title>
-                        <div>
-                           <v-icon small>watch</v-icon>
+                        <div >
+                          <br>
+                          <v-icon small>watch</v-icon>
                           <span class="grey--text" v-text="card.time"></span><br>
                           <span class="headline" v-text="card.title"></span><br>
                           <span class="subheading" v-text="card.def"></span><br>
@@ -35,10 +36,11 @@
                         </div>
                       </v-card-title>
                     </v-card-media>
-                  <v-card-actions>
+                  <v-card-actions >
                     <v-spacer></v-spacer>
                     <v-btn icon class="primary--text"
-                      @click="card.fav = !card.fav" >
+                      @click="card.fav = !card.fav"
+                      >
                       <v-icon v-if="card.fav == false" >favorite_border</v-icon>
                       <v-icon v-else >favorite</v-icon>
                     </v-btn>
@@ -46,10 +48,10 @@
                       <v-icon color="primary">share</v-icon>
                     </v-btn>
                   </v-card-actions>
-                </v-card> 
+                </v-card>
               </v-flex>
             </v-layout>
-    
+
   </v-container>
 </template>
 
@@ -134,3 +136,9 @@
     }
   }
 </script>
+
+<style scoped>
+  .bordercard {
+    border: 2px solid red;
+  }
+</style>

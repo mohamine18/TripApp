@@ -10,6 +10,7 @@ import Editprofile from '@/components/users/Editprofile'
 import TripRecipe from '@/components/users/TripRecipe'
 import Usersupport from '@/components/users/Usersupport'
 import Faq from '@/components/users/Faq'
+import Register from '@/components/users/Register'
 
 import Hikersinfo from '@/components/hikers/Hikersinfo'
 import Addhikersinfo from '@/components/hikers/Addhikersinfo'
@@ -73,6 +74,11 @@ export default new Router({
       path: '/Frequently-Asked-Questions',
       name: 'Faq',
       component: Faq
+    },
+    {
+      path: '/checkout',
+      name: 'Checkout',
+      component: Register
     }
   ],
 })

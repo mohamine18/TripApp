@@ -1,206 +1,125 @@
 <template>
 <div class="hidden-md-and-up">
-  <v-container >
-      <v-toolbar color="primary" dark dense fixed  flat class="hidden-md-and-up">
-        <v-btn icon to="/">
-            <v-icon >chevron_left</v-icon>
-        </v-btn>
-        <v-toolbar-title style="width: 300px" class="ml-0 pl-3" d-block> 
-          <span >Trip information</span>
-        </v-toolbar-title>
-      </v-toolbar>
-  </v-container>
-  <v-layout row  fill-height>
-    <v-flex xs12>
-      <v-card>
-        <v-card-media
-          height="250px"
-          src="https://justhistoryposts.files.wordpress.com/2017/07/great-wall-of-china-fact.jpg?w=816"
-        >
-        
-        </v-card-media>
-        <!--trip name and agent-->
-          <v-container fill-height fluid>
-            <v-layout fill-height>
-              <v-flex xs12 align-left >
-                <span class="headline"><b>{{ tripname }}</b></span><br>
-                <span class="grey--text">By {{ tripagent }}</span>
-              </v-flex>
-            </v-layout>
-          </v-container>
-          
-          <v-divider></v-divider>
-          <v-list two-line subheader>
-          <!--trip forcast-->
-          <v-list-tile avatar>
-            <v-list-tile-action>
-              <v-icon >wi-yahoo-{{ tripconditioncode }}</v-icon>
-            </v-list-tile-action>
-            <v-list-tile-content>
-              <v-list-tile-title>{{ tripcondition }}</v-list-tile-title>
-              <v-list-tile-sub-title>Temperature {{ triptemperature }} C&deg;</v-list-tile-sub-title>
-            </v-list-tile-content>
-          </v-list-tile>
-          <!--trip date and time -->
-          <v-list-tile avatar>
-            <v-list-tile-action>
-              <v-icon >date_range</v-icon>
-            </v-list-tile-action>
-            <v-list-tile-content>
-              <v-list-tile-title>Date & Time</v-list-tile-title>
-              <v-list-tile-sub-title>{{ tripdate }}</v-list-tile-sub-title>
-              <v-list-tile-sub-title>{{ triptime }}</v-list-tile-sub-title>              
-            </v-list-tile-content>
-          </v-list-tile>
-          <!--trip location-->
-          <v-list-tile avatar>
-            <v-list-tile-action>
-              <v-icon >place</v-icon>
-            </v-list-tile-action>
-            <v-list-tile-content>
-              <v-list-tile-title>Location</v-list-tile-title>
-              <v-list-tile-sub-title>{{ triplocation }}</v-list-tile-sub-title>             
-            </v-list-tile-content>
-          </v-list-tile>
-          <!--trip price-->
-          <v-list-tile avatar>
-            <v-list-tile-action>
-              <v-icon >fas fa-yen-sign</v-icon>
-            </v-list-tile-action>
-            <v-list-tile-content>
-              <v-list-tile-title>Trip Cost</v-list-tile-title>
-              <v-list-tile-sub-title>{{ tripprice }} &yen;</v-list-tile-sub-title>             
-            </v-list-tile-content>
-          </v-list-tile>
-        </v-list>
-        <v-divider></v-divider>
-        <!--trip Description-->
-        <v-list>
-          <v-list-tile avatar>
-            <v-list-tile-action>
-              <v-icon >fas fa-file-alt</v-icon>
-            </v-list-tile-action>
-            <v-list-tile-content>
-              <v-list-tile-title >Description</v-list-tile-title>
-            </v-list-tile-content>
-          </v-list-tile>
-        </v-list>
-        <div class="destext">
-          <span>{{ tripdef }}</span>
-        </div>
-        </v-card>
-    </v-flex>
-  </v-layout>
-  <v-layout column d-block>
-    <v-btn  fixed bottom  right color="accent" dark @click.native="sheet =! sheet">Book this Trip</v-btn>
-  </v-layout>
-
-    <!--register dialog-->
-    <v-dialog v-model="sheet" fullscreen transition="dialog-bottom-transition" >
-       <v-card flat>
-       <v-container>
-        <v-toolbar dark color="accent" dense fixed>
-          <v-toolbar-title>Register</v-toolbar-title>
-          <v-spacer></v-spacer>
-          <v-btn icon @click.native="reset" dark>
-            <v-icon>close</v-icon>
+    <v-container >
+        <v-toolbar color="primary" dark dense fixed  flat class="hidden-md-and-up">
+          <v-btn icon to="/">
+              <v-icon >chevron_left</v-icon>
           </v-btn>
+          <v-toolbar-title style="width: 300px" class="ml-0 pl-3" d-block>
+            <span >Trip information</span>
+          </v-toolbar-title>
         </v-toolbar>
-        </v-container>
-        <v-card >
-          <v-card-media
-          height="250px"
-          src="https://justhistoryposts.files.wordpress.com/2017/07/great-wall-of-china-fact.jpg?w=816"
-          >
-          </v-card-media>
-        </v-card>
-         <v-stepper v-model="dialogswitcher" vertical flat>
-              <!--Select Hikers-->
-              <v-stepper-step color="accent" step="1" :complete="dialogswitcher > 1" editable>
-                Select Hikers
-                <small>Select Hikers joining {{ tripname }}</small>
-              </v-stepper-step>
-              <v-stepper-content step="1">
-                <v-card class="mb-3" >
-                  <v-select
-                    label="Add"
-                    :items="peopleitems"
-                    v-model="people"
-                    multiple
-                    prepend-icon="far fa-plus-square"
-                    max-height="400"
-                    color="accent"
-                    solo
-                  ></v-select>
-                </v-card>
-                <v-btn color="accent" @click.native="dialogswitcher = 2">Continue</v-btn>
-              </v-stepper-content>
-              <!--Pomotional Code-->
-              <v-stepper-step color="accent" step="2" :complete="dialogswitcher > 2" editable>
-                Enter Pomotional Code
-                <small>Share the trip and get a code</small>
-              </v-stepper-step>
-              <v-stepper-content step="2">
-                <v-card class="mb-3">
-                  <v-text-field solo label="Promotional Code" v-model="promocode" color="accent"></v-text-field>
-                </v-card>
-                <v-btn color="accent" @click.native="dialogswitcher = 3">Continue</v-btn>
-                <v-btn flat @click.native="cheked =! cheked" outline color="accent">Chek code
-                <v-icon right dark color="success" v-if ="cheked">fas fa-check-circle</v-icon>
-                </v-btn>
-              </v-stepper-content>
-              <!--Rules and terms-->
-              <v-stepper-step color="accent" step="3" :complete="dialogswitcher > 3" >Trip Rule Terms</v-stepper-step>
-              <v-stepper-content step="3">
-                <div class="destext">
-                  <p>{{ terms }}</p>
-                </div>
-                 <v-checkbox label="Agree with this Disclaimer" v-model="checkbox" ></v-checkbox>
-                <v-btn color="accent" @click.native="pricecalculator" v-show="checkbox==true">Continue</v-btn>
-              </v-stepper-content>
-              <!--Checkout-->
-              <v-stepper-step color="accent" step="4" >Checkout</v-stepper-step>
-              <v-stepper-content step="4">
-                    <v-list dense>
-                      <v-list-tile avatar>
-                        <v-list-tile-content>
-                          <v-list-tile-title class="body-1" >QTY:</v-list-tile-title>
-                        </v-list-tile-content>
-                        <v-list-tile-action>
-                          <v-list-tile-action-text class="body-1">{{ tripqty }}</v-list-tile-action-text>
-                        </v-list-tile-action>
-                      </v-list-tile>
+    </v-container>
 
-                      <v-list-tile avatar>
-                        <v-list-tile-content>
-                          <v-list-tile-title class="body-1" >Total Price:</v-list-tile-title>
-                        </v-list-tile-content>
-                        <v-list-tile-action>
-                          <v-list-tile-action-text class="body-1">{{ triptp }} &yen;</v-list-tile-action-text>
-                        </v-list-tile-action>
-                      </v-list-tile>
+      <v-layout row fill-height>
+        <v-flex xs12>
+          <v-card flat>
+            <v-card-media
+              height="250px"
+              src="https://justhistoryposts.files.wordpress.com/2017/07/great-wall-of-china-fact.jpg?w=816"
+            >
 
-                      <v-list-tile avatar>
-                        <v-list-tile-content>
-                          <v-list-tile-title class="body-1" >Discount Amount:</v-list-tile-title>
-                        </v-list-tile-content>
-                        <v-list-tile-action>
-                          <v-list-tile-action-text class="body-1">{{ tripda }} &yen;</v-list-tile-action-text>
-                        </v-list-tile-action>
-                      </v-list-tile>
+            </v-card-media>
+            <!--trip name and agent-->
+              <v-container fill-height fluid>
+                <v-layout fill-height>
+                  <v-flex xs12 align-left >
+                    <span class="headline"><b>{{ tripname }}</b></span><br>
+                    <span class="grey--text">By {{ tripagent }}</span>
+                  </v-flex>
+                </v-layout>
+              </v-container>
 
-                      <v-list-tile avatar>
-                        <v-list-tile-content>
-                          <v-list-tile-title class="body-2" >Final Price:</v-list-tile-title>
-                        </v-list-tile-content>
-                        <v-list-tile-action>
-                          <v-list-tile-action-text class="primary--text body-2">{{ tripfp }} &yen;</v-list-tile-action-text>
-                        </v-list-tile-action>
-                      </v-list-tile>
-                    </v-list>
-                <v-btn color="success" block @click.native="">Checkout</v-btn>      
-              </v-stepper-content>
-            </v-stepper>
+              <v-divider></v-divider>
+              <v-list two-line subheader>
+              <!--trip forcast-->
+              <v-list-tile avatar>
+                <v-list-tile-action>
+                  <v-icon >wi-yahoo-{{ tripconditioncode }}</v-icon>
+                </v-list-tile-action>
+                <v-list-tile-content>
+                  <v-list-tile-title>{{ tripcondition }}</v-list-tile-title>
+                  <v-list-tile-sub-title>Temperature {{ triptemperature }} C&deg;</v-list-tile-sub-title>
+                </v-list-tile-content>
+              </v-list-tile>
+              <!--trip date and time -->
+              <v-list-tile avatar>
+                <v-list-tile-action>
+                  <v-icon >date_range</v-icon>
+                </v-list-tile-action>
+                <v-list-tile-content>
+                  <v-list-tile-title>Date &amp; Time</v-list-tile-title>
+                  <v-list-tile-sub-title>{{ tripdate }}</v-list-tile-sub-title>
+                  <v-list-tile-sub-title>{{ triptime }}</v-list-tile-sub-title>
+                </v-list-tile-content>
+              </v-list-tile>
+              <!--trip location-->
+              <v-list-tile avatar>
+                <v-list-tile-action>
+                  <v-icon >place</v-icon>
+                </v-list-tile-action>
+                <v-list-tile-content>
+                  <v-list-tile-title>Location</v-list-tile-title>
+                  <v-list-tile-sub-title>{{ triplocation }}</v-list-tile-sub-title>
+                </v-list-tile-content>
+              </v-list-tile>
+              <!--trip price-->
+              <v-list-tile avatar>
+                <v-list-tile-action>
+                  <v-icon >fas fa-yen-sign</v-icon>
+                </v-list-tile-action>
+                <v-list-tile-content>
+                  <v-list-tile-title>Trip Cost</v-list-tile-title>
+                  <v-list-tile-sub-title>{{ tripprice }} &yen;</v-list-tile-sub-title>
+                </v-list-tile-content>
+              </v-list-tile>
+            </v-list>
+            <v-divider></v-divider>
+            <!--trip Description-->
+            <v-list>
+              <v-list-tile avatar>
+                <v-list-tile-action>
+                  <v-icon >fas fa-file-alt</v-icon>
+                </v-list-tile-action>
+                <v-list-tile-content>
+                  <v-list-tile-title >Description</v-list-tile-title>
+                </v-list-tile-content>
+              </v-list-tile>
+            </v-list>
+            <div class="destext">
+              <span>{{ tripdef }}</span>
+            </div>
+            </v-card>
+        </v-flex>
+      </v-layout>
+
+      <button v-on:click="sheet =! sheet" >
+        <div id="fixedbutton">
+            <v-btn block color="success" depressed >Book this Trip</v-btn>
+        </div>
+      </button>
+
+
+
+    <v-dialog v-model="sheet" persistent max-width="290">
+      <v-card>
+        <v-card-title class="body-2">How many friends will join you ?</v-card-title>
+        <v-divider></v-divider>
+          <div class="text-xs-center pt-2 pb-2">
+            <v-btn fab dark small color="success" @click.native="hikersminus" >
+              <v-icon dark>fas fa-minus</v-icon>
+            </v-btn>
+            <v-btn outline color="success"  flat depressed>{{ hikers }}</v-btn>
+            <v-btn fab dark small color="success" @click.native="hikers++">
+              <v-icon dark>fas fa-plus</v-icon>
+            </v-btn>
+          </div>
+        <v-divider></v-divider>
+        <v-card-actions class="">
+          <v-spacer></v-spacer>
+          <v-btn color="grey darken-1" flat small @click.native="sheet = false">cancel</v-btn>
+          <v-btn color="success" depressed dark small @click.native="sheet = false" to="/checkout">Checkout</v-btn>
+        </v-card-actions>
       </v-card>
     </v-dialog>
 
@@ -216,7 +135,7 @@ export default {
       cheked: false,
       people: ['Bouras Amine'],
       peopleitems: [ 'Bouras Amine', 'Xu Yue', 'Vivian', 'Ning Laoshi', 'Sahraoui'],
-      dialogswitcher: 1,
+      hikers: 1,
       sheet: false,
       tripname: 'Beijing Great Wall',
       tripagent: 'SeeYou',
@@ -257,6 +176,13 @@ export default {
       this.triptp= price ;
       this.tripda= this.tripdiscount ;
       this.tripfp= pricediscount ;
+    },
+    hikersminus: function () {
+      if (this.hikers > 1 ) {
+        this.hikers = this.hikers -1;
+      }else {
+        this.hikers = 1;
+      }
     }
   }
 }
@@ -270,6 +196,18 @@ export default {
 }
 .spantext{
   text-align: right;
+}
+#fixedbutton {
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 6px;
+    padding-top: 6px;
+    width: 100%;
+    background-color:white;
 }
 
 </style>

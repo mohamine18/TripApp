@@ -93,35 +93,12 @@
         </v-flex>
       </v-layout>
 
-      <button v-on:click="sheet =! sheet" >
+      <v-btn to="/checkout" >
         <div id="fixedbutton">
             <v-btn block color="success" depressed >Book this Trip</v-btn>
         </div>
-      </button>
+      </v-btn>
 
-
-
-    <v-dialog v-model="sheet" persistent max-width="290">
-      <v-card>
-        <v-card-title class="body-2">How many friends will join you ?</v-card-title>
-        <v-divider></v-divider>
-          <div class="text-xs-center pt-2 pb-2">
-            <v-btn fab dark small color="success" @click.native="hikersminus" >
-              <v-icon dark>fas fa-minus</v-icon>
-            </v-btn>
-            <v-btn outline color="success"  flat depressed>{{ hikers }}</v-btn>
-            <v-btn fab dark small color="success" @click.native="hikers++">
-              <v-icon dark>fas fa-plus</v-icon>
-            </v-btn>
-          </div>
-        <v-divider></v-divider>
-        <v-card-actions class="">
-          <v-spacer></v-spacer>
-          <v-btn color="grey darken-1" flat small @click.native="sheet = false">cancel</v-btn>
-          <v-btn color="success" depressed dark small @click.native="sheet = false" to="/checkout">Checkout</v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-dialog>
 
 </div>
 </template>
@@ -130,13 +107,8 @@
 export default {
   data () {
     return {
-      checkbox: false,
-      promocode: '',
-      cheked: false,
       people: ['Bouras Amine'],
       peopleitems: [ 'Bouras Amine', 'Xu Yue', 'Vivian', 'Ning Laoshi', 'Sahraoui'],
-      hikers: 1,
-      sheet: false,
       tripname: 'Beijing Great Wall',
       tripagent: 'SeeYou',
       triptemperature: '15',
@@ -145,44 +117,10 @@ export default {
       tripdate: 'Sat, March 31, 2018',
       triptime: '8:00 am - 6:00 pm BT',
       tripprice: '212',
-      tripqty: 0,
-      triptp: 0,
-      tripda: 0,
-      tripfp:0,
-      tripdiscount:'5',
       triplocation:'Beijing Haidian district, china',
       tripdef: 'The Hong Kong Stock Exchange has proposed the biggest overhaul of its IPO listing rules in over twenty years, including allowing dual class-listing and favorable listing terms for biotech companies. These changes are expected to make the HKEX the most attractive overseas listing option for mainland Chinese firms, and potentially help Hong Kong reclaim its leading position on the global IPO league table. At the same time, after a record 437 IPOs in mainland China, raising a total of RMB45 billion last year, the outlook for domestic IPOs by Chinese companies is increasingly uncertain as the regulatory approval process becomes more strenuous. That should spark greater interests by Chinese companies, especially those in biotech sector, to seek a public share float in the neighboring Special Administrative Region, Hong Kong.',
       enddate: 'May 15',
-      terms: '1) Refund princepal: No refund within 24h of departure time. Minimum 20 participants to confirm this trip, otherwise trip leader will refund you. 2) If you are late to the meeting point, we are sorry but we wont wait for you, because this is collective activity. So no refund in this case. 3) For one-day trips, no refund 24 hours before the trip, because we have already booked the bus and leave the seat for you. 4) We wont bear any responsability if - you get injured because you didnt follow our guides instructions. - you get injured because you lied about your illness (heart disease, asthma etc...), which directly resulted to your injuries during the trip. - you fight with others. 5) One should be fully aware of the unpredictabilities that outdoor activities may have.'
-    }
-  },
-  methods: {
-    reset: function (event) {
-      if (event){
-        this.sheet = false;
-        this.cheked = false;
-        this.checkbox = false;
-        this.people= ['Bouras Amine'];
-        this.promocode = '';
-        this.dialogswitcher= 1
-      }
-    },
-    pricecalculator: function () {
-      this.dialogswitcher = 4;
-      var totalpeople = this.people.length ;
-      var price = this.people.length * parseInt(this.tripprice) ;
-      var pricediscount = totalpeople * parseInt(this.tripprice) - parseInt(this.tripdiscount);
-      this.tripqty= totalpeople ;
-      this.triptp= price ;
-      this.tripda= this.tripdiscount ;
-      this.tripfp= pricediscount ;
-    },
-    hikersminus: function () {
-      if (this.hikers > 1 ) {
-        this.hikers = this.hikers -1;
-      }else {
-        this.hikers = 1;
-      }
+
     }
   }
 }

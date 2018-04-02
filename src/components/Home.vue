@@ -47,17 +47,7 @@
           </v-list>
           </v-card>
           </v-menu-->
-          <v-btn icon @click="loginDialog = ! loginDialog">
-            <v-icon >face</v-icon>
-        </v-btn>
       </v-toolbar>
-</v-layout>
-
-<!-- login Dialogue-->
-<v-layout row justify-center>
-      <v-dialog v-model="loginDialog" >
-        <user-login></user-login>
-      </v-dialog>
 </v-layout>
 
 <!-- Menu Dialogue-->
@@ -126,7 +116,6 @@
 import TripList from '@/components/trips/TripList'
 import TripFinder from '@/components/trips/TripFinder'
 import UserProfile from '@/components/users/Profile'
-import login from '@/components/users/Login'
 export default {
   data: () => ({
     currentView: 'trip-list',
@@ -145,8 +134,7 @@ export default {
   components:{
     'trip-list': TripList,
     'trip-finder': TripFinder,
-    'user-profile': UserProfile,
-    'user-login' : login
+    'user-profile': UserProfile
   }
 };
 </script>

@@ -4,7 +4,7 @@
        <v-card>
         <v-card-media
         :src="coverpicture"
-        height="250px"
+        height="200px"
         >
          <v-layout column >
             <v-flex
@@ -13,7 +13,7 @@
             align-center
             justify-center
           >
-            <v-avatar :size="150" >
+            <v-avatar :size="100" >
               <img :src="avatar1">
             </v-avatar>
           </v-flex>
@@ -22,11 +22,11 @@
          <v-list two-line>
           <v-list-tile to="/edit-profile" >
             <v-list-tile-content>
-              <v-list-tile-title class="text headline">{{ name1 }}</v-list-tile-title>
+              <v-list-tile-title class="text title">{{ name1 }}</v-list-tile-title>
               <v-list-tile-sub-title>Edit My profile</v-list-tile-sub-title>
             </v-list-tile-content>
             <v-list-tile-action>
-              <v-icon>edit</v-icon>
+              <v-icon medium>edit</v-icon>
             </v-list-tile-action>
           </v-list-tile>
           <v-divider ></v-divider>
@@ -36,7 +36,7 @@
               <v-list-tile-sub-title>All my Attended Trips</v-list-tile-sub-title>
             </v-list-tile-content>
             <v-list-tile-action>
-              <v-icon>receipt</v-icon>
+              <v-icon medium>receipt</v-icon>
             </v-list-tile-action>
           </v-list-tile>
           <v-divider ></v-divider>
@@ -46,7 +46,7 @@
               <v-list-tile-sub-title>Frequent Travelers Information</v-list-tile-sub-title>
             </v-list-tile-content>
             <v-list-tile-action>
-              <v-icon>group</v-icon>
+              <v-icon medium>group</v-icon>
             </v-list-tile-action>
           </v-list-tile>
           <v-divider ></v-divider>
@@ -56,7 +56,7 @@
               <v-list-tile-sub-title>Favorite Trips and Palces</v-list-tile-sub-title>
             </v-list-tile-content>
             <v-list-tile-action>
-              <v-icon>favorite</v-icon>
+              <v-icon medium>favorite</v-icon>
             </v-list-tile-action>
           </v-list-tile>
           <v-divider ></v-divider>
@@ -66,7 +66,7 @@
               <v-list-tile-sub-title>Customer Support</v-list-tile-sub-title>
             </v-list-tile-content>
             <v-list-tile-action>
-              <v-icon>info</v-icon>
+              <v-icon medium>info</v-icon>
             </v-list-tile-action>
           </v-list-tile>
          </v-list>

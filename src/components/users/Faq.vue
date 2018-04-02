@@ -17,7 +17,7 @@
         <!--Trip Frequently-Asked-Questions-->
         <v-subheader>Questions about Trips:</v-subheader>
         <v-flex xs12 sm6 >
-          <v-expansion-panel>
+          <v-expansion-panel expand>
            <v-expansion-panel-content v-for="(item,i) in tripQst" :key="i">
              <div slot="header">{{ item.qst }}</div>
              <v-card>

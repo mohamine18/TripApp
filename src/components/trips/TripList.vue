@@ -13,32 +13,36 @@
                 <v-card class="elevation-1" flat to="/Trip-Details">
                   <v-card-media
                     :src="card.src"
-                    height="180px"
+                    height="150px"
                   >
                      <v-layout column class="media">
                       <v-card-title>
                         <v-spacer></v-spacer>
                         <v-avatar class="primary" tile >
-                          <span class="white--text " v-text="card.date"></span>
+                          <span class="white--text" v-text="card.date"></span>
                         </v-avatar>
                       </v-card-title>
                      </v-layout>
                   </v-card-media >
-                    <v-card-media height="115px">
-                      <v-card-title>
-                        <div >
-                          <br>
-                          <v-icon small>watch</v-icon>
-                          <span class="grey--text" v-text="card.time"></span><br>
-                          <span class="headline" v-text="card.title"></span><br>
-                          <span class="subheading" v-text="card.def"></span><br>
-                          <span class="grey--text" v-text="card.location"></span>
-                        </div>
-                      </v-card-title>
-                    </v-card-media>
+                </v-card>
+                <v-card>
+                  <v-card-media height="65px">
+                    <v-card-title >
+                      <div >
+                        <span class="title" v-text="card.title"></span><br>
+                        <span class="grey--body-1" v-text="card.time"></span> &nbsp;
+                        <span class="grey--body-1" v-text="card.location"></span>
+                      </div>
+                    </v-card-title>
+                  </v-card-media>
+                </v-card>
+                <v-card>
                   <v-card-actions >
+                    <div >
+                      <span class="grey--body-1" >&num;{{ card.cat }}</span>
+                    </div>
                     <v-spacer></v-spacer>
-                    <v-btn icon class="primary--text"
+                    <v-btn  icon class="primary--text"
                       @click="card.fav = !card.fav"
                       >
                       <v-icon v-if="card.fav == false" >favorite_border</v-icon>
@@ -74,6 +78,7 @@
             def: "Event description from the organizer",
             location: "USTB, Beijing China",
             fav: false,
+            cat: 'One Day Trip',
             bookmark: false
           },
           {
@@ -85,6 +90,7 @@
             def: "Event description from the organizer",
             location: "USTB, Beijing China",
             fav: false,
+            cat: 'One Day Trip',
             bookmark: false
           },
           {
@@ -96,6 +102,7 @@
             def: "Event description from the organizer",
             location: "USTB, Beijing China",
             fav: false,
+            cat: 'One Day Trip',
             bookmark: false
           },
           {
@@ -107,6 +114,7 @@
             def: "Event description from the organizer",
             location: "USTB, Beijing China",
             fav: false,
+            cat: 'One Day Trip',
             bookmark: false
           },
           {
@@ -118,6 +126,7 @@
             def: "Event description from the organizer",
             location: "USTB, Beijing China",
             fav: false,
+            cat: 'One Day Trip',
             bookmark: false
           },
           {
@@ -129,6 +138,7 @@
             def: "Event description from the organizer",
             location: "USTB, Beijing China",
             fav: false,
+            cat: 'One Day Trip',
             bookmark: false
           }
         ],

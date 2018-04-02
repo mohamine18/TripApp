@@ -60,7 +60,6 @@
                     @input="remove(data.item)"
                     :selected="data.selected"
                   >
-                  
                     <strong>{{ data.item }}</strong>&nbsp;
                   </v-chip>
                 </template>
@@ -73,7 +72,7 @@
             <v-text-field clearable solo label="Promotional code" color="primary"></v-text-field>
           </v-flex>
           <v-flex xs4>
-            <v-btn color="primary">Check</v-btn>
+            <v-btn color="primary" @click.native="snackbarmsg()">Check</v-btn>
           </v-flex>
         </v-layout>
 
@@ -180,11 +179,23 @@
         </v-dialog>
       </v-layout>
 
-      <v-btn to="#" >
+      <button>
         <div id="fixedbutton">
-            <v-btn block color="success" depressed :disabled='!termscheck'>Chekout</v-btn>
+          <v-btn block color="success" depressed :disabled='!termscheck' to="#" >Chekout</v-btn>
         </div>
-      </v-btn>
+      </button>
+
+      <v-card>
+        <v-snackbar
+          :timeout="timeout"
+          top
+          v-model="snackbar"
+          :color="snackbarcolor"
+        >
+          {{ snackbartext }}
+          <v-btn flat color="white" @click.native="snackbar = false">Close</v-btn>
+        </v-snackbar>
+      </v-card>
 
  </div>
 </template>
@@ -192,9 +203,14 @@
 <script>
 export default {
   data: () => ({
+    snackbar: false,
     dialog: false,
     termdialog: false,
     termscheck: false,
+    snackbartext: '',
+    timeout: 2000,
+    snackbarcolor:'',
+
     hikers: ['BOURSA Mohammed Amine'],
     hikersDB: ['BOURSA Mohammed Amine','Sahraoui Delhim', 'Sadam Sami', 'Khalil Beskri', 'Omar not Honest'],
 
@@ -224,6 +240,16 @@ export default {
         this.tripQTY= totalpeople ;
         this.tripTotalPrice= price ;
         this.tripFinalPrice= pricediscount ;
+      },
+      snackbarmsg: function () {
+        if (this.tripDiscountAmount = ''){
+          this.snackbarcolor = 'success';
+          this.snackbartext = 'You Have a 5 RMB discount';
+        }else {
+          this.snackbarcolor = 'primary';
+          this.snackbartext = 'Your Promotional Code is not valid';
+        }
+        this.snackbar = true;
       }
     },
     watch: {

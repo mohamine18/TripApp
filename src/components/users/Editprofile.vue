@@ -29,67 +29,104 @@
                 <v-text-field label="First name" required prepend-icon="far fa-user" v-model="userfirstname"></v-text-field>
               </v-flex>
               <v-flex xs12 sm6 md4>
-                <v-text-field label="Last name" required prepend-icon="far " v-model="userlastname"></v-text-field>
+                <v-text-field label="Last name" required prepend-icon="far fa-user" v-model="userlastname"></v-text-field>
               </v-flex>
               <v-flex xs12 sm6>
-                <v-select
-                  label="Gender"
-                  required
-                  :items="['Male', 'Female']"
-                  prepend-icon="fas fa-venus-mars"
-                  v-model="usergender"
-                ></v-select>
+                <v-radio-group v-model="usergender" row prepend-icon="fas fa-venus-mars" >
+                  <v-radio label="Male" value="male" color="primary"></v-radio>
+                  <v-radio label="Female" value="female" color="primary"></v-radio>
+                </v-radio-group>
               </v-flex>
               <v-flex xs12 sm6>
-                <v-menu
+                <v-dialog
                   ref="menu"
                   lazy
-                  :close-on-content-click="false"
+                  persistent
+                  :return-value.sync="userbirthday"
                   v-model="menu"
-                  transition="scale-transition"
-                  offset-y
                   full-width
-                  :nudge-right="40"
-                  min-width="290px"
+                  width="290px"
+
                 >
                   <v-text-field
                     slot="activator"
-                    label="Birthday date"
+                    label="Date of birth"
                     v-model="userbirthday"
                     prepend-icon="fas fa-birthday-cake"
                     readonly
                   ></v-text-field>
-                  <v-date-picker
-                    ref="picker"
-                    v-model="userbirthday"
-                    @change="save"
-                    min="1950-01-01"
-                    :max="new Date().toISOString().substr(0, 10)"
-                  ></v-date-picker>
-                </v-menu>
+                    <v-date-picker
+                      scrollable
+                      ref="picker"
+                      v-model="userbirthday"
+                      @change="save"
+                      min="1950-01-01"
+                      max="2015-12-31"
+                    >
+                    <v-spacer></v-spacer>
+                      <v-btn flat color="primary" @click="menu = false">Cancel</v-btn>
+                  </v-date-picker>
+                </v-dialog>
               </v-flex>
               <v-flex xs12 sm6>
-                <v-select
-                  label="Country"
-                  required
-                  :items="['Algeria', 'China', 'France']"
-                  prepend-icon="fas fa-globe"
-                  cache-items
-                  autocomplete
-                  v-model="usercountry"
-                ></v-select>
+                <v-dialog scrollable max-width="300px"
+                  lazy
+                  persistent
+                  v-model="countrymenu"
+                  full-width
+                >
+                  <v-text-field
+                    slot="activator"
+                    label="Country"
+                    v-model="usercountry"
+                    prepend-icon="fas fa-globe"
+                    readonly
+                  ></v-text-field>
+                  <v-card>
+                    <v-card-title>Select Country</v-card-title>
+                    <v-divider></v-divider>
+                    <v-card-text style="height: 300px;">
+                      <v-radio-group v-model="usercountry" column>
+                        <v-radio v-for="elem in countries" :key="elem" :label="elem" :value="elem" color="primary"></v-radio>
+                      </v-radio-group>
+                    </v-card-text>
+                    <v-divider></v-divider>
+                    <v-card-actions>
+                      <v-spacer></v-spacer>
+                      <v-btn color="primary" flat @click.native="countrymenu = false">Close</v-btn>
+                    </v-card-actions>
+                  </v-card>
+                </v-dialog>
               </v-flex>
               <v-subheader>Let us Tailor Your Trip Experience:</v-subheader>
               <v-flex xs12 sm6>
-                <v-select
-                  label="Interests"
-                  multiple
-                  autocomplete
-                  chips
-                  :items="['Skiing', 'Ice hockey', 'Soccer', 'Basketball', 'Hockey', 'Reading', 'Writing', 'Coding', 'Basejump']"
-                  prepend-icon="fas fa-fire"
-                  v-model="userinterest"
-                ></v-select>
+                <v-dialog scrollable max-width="300px"
+                  lazy
+                  persistent
+                  v-model="interestmenu"
+                  full-width
+                >
+                  <v-text-field
+                    slot="activator"
+                    label="Country"
+                    v-model="userinterest"
+                    prepend-icon="fas fa-fire"
+                    readonly
+                  ></v-text-field>
+                  <v-card>
+                    <v-card-title>Select Your Interests</v-card-title>
+                    <v-divider></v-divider>
+                    <v-card-text style="height: 300px;">
+                      <v-checkbox v-for="(elem,i) in interestlist" :label="elem" v-model="userinterest" :value="elem" color="primary" ></v-checkbox>
+                    </v-card-text>
+                    <v-divider></v-divider>
+                    <v-card-actions>
+                      <v-spacer></v-spacer>
+                      <v-btn color="primary" flat @click.native="interestmenu = false">Close</v-btn>
+                    </v-card-actions>
+                  </v-card>
+                </v-dialog>
+
               </v-flex>
             </v-layout>
           </v-container>
@@ -103,12 +140,16 @@
 export default {
   data: () => ({
     menu: false,
+    countrymenu: false,
+    interestmenu: false,
     userfirstname:'',
     userlastname : '',
     usergender : '',
     userbirthday : '',
     usercountry : '',
-    userinterest : []
+    userinterest : [],
+    interestlist: ['Skiing', 'Ice hockey', 'Soccer', 'Basketball', 'Hockey', 'Reading', 'Writing', 'Coding', 'Basejump'],
+    countries : ['Afghanistan', 'Albania', 'Algeria', 'American Samoa', 'Andorra', 'Angola', 'Anguilla', 'Antarctica', 'Antigua and Barbuda', 'Argentina', 'Armenia', 'Aruba', 'Australia', 'Austria', 'Azerbaijan', 'Bahamas', 'Bahrain', 'Bangladesh', 'Barbados', 'Belarus', 'Belgium', 'Belize', 'Benin', 'Bermuda', 'Bhutan', 'Bolivia', 'Bosnia and Herzegovina', 'Botswana', 'Bouvet Island', 'Brazil', 'British Indian Ocean Territory', 'Brunei Darussalam', 'Bulgaria', 'Burkina Faso', 'Burundi', 'Cambodia', 'Cameroon', 'Canada', 'Cape Verde', 'Cayman Islands']
   }),
   watch: {
     menu (val) {

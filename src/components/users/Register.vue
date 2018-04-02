@@ -15,7 +15,7 @@
         </v-layout>
         <v-layout row wrap>
           <v-flex xs12 >
-            <v-card  :style="{'border-radius': '5px'}">
+            <v-card  :style="{'border-radius': '5px','border': '0.2px solid red'}">
               <v-container >
                 <v-layout row>
                   <v-flex xs7>
@@ -38,6 +38,7 @@
           </v-flex>
         </v-layout>
         <v-layout row wrap>
+          <v-subheader>Select Hikers:</v-subheader>
           <v-flex xs12>
             <v-card :style="{'border-radius': '5px'}">
               <div class="text-xs-center pb-2 pt-2">
@@ -68,8 +69,9 @@
           </v-flex>
         </v-layout>
         <v-layout row wrap>
+          <v-subheader>Entre Promotional Code:</v-subheader>
           <v-flex xs8>
-            <v-text-field clearable solo label="Promotional code" color="primary"></v-text-field>
+            <v-text-field clearable solo label="Promotional code" color="primary" v-model="tripDiscountAmount"></v-text-field>
           </v-flex>
           <v-flex xs4>
             <v-btn color="primary" @click.native="snackbarmsg()">Check</v-btn>
@@ -77,6 +79,7 @@
         </v-layout>
 
         <v-layout row wrap>
+          <v-subheader>Select Hikers:</v-subheader>
           <v-flex xs12>
             <v-card :style="{'border-radius': '5px'}">
               <v-list dense>
@@ -133,6 +136,7 @@
                 </v-list-tile>
               </v-list>
             </v-card>
+            <br>
           </v-flex>
         </v-layout>
       </v-container>
@@ -222,7 +226,7 @@ export default {
 
     tripQTY:'',
     tripTotalPrice: '',
-    tripDiscountAmount: '5',
+    tripDiscountAmount: '',
     tripFinalPrice: '',
   }),
   methods: {
@@ -236,15 +240,18 @@ export default {
       pricecalculator: function () {
         var totalpeople = this.hikers.length ;
         var price = this.hikers.length * parseInt(this.tripprice) ;
-        var pricediscount = totalpeople * parseInt(this.tripprice) - parseInt(this.tripDiscountAmount);
-        this.tripQTY= totalpeople ;
         this.tripTotalPrice= price ;
-        this.tripFinalPrice= pricediscount ;
+        this.tripQTY= totalpeople ;
+        if (this.tripDiscountAmount == 0) {
+          this.tripFinalPrice= price ;
+        } else {
+          this.tripFinalPrice = price - parseInt(this.tripDiscountAmount);
+        }
       },
       snackbarmsg: function () {
-        if (this.tripDiscountAmount = ''){
+        if (this.tripDiscountAmount == '5'){
           this.snackbarcolor = 'success';
-          this.snackbartext = 'You Have a 5 RMB discount';
+          this.snackbartext = 'You Have a '+this.tripDiscountAmount+ ' RMB discount';
         }else {
           this.snackbarcolor = 'primary';
           this.snackbartext = 'Your Promotional Code is not valid';
@@ -253,11 +260,14 @@ export default {
       }
     },
     watch: {
-      hikers: function () {
+    hikers: function () {
         this.pricecalculator();
       }
     },
-    beforeMount: function() {
+    beforeMount: function () {
+      this.pricecalculator();
+    },
+    tripDiscountAmount: function () {
       this.pricecalculator();
     }
 }

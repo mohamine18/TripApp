@@ -44,24 +44,40 @@
                 <v-text-field label="ID number" required prepend-icon="fas fa-minus " v-model="idnumer"></v-text-field>
               </v-flex>
               <v-flex xs12 sm6>
-                <v-select
-                  label="Gender"
-                  required
-                  :items="['Male', 'Female']"
-                  prepend-icon="fas fa-venus-mars"
-                  v-model="usergender"
-                ></v-select>
+                <v-radio-group v-model="usergender" row prepend-icon="fas fa-venus-mars" >
+                  <v-radio label="Male" value="male" color="primary"></v-radio>
+                  <v-radio label="Female" value="female" color="primary"></v-radio>
+                </v-radio-group>
               </v-flex>
               <v-flex xs12 sm6>
-                <v-select
-                  label="Country"
-                  required
-                  :items="['Algeria', 'China', 'France']"
-                  prepend-icon="fas fa-globe"
-                  cache-items
-                  autocomplete
-                  v-model="usercountry"
-                ></v-select>
+                <v-dialog scrollable max-width="300px"
+                  lazy
+                  persistent
+                  v-model="countrymenu"
+                  full-width
+                >
+                  <v-text-field
+                    slot="activator"
+                    label="Country"
+                    v-model="usercountry"
+                    prepend-icon="fas fa-globe"
+                    readonly
+                  ></v-text-field>
+                  <v-card>
+                    <v-card-title>Select Country</v-card-title>
+                    <v-divider></v-divider>
+                    <v-card-text style="height: 300px;">
+                      <v-radio-group v-model="usercountry" >
+                        <v-radio v-for="elem in countries" :key="elem" :label="elem" :value="elem" color="primary"></v-radio>
+                      </v-radio-group>
+                    </v-card-text>
+                    <v-divider></v-divider>
+                    <v-card-actions>
+                      <v-spacer></v-spacer>
+                      <v-btn color="primary" flat @click.native="countrymenu = false">Done</v-btn>
+                    </v-card-actions>
+                  </v-card>
+                </v-dialog>
               </v-flex>
             </v-layout>
           </v-container>
@@ -74,12 +90,14 @@
 <script>
 export default {
   data: () => ({
+    countrymenu: false,
     userfirstname:'',
     userlastname : '',
     idtype : '',
     idnumer : '',
     usergender : '',
     usercountry : '',
+    countries : ['Afghanistan', 'Albania', 'Algeria', 'American Samoa', 'Andorra', 'Angola', 'Anguilla', 'Antarctica', 'Antigua and Barbuda', 'Argentina', 'Armenia', 'Aruba', 'Australia', 'Austria', 'Azerbaijan', 'Bahamas', 'Bahrain', 'Bangladesh', 'Barbados', 'Belarus', 'Belgium', 'Belize', 'Benin', 'Bermuda', 'Bhutan', 'Bolivia', 'Bosnia and Herzegovina', 'Botswana', 'Bouvet Island', 'Brazil', 'British Indian Ocean Territory', 'Brunei Darussalam', 'Bulgaria', 'Burkina Faso', 'Burundi', 'Cambodia', 'Cameroon', 'Canada', 'Cape Verde', 'Cayman Islands']
   })
 }
 </script>

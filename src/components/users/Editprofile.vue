@@ -86,14 +86,14 @@
                     <v-card-title>Select Country</v-card-title>
                     <v-divider></v-divider>
                     <v-card-text style="height: 300px;">
-                      <v-radio-group v-model="usercountry" column>
+                      <v-radio-group v-model="usercountry" >
                         <v-radio v-for="elem in countries" :key="elem" :label="elem" :value="elem" color="primary"></v-radio>
                       </v-radio-group>
                     </v-card-text>
                     <v-divider></v-divider>
                     <v-card-actions>
                       <v-spacer></v-spacer>
-                      <v-btn color="primary" flat @click.native="countrymenu = false">Close</v-btn>
+                      <v-btn color="primary" flat @click.native="countrymenu = false">Done</v-btn>
                     </v-card-actions>
                   </v-card>
                 </v-dialog>
@@ -108,7 +108,7 @@
                 >
                   <v-text-field
                     slot="activator"
-                    label="Country"
+                    label="Interests"
                     v-model="userinterest"
                     prepend-icon="fas fa-fire"
                     readonly
@@ -117,12 +117,12 @@
                     <v-card-title>Select Your Interests</v-card-title>
                     <v-divider></v-divider>
                     <v-card-text style="height: 300px;">
-                      <v-checkbox v-for="(elem,i) in interestlist" :label="elem" v-model="userinterest" :value="elem" color="primary" ></v-checkbox>
+                      <v-checkbox v-for="(elem,i) in interestlist" :key="i" :label="elem" v-model="userinterest" :value="elem" color="primary" ></v-checkbox>
                     </v-card-text>
                     <v-divider></v-divider>
                     <v-card-actions>
                       <v-spacer></v-spacer>
-                      <v-btn color="primary" flat @click.native="interestmenu = false">Close</v-btn>
+                      <v-btn color="primary" flat @click.native="interestmenu = false">Done</v-btn>
                     </v-card-actions>
                   </v-card>
                 </v-dialog>

@@ -49,7 +49,7 @@
               <v-icon medium>group</v-icon>
             </v-list-tile-action>
           </v-list-tile>
-          <v-divider ></v-divider>
+          <!--v-divider ></v-divider>
           <v-list-tile to="/Favorite-trips">
             <v-list-tile-content>
               <v-list-tile-title class="text title">Favorites</v-list-tile-title>
@@ -58,7 +58,7 @@
             <v-list-tile-action>
               <v-icon medium>favorite</v-icon>
             </v-list-tile-action>
-          </v-list-tile>
+          </v-list-tile-->
           <v-divider ></v-divider>
           <v-list-tile to="/User-support">
             <v-list-tile-content>

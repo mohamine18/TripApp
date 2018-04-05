@@ -11,6 +11,7 @@ import TripRecipe from '@/components/users/TripRecipe'
 import Usersupport from '@/components/users/Usersupport'
 import Faq from '@/components/users/Faq'
 import Register from '@/components/users/Register'
+import Profile from '@/components/users/profile'
 
 import Hikersinfo from '@/components/hikers/Hikersinfo'
 import Addhikersinfo from '@/components/hikers/Addhikersinfo'
@@ -51,9 +52,9 @@ export default new Router({
       component: TripRecipe
     },
     {
-      path: '/Favorite-trips',
-      name: 'trips-favorite',
-      component: TripFavorite
+      path: '/Profile',
+      name: 'Profile',
+      component: Profile
     },
     {
       path: '/User-support',

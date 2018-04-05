@@ -1,4 +1,16 @@
 <template>
+  <div class="hidden-md-and-up ">
+    <!--Toolbar-->
+    <v-container >
+      <v-toolbar color="primary" dark dense fixed  flat >
+        <v-btn icon to="/">
+          <v-icon >chevron_left</v-icon>
+        </v-btn>
+        <v-toolbar-title style="width: 300px" class="ml-0 pl-3" d-block>
+          <span >Profile</span>
+        </v-toolbar-title>
+      </v-toolbar>
+    </v-container>
   <v-layout row >
     <v-flex xs12 >
        <v-card>
@@ -73,6 +85,7 @@
        </v-card>
     </v-flex>
   </v-layout>
+</div>
 </template>
 
 <script>

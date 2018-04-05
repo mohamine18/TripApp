@@ -15,10 +15,20 @@
 <!--up Navigation small screen-->
   <v-layout>
       <v-toolbar color="primary" dark dense fixed app flat class="hidden-md-and-up">
-        <v-toolbar-title style="width: 300px" class="ml-0 pl-3" d-block>
-          <span >Trip Finder</span>
-        </v-toolbar-title>
         <v-spacer></v-spacer>
+        <v-flex xs8>
+          <v-text-field
+            flat
+            solo-inverted
+            prepend-icon="search"
+            label="Search"
+            class="textfild"
+          ></v-text-field>
+        </v-flex>
+        <v-spacer></v-spacer>
+        <v-btn icon to="/profile">
+          <v-icon>far fa-user-circle</v-icon>
+        </v-btn>
 
         <!--App Menu-->
         <!--v-menu offset-y >
@@ -83,7 +93,7 @@
   </keep-alive>
 
 
-<!--Botoom Navigation-->
+<!--Botoom Navigation>
 <v-layout>
       <v-bottom-nav
         :value="true"
@@ -92,23 +102,23 @@
         fixed
         app
         class="hidden-md-and-up">
-        <!--Home menu-->
+
           <v-btn  color="primary" value="trip-list" flat @click.native="currentView='trip-list'" >
             <span>Home</span>
             <v-icon flat>home</v-icon>
           </v-btn>
-        <!--hot trips-->
+
           <v-btn flat color="primary" value="trip-finder" @click.native="currentView='trip-finder'">
             <span>Trip Finder</span>
             <v-icon>card_travel</v-icon>
           </v-btn>
-        <!--ME menu-->
+
           <v-btn flat color="primary" value="user-profile" @click.native="currentView='user-profile'">
             <span>Me</span>
             <v-icon>account_circle</v-icon>
           </v-btn>
       </v-bottom-nav>
-</v-layout>
+</v-layout-->
 </div>
 </template>
 
@@ -138,3 +148,12 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.textfild {
+    line-height: 0.1px;
+    border-radius: 15px;
+    background-color: white;
+
+}
+</style>

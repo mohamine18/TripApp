@@ -1,17 +1,17 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from '@/components/Home'
+import Home from '@/components/app/Home'
 
 import TripDetails from '@/components/trips/TripDetails'
 import TripFavorite from '@/components/trips/TripFavorite'
-import TripPayment from '@/components/trips/TripPayment'
+import Explore from '@/components/trips/Explore'
 
 import Editprofile from '@/components/users/Editprofile'
 import TripRecipe from '@/components/users/TripRecipe'
 import Usersupport from '@/components/users/Usersupport'
 import Faq from '@/components/users/Faq'
 import Register from '@/components/users/Register'
-import Profile from '@/components/users/profile'
+import Profile from '@/components/users/Profile'
 
 import Hikersinfo from '@/components/hikers/Hikersinfo'
 import Addhikersinfo from '@/components/hikers/Addhikersinfo'
@@ -32,9 +32,9 @@ export default new Router({
       component: TripDetails
     },
     {
-      path: '/Trip-Payment',
-      name: 'Trip Payment',
-      component: TripPayment
+      path: '/Explore',
+      name: 'Explore',
+      component: Explore
     },
     {
       path: '/Edit-Profile',

@@ -1,32 +1,25 @@
 <template>
   <div class="hidden-md-and-up ">
     <!--Toolbar-->
-    <v-container >
-      <v-toolbar color="primary" dark dense fixed  flat >
-        <v-btn icon to="/">
-          <v-icon >chevron_left</v-icon>
-        </v-btn>
-        <v-toolbar-title style="width: 300px" class="ml-0 pl-3" d-block>
-          <span >Profile</span>
-        </v-toolbar-title>
-      </v-toolbar>
+    <v-container>
+      <component v-bind:is="'tool-bare'"></component>
     </v-container>
   <v-layout row >
     <v-flex xs12 >
        <v-card>
         <v-card-media
-        :src="coverpicture"
+        :src="coverPicture"
         height="200px"
         >
          <v-layout column >
             <v-flex
-            text-xs-center
+            class="text-xs-center"
             layout
             align-center
             justify-center
           >
             <v-avatar :size="100" >
-              <img :src="avatar1">
+              <img :src="avatar">
             </v-avatar>
           </v-flex>
           </v-layout>
@@ -34,11 +27,11 @@
          <v-list two-line>
           <v-list-tile to="/edit-profile" >
             <v-list-tile-content>
-              <v-list-tile-title class="text title">{{ name1 }}</v-list-tile-title>
+              <v-list-tile-title class="text title">{{ profilename }}</v-list-tile-title>
               <v-list-tile-sub-title>Edit My profile</v-list-tile-sub-title>
             </v-list-tile-content>
             <v-list-tile-action>
-              <v-icon medium>edit</v-icon>
+              <v-icon medium>fas fa-pen-square</v-icon>
             </v-list-tile-action>
           </v-list-tile>
           <v-divider ></v-divider>
@@ -48,7 +41,7 @@
               <v-list-tile-sub-title>All my Attended Trips</v-list-tile-sub-title>
             </v-list-tile-content>
             <v-list-tile-action>
-              <v-icon medium>receipt</v-icon>
+              <v-icon medium>fas fa-file-alt</v-icon>
             </v-list-tile-action>
           </v-list-tile>
           <v-divider ></v-divider>
@@ -58,7 +51,7 @@
               <v-list-tile-sub-title>Frequent Travelers Information</v-list-tile-sub-title>
             </v-list-tile-content>
             <v-list-tile-action>
-              <v-icon medium>group</v-icon>
+              <v-icon medium>fas fa-id-badge</v-icon>
             </v-list-tile-action>
           </v-list-tile>
           <!--v-divider ></v-divider>
@@ -78,42 +71,31 @@
               <v-list-tile-sub-title>Customer Support</v-list-tile-sub-title>
             </v-list-tile-content>
             <v-list-tile-action>
-              <v-icon medium>info</v-icon>
+              <v-icon medium>fas fa-info-circle</v-icon>
             </v-list-tile-action>
           </v-list-tile>
          </v-list>
        </v-card>
     </v-flex>
   </v-layout>
+  <component v-bind:is="'buttom-nav'"></component>
 </div>
 </template>
 
 <script>
+import Toolbare from '@/components/app/Toolbare'
+import Buttomnav from '@/components/app/Buttomnav'
   export default {
     data () {
       return {
-        coverpicture:"https://img3.goodfon.ru/wallpaper/big/d/7c/star-wars-r2d2-robot-pustynya.jpg",
-        avatar1:"https://i.pinimg.com/474x/7c/c7/a6/7cc7a630624d20f7797cb4c8e93c09c1--flat-icons-free-icon.jpg",
-        name1: 'Sahraoui Delhim',
-        items2: [
-          { icon: 'assignment', iconClass: 'blue white--text', title: 'Vacation itinerary', subtitle: 'Jan 20, 2014' },
-          { icon: 'call_to_action', iconClass: 'amber white--text', title: 'Kitchen remodel', subtitle: 'Jan 10, 2014' }
-        ]
+        coverPicture:"https://img3.goodfon.ru/wallpaper/big/d/7c/star-wars-r2d2-robot-pustynya.jpg",
+        avatar:"https://i.pinimg.com/474x/7c/c7/a6/7cc7a630624d20f7797cb4c8e93c09c1--flat-icons-free-icon.jpg",
+        profilename: 'Sahraoui Delhim',
       }
+    },
+    components:{
+      'tool-bare': Toolbare,
+      'buttom-nav': Buttomnav
     }
   }
 </script>
-
-<style scoped>
-@import url('https://fonts.googleapis.com/css?family=Montserrat');
- .picture {
-   -webkit-filter: blur(2px); /* Safari 6.0 - 9.0 */
-    filter: blur(2px);
- }
- .titlestyle {
-   font-family: 'Montserrat', sans-serif;
- }
- .border {
-   border: 5px solid red;
- }
-</style>

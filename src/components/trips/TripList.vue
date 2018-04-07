@@ -1,12 +1,5 @@
 <template>
-          <v-container  grid-list-lg color ="cray" >
-            <!--carousal for Desktop View-->
-            <v-layout  row wrap  class="hidden-sm-and-down">
-              <v-carousel  hide-delimiters hide-controls >
-                <v-carousel-item v-for="(image,i) in images" :src="image.src" :key="i"></v-carousel-item>
-              </v-carousel>
-            </v-layout>
-
+            <v-container  grid-list-lg color ="cray" >
             <!--Trip List-->
             <v-layout row wrap >
               <v-flex xs12 md6 lg4 v-for="card in cards" :key="card.title">
@@ -45,18 +38,18 @@
                     <v-btn  icon class="primary--text"
                       @click="card.fav = !card.fav"
                       >
-                      <v-icon v-if="card.fav == false" >favorite_border</v-icon>
-                      <v-icon v-else >favorite</v-icon>
+                      <v-icon v-if="card.fav == false" >far fa-heart</v-icon>
+                      <v-icon v-else >fas fa-heart</v-icon>
                     </v-btn>
                     <v-btn icon>
-                      <v-icon color="primary">share</v-icon>
+                      <v-icon color="primary">fas fa-share-alt</v-icon>
                     </v-btn>
                   </v-card-actions>
                 </v-card>
               </v-flex>
             </v-layout>
-
   </v-container>
+
 </template>
 
 <script>

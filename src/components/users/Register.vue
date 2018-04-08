@@ -262,12 +262,12 @@ export default {
     watch: {
     hikers: function () {
         this.pricecalculator();
+      },
+      tripDiscountAmount: function () {
+        this.pricecalculator();
       }
     },
     beforeMount: function () {
-      this.pricecalculator();
-    },
-    tripDiscountAmount: function () {
       this.pricecalculator();
     }
 }

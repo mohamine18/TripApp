@@ -71,7 +71,7 @@
               <v-list-tile-sub-title>Customer Support</v-list-tile-sub-title>
             </v-list-tile-content>
             <v-list-tile-action>
-              <v-icon medium>fas fa-info-circle</v-icon>
+              <v-icon medium>fas fa-phone-square</v-icon>
             </v-list-tile-action>
           </v-list-tile>
          </v-list>

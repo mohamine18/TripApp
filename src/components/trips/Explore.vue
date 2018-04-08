@@ -6,19 +6,19 @@
     <v-container fluid grid-list-md >
       <v-layout row wrap class="mb-5">
         <v-flex d-flex xs6 sm6 md4 >
-          <v-card color="purple" height="200px" dark></v-card>
+          <v-card color="purple" height="auto" dark></v-card>
         </v-flex>
         <v-flex d-flex xs6 sm6 md4 >
-          <v-card color="blue" height="200px" dark></v-card>
+          <v-card color="blue" height="auto" dark></v-card>
         </v-flex>
         <v-flex d-flex xs6 sm6 md4>
-          <v-card color="orange" height="200px" dark></v-card>
+          <v-card color="orange" height="auto" dark></v-card>
         </v-flex>
         <v-flex d-flex xs6 sm6 md4>
-          <v-card color="red" height="200px" dark></v-card>
+          <v-card color="red" height="auto" dark></v-card>
         </v-flex>
         <v-flex d-flex xs12 sm6 md4>
-          <v-card color="green" height="200px" dark></v-card>
+          <v-card color="green" height="auto" dark></v-card>
         </v-flex>
       </v-layout>
     </v-container>
@@ -30,13 +30,20 @@ import Toolbare from '@/components/app/Toolbare'
 import Buttomnav from '@/components/app/Buttomnav'
 export default {
   data: () => ({
-
+    height: ''
   }),
   components:{
     'tool-bare': Toolbare,
     'buttom-nav': Buttomnav
+  },
+  beforeMount: function () {
+    var h = window.innerHeight
+    || document.documentElement.clientHeight
+    || document.body.clientHeight;
+    this.height = h;
   }
 }
 </script>
 <style  scoped>
+
 </style>

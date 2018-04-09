@@ -15,7 +15,6 @@
 <!--up Navigation small screen-->
   <v-layout>
       <v-toolbar color="primary" dark dense fixed app flat class="hidden-md-and-up">
-        <v-spacer></v-spacer>
         <v-flex xs8>
           <v-text-field
             flat

@@ -8,20 +8,21 @@
             color="white"
             fixed
             app
+            dense
             class="hidden-md-and-up">
               <v-btn  color="primary" value="Home" flat to="/">
                 <span>Home</span>
-                <v-icon flat>fas fa-home</v-icon>
+                <v-icon flat>home</v-icon>
               </v-btn>
 
               <v-btn flat color="primary" value="Explore" to="/Explore">
                 <span>Explore</span>
-                <v-icon>fas fa-compass</v-icon>
+                <v-icon>explore</v-icon>
               </v-btn>
 
               <v-btn flat color="primary" value="Profile" to="/profile">
                 <span>Me</span>
-                <v-icon>fas fa-user</v-icon>
+                <v-icon>person</v-icon>
               </v-btn>
           </v-bottom-nav>
     </v-layout>

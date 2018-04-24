@@ -1,5 +1,6 @@
 <template>
 <div class="hidden-md-and-up">
+
     <v-content>
       <component v-bind:is="'tool-bare'"></component>
       <component v-bind:is="'trip-list'"></component>

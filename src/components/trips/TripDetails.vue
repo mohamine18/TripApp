@@ -6,7 +6,7 @@
               <v-icon >chevron_left</v-icon>
           </v-btn>
           <v-toolbar-title style="width: 300px" class="ml-0 pl-3" d-block>
-            <span >Trip information</span>
+            <span > {{ title }} </span>
           </v-toolbar-title>
         </v-toolbar>
     </v-container>
@@ -66,7 +66,7 @@
               <!--trip price-->
               <v-list-tile avatar>
                 <v-list-tile-action>
-                  <v-icon >fas fa-yen-sign</v-icon>
+                  <v-icon >loyalty</v-icon>
                 </v-list-tile-action>
                 <v-list-tile-content>
                   <v-list-tile-title>Trip Cost</v-list-tile-title>
@@ -79,7 +79,7 @@
             <v-list>
               <v-list-tile avatar>
                 <v-list-tile-action>
-                  <v-icon >fas fa-file-alt</v-icon>
+                  <v-icon >chrome_reader_mode</v-icon>
                 </v-list-tile-action>
                 <v-list-tile-content>
                   <v-list-tile-title >Description</v-list-tile-title>
@@ -104,9 +104,11 @@
 </template>
 
 <script>
+
 export default {
   data () {
     return {
+      title: 'Trip information',
       people: ['Bouras Amine'],
       peopleitems: [ 'Bouras Amine', 'Xu Yue', 'Vivian', 'Ning Laoshi', 'Sahraoui'],
       tripname: 'Beijing Great Wall',
@@ -119,8 +121,7 @@ export default {
       tripprice: '212',
       triplocation:'Beijing Haidian district, china',
       tripdef: 'The Hong Kong Stock Exchange has proposed the biggest overhaul of its IPO listing rules in over twenty years, including allowing dual class-listing and favorable listing terms for biotech companies. These changes are expected to make the HKEX the most attractive overseas listing option for mainland Chinese firms, and potentially help Hong Kong reclaim its leading position on the global IPO league table. At the same time, after a record 437 IPOs in mainland China, raising a total of RMB45 billion last year, the outlook for domestic IPOs by Chinese companies is increasingly uncertain as the regulatory approval process becomes more strenuous. That should spark greater interests by Chinese companies, especially those in biotech sector, to seek a public share float in the neighboring Special Administrative Region, Hong Kong.',
-      enddate: 'May 15',
-
+      enddate: 'May 15'
     }
   }
 }

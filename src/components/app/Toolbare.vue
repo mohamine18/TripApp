@@ -1,7 +1,8 @@
 <template>
     <v-layout>
       <v-toolbar color="primary" dark dense fixed app flat class="hidden-md-and-up">
-        <img src="@/assets/logo.png">
+        <!-- <img src="@/assets/logo.png"> -->
+        <span class="text-xs-center headline">See You</span>
         <v-spacer></v-spacer>
       </v-toolbar>
     </v-layout>

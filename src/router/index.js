@@ -4,7 +4,10 @@ import Home from '@/components/app/Home'
 
 import TripDetails from '@/components/trips/TripDetails'
 import TripFavorite from '@/components/trips/TripFavorite'
-import Explore from '@/components/trips/Explore'
+
+import Explore from '@/components/explore/Explore'
+import Category from '@/components/explore/Category'
+import Content from '@/components/explore/Content'
 
 import Editprofile from '@/components/users/Editprofile'
 import TripRecipe from '@/components/users/TripRecipe'
@@ -35,6 +38,16 @@ export default new Router({
       path: '/Explore',
       name: 'Explore',
       component: Explore
+    },
+    {
+      path: '/Explore/:cityname',
+      name: 'Category',
+      component: Category
+    },
+    {
+      path: '/Explore/:cityname/:cat',
+      name: 'Content',
+      component: Content
     },
     {
       path: '/Edit-Profile',

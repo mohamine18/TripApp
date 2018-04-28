@@ -6,7 +6,7 @@
     <v-container fluid grid-list-md >
       <v-layout row wrap  justify-center class="mb-5">
         <v-flex d-flex xs11 sm6 md4 v-for="(item,i) in items" :key="i" class="mt-2">
-          <v-card  :style="{'border-radius': '5px'}" height="200px" dark :img="item.src"  raised>
+          <v-card  :style="{'border-radius': '5px'}" height="200px" dark :img="item.src"  raised :to="'/Explore/'+item.name">
             <v-card-actions class="body-2"> #{{item.name }} </v-card-actions>
           </v-card>
         </v-flex>
@@ -20,6 +20,7 @@ import Toolbare from '@/components/app/Toolbare'
 import Buttomnav from '@/components/app/Buttomnav'
 export default {
   data: () => ({
+
     items: [
       {name: 'Beijing', src:'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1523282355811&di=54f8f574679ae1b2891c05623a9c1714&imgtype=0&src=http%3A%2F%2Fpic.people.com.cn%2FNMediaFile%2F2016%2F0208%2FMAIN201602080855000375526896361.jpg'},
       {name: 'Shanghai', src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1523282451489&di=25d8160c8bf2057733eca4cad12fa92f&imgtype=0&src=http%3A%2F%2Fimg05.tooopen.com%2Fimages%2F20150420%2Ftooopen_sy_119358362235.jpg'},

@@ -38,11 +38,11 @@
                     <v-btn  icon class="primary--text"
                       @click="card.fav = !card.fav"
                       >
-                      <v-icon v-if="card.fav == false" >far fa-heart</v-icon>
-                      <v-icon v-else >fas fa-heart</v-icon>
+                      <v-icon v-if="card.fav == false" >favorite_border</v-icon>
+                      <v-icon v-else >favorite</v-icon>
                     </v-btn>
                     <v-btn icon>
-                      <v-icon color="primary">fas fa-share-alt</v-icon>
+                      <v-icon color="primary">share</v-icon>
                     </v-btn>
                   </v-card-actions>
                 </v-card>

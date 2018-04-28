@@ -31,7 +31,7 @@
               <v-list-tile-sub-title>Edit My profile</v-list-tile-sub-title>
             </v-list-tile-content>
             <v-list-tile-action>
-              <v-icon medium>fas fa-pen-square</v-icon>
+              <v-icon medium>edit</v-icon>
             </v-list-tile-action>
           </v-list-tile>
           <v-divider ></v-divider>
@@ -41,7 +41,7 @@
               <v-list-tile-sub-title>All my Attended Trips</v-list-tile-sub-title>
             </v-list-tile-content>
             <v-list-tile-action>
-              <v-icon medium>fas fa-file-alt</v-icon>
+              <v-icon medium>receipt</v-icon>
             </v-list-tile-action>
           </v-list-tile>
           <v-divider ></v-divider>
@@ -51,7 +51,7 @@
               <v-list-tile-sub-title>Frequent Travelers Information</v-list-tile-sub-title>
             </v-list-tile-content>
             <v-list-tile-action>
-              <v-icon medium>fas fa-id-badge</v-icon>
+              <v-icon medium>group</v-icon>
             </v-list-tile-action>
           </v-list-tile>
           <!--v-divider ></v-divider>
@@ -71,7 +71,7 @@
               <v-list-tile-sub-title>Customer Support</v-list-tile-sub-title>
             </v-list-tile-content>
             <v-list-tile-action>
-              <v-icon medium>fas fa-phone-square</v-icon>
+              <v-icon medium>help</v-icon>
             </v-list-tile-action>
           </v-list-tile>
          </v-list>

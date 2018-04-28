@@ -40,10 +40,10 @@
         <v-layout row wrap>
           <v-subheader>Select Hikers:</v-subheader>
           <v-flex xs12>
-            <v-card :style="{'border-radius': '5px'}">
-              <div class="text-xs-center pb-2 pt-2">
-                <v-btn round color="primary" dark @click.native="dialog =! dialog">
-                  <v-icon left dark>fas fa-plus-circle</v-icon>
+            <v-card :style="{'border-radius': '5px'}" >
+              <div class="text-xs-center pb-2 pt-2" >
+                <v-btn round color="primary" dark @click.native="dialog =! dialog" >
+                  <v-icon left dark>add_circle_outline</v-icon>
                   Add Travelers</v-btn>
               </div>
               <v-select
@@ -51,93 +51,37 @@
                 chips
                 tags
                 solo
-                prepend-icon="fas fa-users"
+                prepend-icon="group"
+                append-icon=""
                 v-model="hikers"
                 readonly
               >
-                <template slot="selection" slot-scope="data">
-                  <v-chip
-                    close
-                    @input="remove(data.item)"
-                    :selected="data.selected"
-                  >
-                    <strong>{{ data.item }}</strong>&nbsp;
-                  </v-chip>
+                <template slot="selection" slot-scope="data" d-block>
+                    <v-chip
+                      d-block
+                      close
+                      @input="remove(data.item)"
+                      :selected="data.selected"
+                    >
+                      <strong>{{ data.item }}</strong>&nbsp;
+                    </v-chip>
                 </template>
               </v-select>
             </v-card>
           </v-flex>
         </v-layout>
-        <v-layout row wrap>
+
+
+        <v-layout row wrap >
           <v-subheader>Entre Promotional Code:</v-subheader>
-          <v-flex xs8>
-            <v-text-field clearable solo label="Promotional code" color="primary" v-model="tripDiscountAmount"></v-text-field>
-          </v-flex>
-          <v-flex xs4>
-            <v-btn color="primary" @click.native="snackbarmsg()">Check</v-btn>
-          </v-flex>
-        </v-layout>
-
-        <v-layout row wrap>
-          <v-subheader>Select Hikers:</v-subheader>
-          <v-flex xs12>
-            <v-card :style="{'border-radius': '5px'}">
-              <v-list dense>
-                <v-list-tile avatar>
-                  <v-list-tile-content>
-                    <v-list-tile-title class="body-1" >QTY:</v-list-tile-title>
-                  </v-list-tile-content>
-                  <v-list-tile-action>
-                    <v-list-tile-action-text class="body-1">{{ tripQTY }}</v-list-tile-action-text>
-                  </v-list-tile-action>
-                </v-list-tile>
-
-                <v-list-tile avatar>
-                  <v-list-tile-content>
-                    <v-list-tile-title class="body-1" >Total Price:</v-list-tile-title>
-                  </v-list-tile-content>
-                  <v-list-tile-action>
-                    <v-list-tile-action-text class="body-1">{{ tripTotalPrice }} &yen;</v-list-tile-action-text>
-                  </v-list-tile-action>
-                </v-list-tile>
-
-                <v-list-tile avatar>
-                  <v-list-tile-content>
-                    <v-list-tile-title class="body-1" >Discount Amount:</v-list-tile-title>
-                  </v-list-tile-content>
-                  <v-list-tile-action>
-                    <v-list-tile-action-text class="body-1">{{ tripDiscountAmount }} &yen;</v-list-tile-action-text>
-                  </v-list-tile-action>
-                </v-list-tile>
-
-                <v-list-tile avatar>
-                  <v-list-tile-content>
-                    <v-list-tile-title class="body-2" >Final Price:</v-list-tile-title>
-                  </v-list-tile-content>
-                  <v-list-tile-action>
-                    <v-list-tile-action-text class="primary--text body-2">{{ tripFinalPrice }} &yen;</v-list-tile-action-text>
-                  </v-list-tile-action>
-                </v-list-tile>
-              </v-list>
-            </v-card>
-          </v-flex>
-        </v-layout>
-        <v-layout row wrap>
-          <v-flex xs12>
-            <v-card :style="{'border-radius': '5px'}">
-              <v-list >
-                <v-list-tile avatar>
-                  <v-list-tile-action>
-                    <v-checkbox v-model="termscheck" color="primary"></v-checkbox>
-                  </v-list-tile-action>
-                  <v-list-tile-content>
-                    <v-list-tile-title>Agree with this <a v-on:click="termdialog =! termdialog">Disclaimer</a></v-list-tile-title>
-                  </v-list-tile-content>
-                </v-list-tile>
-              </v-list>
-            </v-card>
-            <br>
-          </v-flex>
+          <v-layout row wraps>
+            <v-flex xs8>
+              <v-text-field clearable solo label="Promotional code" color="primary" v-model="tripDiscountAmount"></v-text-field>
+            </v-flex>
+            <v-flex xs4>
+              <v-btn color="primary" @click.native="snackbarmsg()">Check</v-btn>
+            </v-flex>
+          </v-layout>
         </v-layout>
       </v-container>
 
@@ -183,9 +127,69 @@
         </v-dialog>
       </v-layout>
 
+      <v-layout row wrap>
+        <div class="text-xs-center">
+          <v-bottom-sheet v-model="sheet">
+            <v-list >
+              <v-subheader>Payment details:</v-subheader>
+              <v-list-tile avatar>
+                <v-list-tile-content>
+                  <v-list-tile-title class="body-1" >QTY:</v-list-tile-title>
+                </v-list-tile-content>
+                <v-list-tile-action>
+                  <v-list-tile-action-text class="body-1">{{ tripQTY }}</v-list-tile-action-text>
+                </v-list-tile-action>
+              </v-list-tile>
+
+              <v-list-tile avatar>
+                <v-list-tile-content>
+                  <v-list-tile-title class="body-1" >Total Price:</v-list-tile-title>
+                </v-list-tile-content>
+                <v-list-tile-action>
+                  <v-list-tile-action-text class="body-1">{{ tripTotalPrice }} &yen;</v-list-tile-action-text>
+                </v-list-tile-action>
+              </v-list-tile>
+
+              <v-list-tile avatar>
+                <v-list-tile-content>
+                  <v-list-tile-title class="body-1" >Discount Amount:</v-list-tile-title>
+                </v-list-tile-content>
+                <v-list-tile-action>
+                  <v-list-tile-action-text class="body-1">{{ tripDiscountAmount }} &yen;</v-list-tile-action-text>
+                </v-list-tile-action>
+              </v-list-tile>
+
+              <v-list-tile avatar>
+                <v-list-tile-content>
+                  <v-list-tile-title class="body-2" >Final Price:</v-list-tile-title>
+                </v-list-tile-content>
+                <v-list-tile-action>
+                  <v-list-tile-action-text class="primary--text body-2">{{ tripFinalPrice }} &yen;</v-list-tile-action-text>
+                </v-list-tile-action>
+              </v-list-tile>
+            </v-list>
+          </v-bottom-sheet>
+        </div>
+      </v-layout>
+
       <button>
         <div id="fixedbutton">
-          <v-btn block color="success" depressed :disabled='!termscheck' to="#" >Chekout</v-btn>
+          <v-flex xs12>
+            <v-list >
+              <v-list-tile avatar>
+              <v-list-tile-action>
+                <v-checkbox v-model="termscheck" color="primary"></v-checkbox>
+              </v-list-tile-action>
+              <v-list-tile-content>
+                <v-list-tile-title>Agree with this <a v-on:click="termdialog =! termdialog">Disclaimer</a></v-list-tile-title>
+              </v-list-tile-content>
+              </v-list-tile>
+            </v-list>
+          </v-flex>
+          <v-btn  block color="success" depressed :disabled='!termscheck' to="#" >Chekout</v-btn>
+        </div>
+        <div id="fixedbutton1">
+          <v-btn  block color="white" depressed @click.native="sheet =true">{{ tripFinalPrice }} &yen;<v-icon right dark>arrow_drop_up</v-icon></v-btn>
         </div>
       </button>
 
@@ -207,6 +211,7 @@
 <script>
 export default {
   data: () => ({
+    sheet: false,
     snackbar: false,
     dialog: false,
     termdialog: false,
@@ -215,8 +220,8 @@ export default {
     timeout: 2000,
     snackbarcolor:'',
 
-    hikers: ['BOURSA Mohammed Amine'],
-    hikersDB: ['BOURSA Mohammed Amine','Sahraoui Delhim', 'Sadam Sami', 'Khalil Beskri', 'Omar not Honest'],
+    hikers: ['BOURAS Amine'],
+    hikersDB: ['BOURAS Amine','Sahraoui Delhim', 'Sadam Sami', 'Khalil Beskri', 'Omar not Honest'],
 
     tripname: 'Beijing Great Wall',
     tripdate: 'Sunday 2018-04-01',
@@ -289,12 +294,22 @@ a:hover {
     position: fixed;
     bottom: 0px;
     left: 0px;
-    right: 0px;
     padding-left: 10px;
+    padding-right: 5px;
+    padding-bottom: 6px;
+    padding-top: 6px;
+    width: 70%;
+    background-color:white;
+}
+#fixedbutton1 {
+    position: fixed;
+    bottom: 0px;
+    right: 0px;
+    padding-left: 5px;
     padding-right: 10px;
     padding-bottom: 6px;
     padding-top: 6px;
-    width: 100%;
+    width: 30%;
     background-color:white;
 }
 

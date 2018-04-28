@@ -35,6 +35,7 @@ import {
   VExpansionPanel,
   VDatePicker,
   VRadioGroup,
+  VBottomSheet,
   transitions
 } from 'vuetify'
 import '../node_modules/vuetify/src/stylus/app.styl'
@@ -71,6 +72,7 @@ Vue.use(Vuetify, {
     VExpansionPanel,
     VDatePicker,
     VRadioGroup,
+    VBottomSheet,
     transitions
   },
   theme: {

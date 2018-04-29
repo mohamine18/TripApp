@@ -3,7 +3,7 @@
             <!--Trip List-->
             <v-layout row wrap >
               <v-flex xs12 md6 lg4 v-for="card in cards" :key="card.title">
-                <v-card class="elevation-1" flat to="/Trip-Details">
+                <v-card class="elevation-1" flat :to="'/Trip-Details/'+card.title">
                   <v-card-media
                     :src="card.src"
                     height="150px"

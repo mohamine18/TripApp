@@ -24,7 +24,7 @@
               <v-container fill-height fluid>
                 <v-layout fill-height>
                   <v-flex xs12 align-left >
-                    <span class="headline"><b>{{ tripname }}</b></span><br>
+                    <span class="headline"><b>{{ $route.params.tripname }}</b></span><br>
                     <span class="grey--text">By {{ tripagent }}</span>
                   </v-flex>
                 </v-layout>

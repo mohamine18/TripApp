@@ -30,7 +30,7 @@ export default new Router({
       component: Home
     },
     {
-      path: '/Trip-Details',
+      path: '/Trip-Details/:tripname',
       name: 'Trip Details',
       component: TripDetails
     },

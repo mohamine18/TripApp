@@ -39,7 +39,7 @@ import {
   transitions
 } from 'vuetify'
 import '../node_modules/vuetify/src/stylus/app.styl'
-
+import materialIcons from '../node_modules/material-design-icons/iconfont/material-icons.css'
 Vue.use(Vuetify, {
   components: {
     VApp,

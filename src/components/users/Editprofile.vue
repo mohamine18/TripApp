@@ -4,14 +4,14 @@
     <v-container >
       <v-toolbar color="primary" dark dense fixed  flat >
         <v-btn icon to="/Profile">
-          <v-icon >fas fa-times</v-icon>
+          <v-icon >close</v-icon>
         </v-btn>
         <v-toolbar-title style="width: 300px" class="ml-0 pl-3" d-block>
           <span >Edit Profile</span>
         </v-toolbar-title>
         <v-spacer></v-spacer>
         <v-btn icon to="#">
-          <v-icon >fas fa-check</v-icon>
+          <v-icon >check</v-icon>
         </v-btn>
       </v-toolbar>
     </v-container>
@@ -26,13 +26,13 @@
                 <v-subheader>General Information:</v-subheader>
               </v-flex>
               <v-flex xs12 sm6 md4>
-                <v-text-field label="First name" required prepend-icon="far fa-user" v-model="userfirstname"></v-text-field>
+                <v-text-field label="First name" required prepend-icon="person" v-model="userfirstname"></v-text-field>
               </v-flex>
               <v-flex xs12 sm6 md4>
-                <v-text-field label="Last name" required prepend-icon="far fa-user" v-model="userlastname"></v-text-field>
+                <v-text-field label="Last name" required prepend-icon="person" v-model="userlastname"></v-text-field>
               </v-flex>
               <v-flex xs12 sm6>
-                <v-radio-group v-model="usergender" row prepend-icon="fas fa-venus-mars" >
+                <v-radio-group v-model="usergender" row prepend-icon="nature_people" >
                   <v-radio label="Male" value="male" color="primary"></v-radio>
                   <v-radio label="Female" value="female" color="primary"></v-radio>
                 </v-radio-group>
@@ -52,7 +52,7 @@
                     slot="activator"
                     label="Date of birth"
                     v-model="userbirthday"
-                    prepend-icon="fas fa-birthday-cake"
+                    prepend-icon="cake"
                     readonly
                   ></v-text-field>
                     <v-date-picker
@@ -79,7 +79,7 @@
                     slot="activator"
                     label="Country"
                     v-model="usercountry"
-                    prepend-icon="fas fa-globe"
+                    prepend-icon="language"
                     readonly
                   ></v-text-field>
                   <v-card>
@@ -110,7 +110,7 @@
                     slot="activator"
                     label="Interests"
                     v-model="userinterest"
-                    prepend-icon="fas fa-fire"
+                    prepend-icon="whatshot"
                     readonly
                   ></v-text-field>
                   <v-card>

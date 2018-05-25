@@ -4,7 +4,7 @@
     <v-container >
       <v-toolbar color="primary" dark dense fixed  flat >
         <v-btn icon to="/Profile">
-          <v-icon >fas fa-times</v-icon>
+          <v-icon >close</v-icon>
         </v-btn>
         <v-toolbar-title style="width: 300px" class="ml-0 pl-3" d-block>
           <span >Customer Support</span>

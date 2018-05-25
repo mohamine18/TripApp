@@ -4,14 +4,14 @@
     <v-container >
       <v-toolbar color="primary" dark dense fixed  flat >
         <v-btn icon to="/Profile">
-          <v-icon >fas fa-times</v-icon>
+          <v-icon >close</v-icon>
         </v-btn>
         <v-toolbar-title style="width: 300px" class="ml-0 pl-3" d-block>
           <span >Travelers Information</span>
         </v-toolbar-title>
         <v-spacer></v-spacer>
         <v-btn icon to="/Add-Hiker-info">
-          <v-icon >fas fa-user-plus</v-icon>
+          <v-icon >person_add</v-icon>
         </v-btn>
       </v-toolbar>
     </v-container>
@@ -27,7 +27,7 @@
                    <v-list-tile-sub-title>{{ hiker.idtype }}: {{ hiker.id }}</v-list-tile-sub-title>
                  </v-list-tile-content>
                  <v-list-tile-action>
-                   <v-icon color="primary">fas fa-caret-right</v-icon>
+                   <v-icon color="primary">chevron_right</v-icon>
                  </v-list-tile-action>
                </v-list-tile>
              </v-list>

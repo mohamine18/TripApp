@@ -11,11 +11,11 @@
       </v-toolbar>
     </v-container>
 
-    <v-container fluid grid-list-md>
-      <v-layout row wrap>
+    <v-container fluid grid-list-md class="white">
+      <v-layout row wrap >
         <v-flex xs6>
-          <v-card :style="{'border-radius': '5px','border': '0.2px solid red'}" :to="'/Explore/'+$route.params.cityname+'/Things_to_Do'">
-            <v-card-media class="red lighten-4">
+          <v-card :style="{'border-radius': '5px'}" :to="'/Explore/'+$route.params.cityname+'/Things_to_Do'">
+            <v-card-media class="red lighten-5">
               <img src="/static/img/Thing_to_Do.png" alt="">
             </v-card-media>
             <v-divider></v-divider>
@@ -26,8 +26,8 @@
         </v-flex>
 
         <v-flex xs6>
-          <v-card :style="{'border-radius': '5px','border': '0.2px solid red'}">
-            <v-card-media class="deep-purple lighten-4">
+          <v-card :style="{'border-radius': '5px'}">
+            <v-card-media class="deep-purple lighten-5">
               <img src="/static/img/Day_Plan.png" alt="">
             </v-card-media>
             <v-divider></v-divider>
@@ -38,8 +38,8 @@
         </v-flex>
 
         <v-flex xs6>
-          <v-card :style="{'border-radius': '5px','border': '0.2px solid red'}">
-            <v-card-media class="blue lighten-4">
+          <v-card :style="{'border-radius': '5px'}">
+            <v-card-media class="blue lighten-5">
               <img src="/static/img/Saved_Places.png" >
             </v-card-media>
             <v-divider></v-divider>
@@ -50,8 +50,8 @@
         </v-flex>
 
         <v-flex xs6>
-          <v-card :style="{'border-radius': '5px','border': '0.2px solid red'}">
-            <v-card-media class="teal lighten-4">
+          <v-card :style="{'border-radius': '5px'}">
+            <v-card-media class="teal lighten-5">
               <img src="/static/img/Getting_Around.png">
             </v-card-media>
             <v-divider></v-divider>
@@ -62,8 +62,8 @@
         </v-flex>
 
         <v-flex xs12>
-          <v-card :style="{'border-radius': '5px','border': '0.2px solid red'}">
-            <v-card-media class="lime lighten-4">
+          <v-card :style="{'border-radius': '5px'}">
+            <v-card-media class="lime lighten-5">
               <img src="/static/img/Family.png" class="imagstyle">
             </v-card-media>
             <v-divider></v-divider>

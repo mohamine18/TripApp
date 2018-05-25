@@ -4,14 +4,14 @@
     <v-container >
       <v-toolbar color="primary" dark dense fixed  flat >
         <v-btn icon to="/hikers-info">
-          <v-icon >fas fa-times</v-icon>
+          <v-icon >close</v-icon>
         </v-btn>
         <v-toolbar-title style="width: 300px" class="ml-0 pl-3" d-block>
           <span ></span>
         </v-toolbar-title>
         <v-spacer></v-spacer>
         <v-btn icon to="#">
-          <v-icon >fas fa-check</v-icon>
+          <v-icon >check</v-icon>
         </v-btn>
       </v-toolbar>
     </v-container>
@@ -26,25 +26,25 @@
                 <v-subheader>Please enter the hiker's information as it appears on their ID.</v-subheader>
               </v-flex>
               <v-flex xs12 sm6 md4>
-                <v-text-field label="Surename (Last name)" required prepend-icon="far fa-user" v-model="userfirstname"></v-text-field>
+                <v-text-field label="Surename (Last name)" required prepend-icon="person" v-model="userfirstname"></v-text-field>
               </v-flex>
               <v-flex xs12 sm6 md4>
-                <v-text-field label="Given names (first &amp; middle name)" required prepend-icon="fas fa-minus " v-model="userlastname"></v-text-field>
+                <v-text-field label="Given names (first &amp; middle name)" required prepend-icon="remove " v-model="userlastname"></v-text-field>
               </v-flex>
               <v-flex xs12 sm6>
                 <v-select
                   label="ID type"
                   required
                   :items="['Passport', 'Mainland Chinese ID']"
-                  prepend-icon="fas fa-id-card"
+                  prepend-icon="contacts"
                   v-model="idtype"
                 ></v-select>
               </v-flex>
               <v-flex xs12 sm6 md4>
-                <v-text-field label="ID number" required prepend-icon="fas fa-minus " v-model="idnumer"></v-text-field>
+                <v-text-field label="ID number" required prepend-icon="remove" v-model="idnumer"></v-text-field>
               </v-flex>
               <v-flex xs12 sm6>
-                <v-radio-group v-model="usergender" row prepend-icon="fas fa-venus-mars" >
+                <v-radio-group v-model="usergender" row prepend-icon="nature_people" >
                   <v-radio label="Male" value="male" color="primary"></v-radio>
                   <v-radio label="Female" value="female" color="primary"></v-radio>
                 </v-radio-group>
@@ -60,7 +60,7 @@
                     slot="activator"
                     label="Country"
                     v-model="usercountry"
-                    prepend-icon="fas fa-globe"
+                    prepend-icon="language"
                     readonly
                   ></v-text-field>
                   <v-card>

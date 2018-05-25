@@ -1,8 +1,7 @@
 <template>
 <div class="hidden-md-and-up">
-
     <v-content>
-      <component v-bind:is="'tool-bare'"></component>
+      <component v-bind:is="'navline'"></component>
       <component v-bind:is="'trip-list'"></component>
       <component v-bind:is="'buttom-nav'"></component>
     </v-content>
@@ -11,7 +10,7 @@
 
 <script>
 import TripList from '@/components/trips/TripList'
-import Toolbare from '@/components/app/Toolbare'
+import navline from '@/components/app/navline'
 import Buttomnav from '@/components/app/Buttomnav'
 export default {
   data: () => ({
@@ -19,7 +18,7 @@ export default {
   }),
   components:{
     'trip-list': TripList,
-    'tool-bare': Toolbare,
+    'navline': navline,
     'buttom-nav': Buttomnav
   }
 };

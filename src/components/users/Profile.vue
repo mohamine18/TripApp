@@ -1,12 +1,12 @@
 <template>
   <div class="hidden-md-and-up ">
     <!--Toolbar-->
-    <v-container>
+
       <component v-bind:is="'tool-bare'"></component>
-    </v-container>
+
   <v-layout row >
     <v-flex xs12 >
-       <v-card>
+       <v-card flat>
         <v-card-media
         :src="coverPicture"
         height="200px"
@@ -74,6 +74,7 @@
               <v-icon medium>help</v-icon>
             </v-list-tile-action>
           </v-list-tile>
+          <v-divider ></v-divider>
          </v-list>
        </v-card>
     </v-flex>
@@ -83,7 +84,7 @@
 </template>
 
 <script>
-import Toolbare from '@/components/app/Toolbare'
+import Toolbare from '@/components/app/navline'
 import Buttomnav from '@/components/app/Buttomnav'
   export default {
     data () {

@@ -8,6 +8,9 @@ import TripFavorite from '@/components/trips/TripFavorite'
 import Explore from '@/components/explore/Explore'
 import Category from '@/components/explore/Category'
 import Content from '@/components/explore/Content'
+import Dayplan from '@/components/explore/Dayplan'
+import Garound from '@/components/explore/Garound'
+import Savedplaces from '@/components/explore/Savedplaces'
 
 import Editprofile from '@/components/users/Editprofile'
 import TripRecipe from '@/components/users/TripRecipe'
@@ -45,9 +48,24 @@ export default new Router({
       component: Category
     },
     {
-      path: '/Explore/:cityname/:cat',
+      path: '/Explore/:cityname/:cat0',
       name: 'Content',
       component: Content
+    },
+    {
+      path: '/Explore/:cityname/:cat0/:cat2/:cat3',
+      name: 'Dayplan',
+      component: Dayplan
+    },
+    {
+      path: '/Explore/:cityname/:cat0/:cat5',
+      name: 'Savedplaces',
+      component: Savedplaces
+    },
+    {
+      path: '/Explore/:cityname/:cat0/:cat8/:cat9/:cat10/',
+      name: 'Garound',
+      component: Garound
     },
     {
       path: '/Edit-Profile',

@@ -84,8 +84,8 @@ export default {
   data: () => ({
     drawer: false,
     show: false,
-    currentItem: 'Top Spot',
-    items: ['Top Spot', 'Local Favorite', 'Temples & Mosques', 'Modern Architecture', 'Park & gardens' ],
+    currentItem: 'Beijing highlights',
+    items: ['Beijing highlights', 'Old Beijing', 'North Beijing', 'Communist sites', 'Spiritual Beijing', 'Modern architecture' ],
     cards: [
       {tripname:'Beajing Great Wall', tripabstract:'10.000 steps of adventure', tripintro:'allo', picurl:'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1524999100247&di=76acce1c90050cb2b1d8a2807e5dd5bb&imgtype=0&src=http%3A%2F%2Fmedia.ceetiz.com%2Factivity%2FBMIPEK011%2Fthumbnails%2F642x450%2Fmutianyu-3.jpg', tripcat:'Top Spot', fav:true},
       {tripname:'Tian am men', tripabstract:'10.000 steps of adventure', tripintro:'', picurl:'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1525002247762&di=e5c8b62e51ec1b510d7ccd3fbc1566b6&imgtype=0&src=http%3A%2F%2Fscimg.jb51.net%2Fallimg%2F161227%2F106-16122G44114O9.jpg', tripcat:'Local Favorite', fav:false},

@@ -1,24 +1,55 @@
 <template>
-  <div id="">
-    <v-container >
-      <v-toolbar color="primary" dark dense fixed  flat >
+    <div>
+      <v-toolbar tabs color="primary" dark>
         <v-btn icon :to="'/Explore/'+$route.params.cityname">
           <v-icon >keyboard_arrow_left</v-icon>
         </v-btn>
-        <v-toolbar-title style="width: 300px" class="ml-0 pl-3" d-block>
-          <span >{{ $route.params.cat0 }}</span>
-        </v-toolbar-title>
+        <v-toolbar-title>{{ title }}</v-toolbar-title>
+        <v-tabs
+          slot="extension"
+          v-model="tabs"
+          fixed-tabs
+          color="primary"
+
+        >
+          <v-tabs-slider></v-tabs-slider>
+          <v-tab href="#mobile-tabs-5-1" class="primary--text">
+            <v-icon>phone</v-icon>
+          </v-tab>
+          <v-tab href="#mobile-tabs-5-2" class="primary--text">
+            <v-icon>favorite</v-icon>
+          </v-tab>
+          <v-tab href="#mobile-tabs-5-3" class="primary--text">
+            <v-icon>account_box</v-icon>
+          </v-tab>
+        </v-tabs>
       </v-toolbar>
-    </v-container>
-  </div>
+      <v-tabs-items v-model="tabs" class="white">
+        <v-tab-item
+          v-for="i in 3"
+          :key="i"
+          :id="'mobile-tabs-5-' + i"
+        >
+          <v-card >
+            <v-card-text>{{ text }}</v-card-text>
+          </v-card>
+        </v-tab-item>
+      </v-tabs-items>
+    </div>
+
 </template>
 <script>
-export default {
-  name: "",
-  data: () => ({
-
-  })
-}
+  export default {
+    data: () => ({
+      title: '',
+      tabs: null,
+      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+    }),
+    created() {
+      //do something after creating vue instance
+      this.title = this.$route.params.cat
+    }
+  }
 </script>
 <style scoped>
 </style>

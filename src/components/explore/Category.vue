@@ -6,7 +6,7 @@
           <v-icon >keyboard_arrow_left</v-icon>
         </v-btn>
         <v-toolbar-title style="width: 300px" class="ml-0 pl-3" d-block>
-          <span >{{ $route.params.cityname }} Life</span>
+          <span >{{ name }} Life</span>
         </v-toolbar-title>
       </v-toolbar>
     </v-container>
@@ -14,7 +14,7 @@
     <v-container fluid grid-list-md class="white">
       <v-layout row wrap >
         <v-flex xs6>
-          <v-card :style="{'border-radius': '5px'}" :to="'/Explore/'+$route.params.cityname+'/Things to Do'">
+          <v-card :style="{'border-radius': '5px'}" :to="'/Explore/'+name+'/Things_To_Do/Things to Do'">
             <v-card-media class="red lighten-5">
               <img src="/static/img/Thing_to_Do.png" alt="">
             </v-card-media>
@@ -26,7 +26,7 @@
         </v-flex>
 
         <v-flex xs6>
-          <v-card :style="{'border-radius': '5px'}":to="'/Explore/'+$route.params.cityname+'/Day Plan/mutliple/plan'">
+          <v-card :style="{'border-radius': '5px'}":to="'/Explore/'+name+'/Day_Plan/Day plan'">
             <v-card-media class="deep-purple lighten-5">
               <img src="/static/img/Day_Plan.png" alt="">
             </v-card-media>
@@ -38,7 +38,7 @@
         </v-flex>
 
         <v-flex xs6>
-          <v-card :style="{'border-radius': '5px'}" :to="'/Explore/'+$route.params.cityname+'/Saved Places/saved'">
+          <v-card :style="{'border-radius': '5px'}" :to="'/Explore/'+$route.params.cityname+'/Saved_Places/Saved places'">
             <v-card-media class="blue lighten-5">
               <img src="/static/img/Saved_Places.png" >
             </v-card-media>
@@ -50,7 +50,7 @@
         </v-flex>
 
         <v-flex xs6>
-          <v-card :style="{'border-radius': '5px'}" :to="'/Explore/'+$route.params.cityname+'/Getting Around/getting/around/updated'">
+          <v-card :style="{'border-radius': '5px'}" :to="'/Explore/'+$route.params.cityname+'/Getting_Around/Getting around'">
             <v-card-media class="teal lighten-5">
               <img src="/static/img/Getting_Around.png">
             </v-card-media>
@@ -62,7 +62,7 @@
         </v-flex>
 
         <v-flex xs12>
-          <v-card :style="{'border-radius': '5px'}" :to="'/Explore/'+$route.params.cityname+'/Family Plan/'">
+          <v-card :style="{'border-radius': '5px'}" :to="'/Explore/'+$route.params.cityname+'/Family_Plan/Family plan'">
             <v-card-media class="lime lighten-5">
               <img src="/static/img/Family.png" class="imagstyle">
             </v-card-media>
@@ -78,9 +78,13 @@
 </template>
 <script>
 export default {
-  name: "",
   data: () => ({
-  })
+    name: ''
+  }),
+    created: function () {
+         this.name = this.$route.params.cityname
+   }
+
 }
 </script>
 <style scoped>

@@ -6,7 +6,7 @@
           <v-icon >keyboard_arrow_left</v-icon>
         </v-btn>
         <v-toolbar-title style="width: 300px" class="ml-0 pl-3" d-block>
-          <span >{{ $route.params.cat0 }}</span>
+          <span >{{ title }}</span>
         </v-toolbar-title>
         <v-spacer></v-spacer>
         <v-btn icon @click.stop="drawer = !drawer">
@@ -82,6 +82,7 @@
 export default {
   name: "",
   data: () => ({
+    title:'',
     drawer: false,
     show: false,
     currentItem: 'Top Spot',
@@ -96,6 +97,10 @@ export default {
 
     ]
   }),
+  created() {
+    //do something after creating vue instance
+    this.title = this.$route.params.cat
+  },
   methods: {
       addItem (item) {
         const removed = this.items.splice(0, 1)

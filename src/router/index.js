@@ -45,25 +45,25 @@ export default new Router({
     {
       path: '/Explore/:cityname',
       name: 'Category',
-      component: Category
+      component: Category,
     },
     {
-      path: '/Explore/:cityname/:cat0',
-      name: 'Content',
+      path: '/Explore/:cityname/Things_To_Do/:cat',
+      name: 'ThingsToDo',
       component: Content
     },
     {
-      path: '/Explore/:cityname/:cat0/:cat2/:cat3',
+      path: '/Explore/:cityname/Day_Plan/:cat',
       name: 'Dayplan',
       component: Dayplan
     },
     {
-      path: '/Explore/:cityname/:cat0/:cat5',
+      path: '/Explore/:cityname/Saved_Places/:cat',
       name: 'Savedplaces',
       component: Savedplaces
     },
     {
-      path: '/Explore/:cityname/:cat0/:cat8/:cat9/:cat10/',
+      path: '/Explore/:cityname/Getting_Around/:cat',
       name: 'Garound',
       component: Garound
     },

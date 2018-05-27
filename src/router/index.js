@@ -11,6 +11,7 @@ import Content from '@/components/explore/Content'
 import Dayplan from '@/components/explore/Dayplan'
 import Garound from '@/components/explore/Garound'
 import Savedplaces from '@/components/explore/Savedplaces'
+import Family from '@/components/explore/family'
 
 import Editprofile from '@/components/users/Editprofile'
 import TripRecipe from '@/components/users/TripRecipe'
@@ -66,6 +67,11 @@ export default new Router({
       path: '/Explore/:cityname/Getting_Around/:cat',
       name: 'Garound',
       component: Garound
+    },
+    {
+      path: '/Explore/:cityname/Family_Plan/:cat',
+      name: 'Familyplan',
+      component: Family
     },
     {
       path: '/Edit-Profile',

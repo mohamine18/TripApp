@@ -17,7 +17,7 @@
     <v-container fluid grid-list-md>
       <v-layout row wrap>
         <v-flex xs12 v-for="(card,i) in cards" :key="i" v-if="currentItem == card.tripcat">
-          <v-card >
+          <v-card :to="'/Explore/'+$route.params.cityname+'/'+$route.params.cat+'/'+card.tripname+'/Spot_detail'">
             <v-card-media
               :src="card.picurl"
               height="180px"

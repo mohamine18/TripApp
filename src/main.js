@@ -36,6 +36,7 @@ import {
   VDatePicker,
   VRadioGroup,
   VBottomSheet,
+  VProgressCircular,
   transitions
 } from 'vuetify'
 import '../node_modules/vuetify/src/stylus/app.styl'
@@ -73,6 +74,7 @@ Vue.use(Vuetify, {
     VDatePicker,
     VRadioGroup,
     VBottomSheet,
+    VProgressCircular,
     transitions
   },
   theme: {

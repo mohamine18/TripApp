@@ -4,7 +4,7 @@
         <v-layout>
           <v-container>
             <v-toolbar color="primary" dark dense fixed  flat class="hidden-md-and-up">
-              <v-btn icon to="/Trip-Details">
+              <v-btn icon :to="'/Trip-Details/'+$route.params.tripname">
                   <v-icon >chevron_left</v-icon>
               </v-btn>
               <v-toolbar-title style="width: 300px" class="ml-0 pl-3" d-block>
@@ -14,20 +14,20 @@
           </v-container>
         </v-layout>
         <v-layout row wrap>
-          <v-flex xs12 >
+          <v-flex xs12>
             <v-card  :style="{'border-radius': '5px','border': '0.2px solid red'}">
               <v-container >
-                <v-layout row>
-                  <v-flex xs7>
+                <v-layout row v-for="(item,i) in items" :key="i">
+                  <v-flex xs7 >
                     <div>
-                      <span class="body-2">{{ tripname }}</span><br>
-                      <span class="body-2">{{ tripdate }}</span> <br>
-                      <span class="body-2">{{ tripprice }} &yen;</span>
+                      <span class="body-2">{{ item.tripname }}</span><br>
+                      <span class="body-2">{{ item.tripdate }}</span> <br>
+                      <span class="body-2">{{ item.tripprice }} &yen;</span>
                     </div>
                   </v-flex>
                   <v-flex xs5>
                     <v-card-media
-                      :src="tripimg"
+                      :src="item.tripimg"
                       height="80px"
                       contain
                     ></v-card-media>
@@ -222,13 +222,16 @@ export default {
 
     hikers: ['BOURAS Amine'],
     hikersDB: ['BOURAS Amine','Sahraoui Delhim', 'Sadam Sami', 'Khalil Beskri', 'Omar not Honest'],
-
-    tripname: 'Beijing Great Wall',
-    tripdate: 'Sunday 2018-04-01',
-    tripprice: '212',
-    tripimg: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1522577932652&di=b2c96b6cbb42205dd9b7c350f46ffc98&imgtype=0&src=http%3A%2F%2Fwww.kedo.gov.cn%2Fupload%2Fresources%2Fimage%2F2015%2F05%2F25%2F86360_500x500.jpg',
+    items: [
+      {
+        tripname: 'Beijing Great Wall',
+        tripdate: 'Sunday 2018-04-01',
+        tripprice: '212',
+        tripimg: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1522577932652&di=b2c96b6cbb42205dd9b7c350f46ffc98&imgtype=0&src=http%3A%2F%2Fwww.kedo.gov.cn%2Fupload%2Fresources%2Fimage%2F2015%2F05%2F25%2F86360_500x500.jpg',
+      }
+    ],
     terms: '1) Refund princepal: No refund within 24h of departure time. Minimum 20 participants to confirm this trip, otherwise trip leader will refund you. 2) If you are late to the meeting point, we are sorry but we wont wait for you, because this is collective activity. So no refund in this case. 3) For one-day trips, no refund 24 hours before the trip, because we have already booked the bus and leave the seat for you. 4) We wont bear any responsability if - you get injured because you didnt follow our guides instructions. - you get injured because you lied about your illness (heart disease, asthma etc...), which directly resulted to your injuries during the trip. - you fight with others. 5) One should be fully aware of the unpredictabilities that outdoor activities may have.',
-
+    tripprice: '222',
     tripQTY:'',
     tripTotalPrice: '',
     tripDiscountAmount: '',

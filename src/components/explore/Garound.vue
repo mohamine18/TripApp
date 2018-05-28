@@ -29,7 +29,7 @@
           </v-tab>
         </v-tabs>
       </v-toolbar>
-      <v-tabs-items v-model="tabs" class="white">
+      <v-tabs-items v-model="tabs" class="grey lighten-3">
         <!-- On arrival -->
         <v-tab-item :id="'mobile-tabs-5-1'">
           <v-card color="grey lighten-3" v-for="(item,i) in carditems" v-if="item.cat == 'arrival'" :key="i" flat>
@@ -42,7 +42,7 @@
                 <v-icon color="red" left>{{ item.icon }}</v-icon>
                   <span class="text"><b>{{ item.name }}</b></span>
               </div>
-              <v-card>
+              <v-card >
                 <v-card-text class="grey lighten-3">{{ item.text }}</v-card-text>
               </v-card>
             </v-expansion-panel-content>

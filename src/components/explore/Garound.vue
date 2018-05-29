@@ -1,5 +1,5 @@
 <template>
-    <v-container grid-list-xs class="grey lighten-3">
+    <v-container grid-list-xs class="grey lighten-3" >
       <v-toolbar tabs color="primary" dark>
         <v-btn icon :to="'/Explore/'+$route.params.cityname">
           <v-icon >keyboard_arrow_left</v-icon>

@@ -42,11 +42,6 @@
                     <v-icon v-else >bookmark</v-icon>
                   </v-btn>
             </v-card-actions>
-            <v-slide-y-transition>
-              <v-card-text v-show="show">
-                {{ card.tripintro }}
-              </v-card-text>
-            </v-slide-y-transition>
           </v-card>
         </v-flex>
       </v-layout>

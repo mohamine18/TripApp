@@ -12,7 +12,7 @@
             <v-container fill-height fluid>
               <v-layout fill-height>
                 <v-flex xs12 align-end flexbox>
-                  <v-btn icon color="primary" :to="'/'">
+                  <v-btn icon color="primary" :to="{ name: 'Home'}">
                     <v-icon  >keyboard_arrow_left</v-icon>
                   </v-btn>
                 </v-flex>
@@ -143,7 +143,7 @@
         </v-flex>
       </v-layout>
 
-      <v-btn to="/checkout" >
+      <v-btn :to="{name:'Checkout'}" >
         <div id="fixedbutton">
             <v-btn block color="success" depressed >Book this Trip</v-btn>
         </div>

@@ -30,7 +30,7 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
-      path: '/',
+      path: '/Home',
       name: 'Home',
       component: Home
     },
@@ -75,7 +75,7 @@ export default new Router({
       component: Family
     },
     {
-      path: '/Explore/:cityname/:cat/:name/Spot_detail',
+      path: '/Explore/:cityname/:cat/:name/Spot_detail/:articleID',
       name: 'Spotdetail',
       component: spotdetail
     },

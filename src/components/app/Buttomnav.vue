@@ -10,17 +10,17 @@
             app
             dense
             class="hidden-md-and-up">
-              <v-btn  color="primary" value="Home" flat to="/">
+              <v-btn  color="primary" value="Home" flat :to="{ name: 'Home'}">
                 <span>Home</span>
                 <v-icon flat>home</v-icon>
               </v-btn>
 
-              <v-btn flat color="primary" value="Explore" to="/Explore">
+              <v-btn flat color="primary" value="Explore" :to="{ name: 'Explore'}">
                 <span>Explore</span>
                 <v-icon>explore</v-icon>
               </v-btn>
 
-              <v-btn flat color="primary" value="Profile" to="/profile">
+              <v-btn flat color="primary" value="Profile" :to="{ name: 'Profile'}">
                 <span>Me</span>
                 <v-icon>person</v-icon>
               </v-btn>
@@ -30,7 +30,6 @@
 </template>
 <script>
 export default {
-  name: "",
   data: () => ({
 
   })

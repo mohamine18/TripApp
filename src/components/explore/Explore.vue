@@ -4,7 +4,7 @@
     <v-container fluid grid-list-md >
       <v-layout row wrap  justify-center class="mb-5">
         <v-flex d-flex xs11 sm6 md4 v-for="(item,i) in items" :key="i" class="mt-2">
-          <v-card  :style="{'border-radius': '5px'}" height="200px" dark :img="item.src"  raised :to="'/Explore/'+item.name">
+          <v-card  :style="{'border-radius': '5px'}" height="200px" dark :img="item.src"  raised :to="{ name: 'Category', params: { cityname: item.name }}">
             <v-card-actions class="body-2"> #{{item.name }} </v-card-actions>
           </v-card>
         </v-flex>

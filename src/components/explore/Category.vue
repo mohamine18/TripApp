@@ -2,7 +2,7 @@
   <div id="">
     <v-container >
       <v-toolbar color="primary" dark dense fixed  flat >
-        <v-btn icon to="/Explore">
+        <v-btn icon :to="{ name: 'Explore'}">
           <v-icon >keyboard_arrow_left</v-icon>
         </v-btn>
         <v-toolbar-title style="width: 300px" class="ml-0 pl-3" d-block>
@@ -14,7 +14,7 @@
     <v-container fluid grid-list-md class="white">
       <v-layout row wrap >
         <v-flex xs6>
-          <v-card :style="{'border-radius': '5px'}" :to="'/Explore/'+name+'/Things_To_Do/Things to Do'">
+          <v-card :style="{'border-radius': '5px'}" :to="{ name: 'ThingsToDo', params: { cityname: name, cat: 'Things to Do' } }">
             <v-card-media class="red lighten-5">
               <img src="/static/img/Thing_to_Do.png" alt="">
             </v-card-media>

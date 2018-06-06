@@ -10,7 +10,7 @@
         </v-toolbar-title>
       </v-toolbar>
     </v-container>
-    <div v-if="condition == 3">
+    <div v-if="condition == 2">
       <empty-comp></empty-comp>
     </div>
     <div v-else>

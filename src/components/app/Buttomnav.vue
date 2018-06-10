@@ -10,7 +10,7 @@
             app
             dense
             class="hidden-md-and-up">
-              <v-btn  color="primary" value="Home" flat :to="{ name: 'Home'}">
+              <v-btn  color="primary" value="Home" flat :to="{ name: 'Home'}" exact>
                 <span>Home</span>
                 <v-icon flat>home</v-icon>
               </v-btn>

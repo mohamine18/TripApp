@@ -143,7 +143,7 @@
         </v-flex>
       </v-layout>
 
-      <v-btn :to="{name:'Checkout'}" >
+      <v-btn :to="{name:'Checkout', params: { tripname: name}}" >
         <div id="fixedbutton">
             <v-btn block color="success" depressed >Book this Trip</v-btn>
         </div>
@@ -158,6 +158,7 @@
 export default {
   data () {
     return {
+      name: this.$route.params.tripname,
       tripdetails:[
         {
           picurl:'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1527494647753&di=21756f38e74554d1bd87e6056b0bc2ba&imgtype=0&src=http%3A%2F%2Fmedia-cdn.tripadvisor.com%2Fmedia%2Fphoto-s%2F01%2Fbf%2F6e%2F46%2Fcaption.jpg',

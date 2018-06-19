@@ -1,5 +1,6 @@
 <template>
-<div class="hidden-md-and-up">
+<!-- class="hidden-md-and-up" -->
+<div>
     <v-content>
       <component v-bind:is="'navline'"></component>
       <component v-bind:is="'trip-list'"></component>

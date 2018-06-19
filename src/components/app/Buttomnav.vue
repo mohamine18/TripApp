@@ -1,6 +1,6 @@
 <template>
-  <div class="hidden-md-and-up">
-    <!--Botoom Navigation-->
+  <div >
+    <!--class="hidden-md-and-up" Botoom Navigation-->
     <v-layout>
           <v-bottom-nav
             :value="true"
@@ -9,7 +9,7 @@
             fixed
             app
             dense
-            class="hidden-md-and-up">
+            >
               <v-btn  color="primary" value="Home" flat :to="{ name: 'Home'}" exact>
                 <span>Home</span>
                 <v-icon flat>home</v-icon>

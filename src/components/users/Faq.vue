@@ -1,5 +1,5 @@
 <template>
-  <div class="hidden-md-and-up ">
+  <div>
     <!--Toolbar-->
     <v-container >
       <v-toolbar color="primary" dark dense fixed  flat >

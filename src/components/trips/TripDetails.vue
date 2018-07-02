@@ -1,5 +1,5 @@
 <template>
-<div class="hidden-md-and-up">
+<div >
 
 
       <v-layout row fill-height>

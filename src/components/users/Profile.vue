@@ -1,5 +1,5 @@
 <template>
-  <div class="hidden-md-and-up ">
+  <div >
     <!--Toolbar-->
 
       <component v-bind:is="'tool-bare'"></component>

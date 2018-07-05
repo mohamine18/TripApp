@@ -1,5 +1,5 @@
 <template>
-            <v-container  grid-list-lg color ="cray" >
+            <v-container  grid-list-lg color ="cray">
             <!--Trip List-->
             <v-layout row wrap >
               <v-flex xs12 md6 lg4 v-for="card in cards" :key="card.title">

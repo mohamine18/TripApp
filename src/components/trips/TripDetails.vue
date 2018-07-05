@@ -1,7 +1,5 @@
 <template>
 <div >
-
-
       <v-layout row fill-height>
         <v-flex xs12 v-for="(item,i) in tripdetails" :key="i">
           <v-card flat>
@@ -18,14 +16,19 @@
                 </v-flex>
               </v-layout>
             </v-container>
-
             </v-card-media>
             <!--trip name and agent-->
               <v-container fill-height fluid>
                 <v-layout fill-height>
-                  <v-flex xs12 align-left >
+                  <v-flex xs6>
                     <span class="headline"><b>{{ $route.params.tripname }}</b></span><br>
                     <span class="grey--text">By {{ item.tripagent }}</span>
+                  </v-flex>
+                  <v-spacer></v-spacer>
+                  <v-flex xs2 >
+                    <v-btn flat icon :to="{ name: 'TripPictures'}">
+                      <v-icon medium color="primary ">photo_library</v-icon>
+                    </v-btn>
                   </v-flex>
                 </v-layout>
               </v-container>

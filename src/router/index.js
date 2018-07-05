@@ -4,6 +4,7 @@ import Home from '@/components/app/Home'
 
 import TripDetails from '@/components/trips/TripDetails'
 import TripFavorite from '@/components/trips/TripFavorite'
+import TripPictures from '@/components/trips/Trippictures'
 
 import Explore from '@/components/explore/Explore'
 import Category from '@/components/explore/Category'
@@ -38,6 +39,11 @@ export default new Router({
       path: '/Trip-Details/:tripname',
       name: 'Trip Details',
       component: TripDetails
+    },
+    {
+      path: '/Trip-Pictures/:tripname',
+      name: 'TripPictures',
+      component: TripPictures
     },
     {
       path: '/Explore',

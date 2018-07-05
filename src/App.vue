@@ -10,3 +10,9 @@ export default {
   }),
 };
 </script>
+
+<style>
+  #inspire {
+    font-family: 'Roboto', serif;
+  }
+</style>

@@ -20,7 +20,7 @@
             <!--trip name and agent-->
               <v-container fill-height fluid>
                 <v-layout fill-height>
-                  <v-flex xs6>
+                  <v-flex xs9>
                     <span class="headline"><b>{{ $route.params.tripname }}</b></span><br>
                     <span class="grey--text">By {{ item.tripagent }}</span>
                   </v-flex>

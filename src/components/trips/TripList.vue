@@ -1,9 +1,9 @@
 <template>
-            <v-container  grid-list-lg color ="cray">
+            <v-container  grid-list-md color ="cray">
             <!--Trip List-->
             <v-layout row wrap >
-              <v-flex xs12 md6 lg4 v-for="card in cards" :key="card.title">
-                <v-card class="elevation-1" flat :to="'/Trip-Details/'+card.title">
+              <v-flex xs12 sm6 md6 lg4 v-for="card in cards" :key="card.title">
+                <v-card class="elevation-1" flat  :to="{name:'TripDetails', params:{tripname:card.title}}">
                   <v-card-media
                     :src="card.src"
                     height="150px"
@@ -41,13 +41,35 @@
                       <v-icon v-if="card.fav == false" >favorite_border</v-icon>
                       <v-icon v-else >favorite</v-icon>
                     </v-btn>
-                    <v-btn icon>
+                    <v-btn icon @click="sheet = true">
                       <v-icon color="primary">share</v-icon>
                     </v-btn>
                   </v-card-actions>
                 </v-card>
               </v-flex>
             </v-layout>
+            <!-- bottom share social media -->
+            <v-bottom-sheet v-model="sheet" >
+              <v-layout class="white">
+                <v-subheader class="subheading "><b>Share and Tell your Friends...</b></v-subheader>
+              </v-layout>
+              <v-layout class="white">
+                <v-container>
+                <v-layout >
+                  <v-flex xs2
+                    v-for="tile in tiles"
+                    :key="tile.title"
+                  >
+                    <img
+                      :src="`static/img/social/${tile.img}`"
+                      :alt="tile.title"
+                    >
+                  </v-flex>
+                </v-layout>
+                </v-container>
+              </v-layout>
+
+            </v-bottom-sheet>
   </v-container>
 
 </template>
@@ -56,79 +78,76 @@
   export default {
     data () {
       return {
-        images:[
-          {src:"http://www.ucb.ac.uk/content/images/courses/hospitality-tourism-events/events-management-3.jpg"},
-          {src:"http://lifemstyle.com/wp-content/uploads/2015/05/Brink-Events-02.jpg"},
-          {src:"http://www.sport-egger.com/media/mod_jmslideshow/1300x600_fit_Bike-und-Mountainbike-im-Gasteinertal,-Egger-Sport-in-Dorfgastein2.jpg"}
+        sheet: false,
+        tiles: [
+          { img: 'wechat.png', title: 'Wechat' },
+          { img: 'weibo.png', title: 'Weibo' },
+          { img: 'facebook.png', title: 'Facebook' },
+          { img: 'vk.png', title: 'VKontakte' },
+          { img: 'whatsapp.png', title: 'WhatsApp' }
         ],
         cards: [
           {
-            title: "Pre-fab homes",
+            title: "Beidaihe Camping & Music",
             src:
-              "http://www.openskydeals.com/wp-content/uploads/2015/04/499-punta-cana-all-inclusive-trip-wair-save-430.jpg",
+            "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1530874374551&di=839988958b0449bd64c6693626f8a574&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fimgad%2Fpic%2Fitem%2Fe1fe9925bc315c608dc5863b87b1cb1348547796.jpg",
             date: "15 MAY",
             time: "TUE, 9:00 AM",
-            def: "Event description from the organizer",
             location: "USTB, Beijing China",
             fav: false,
             cat: 'One Day Trip',
             bookmark: false
           },
           {
-            title: "Favorite road trips",
+            title: "Great Wall water side",
             src:
-              "https://captainsmanorinn.com/wp-content/uploads/2013/01/sandwhich-300x100.jpg",
-            date: "15 MAY",
+              "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1530874440517&di=56060ead2b6ae842f06bff9afb938059&imgtype=0&src=http%3A%2F%2Fwww.chinadaily.com.cn%2Fbeijing%2Fimg%2Fattachement%2Fjpg%2Fsite1%2F20140527%2F002564bc654b14ee8b2d02.jpg",
+            date: "10 JUNE",
             time: "TUE, 9:00 AM",
-            def: "Event description from the organizer",
+            location: "USTB, Beijing China",
+            fav: true,
+            cat: 'One Day Trip',
+            bookmark: false
+          },
+          {
+            title: "Tianjin Eye",
+            src:
+              "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1530874486682&di=333a662177246c7e32f4ab1e711d8240&imgtype=0&src=http%3A%2F%2Fimg.kj-cy.cn%2Fuploads%2Flitimg%2F20170218%2F1487390247641431.jpg",
+            date: "07 JULY",
+            time: "TUE, 9:00 AM",
             location: "USTB, Beijing China",
             fav: false,
             cat: 'One Day Trip',
             bookmark: false
           },
           {
-            title: "Best airlines",
+            title: "Shidu water rafting",
             src:
-              "https://www.korindotravel.com/wp-content/uploads/2017/03/west-borneo-trip-300x100.gif",
-            date: "15 MAY",
+              "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1530874546799&di=374720d64fe35831e8b3bb50ea25f4c9&imgtype=0&src=http%3A%2F%2Fwww.shidu.cn%2Fyiriyou%2FUploadFiles_1589%2F201212%2F2012123018201658.jpg",
+            date: "28 MAY",
             time: "TUE, 9:00 AM",
-            def: "Event description from the organizer",
             location: "USTB, Beijing China",
             fav: false,
             cat: 'One Day Trip',
             bookmark: false
           },
           {
-            title: "Pre-fab homes1",
+            title: "River Camping",
             src:
-              "https://s-media-cache-ak0.pinimg.com/originals/c6/b4/02/c6b402ea6d8c6daf8b23ff3b37ed56db.jpg",
-            date: "15 MAY",
+              "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1530874724480&di=4909c66b03799412d3b6b75f8c375247&imgtype=0&src=http%3A%2F%2Fs9.rr.itc.cn%2Fr%2FwapChange%2F20174_5_0%2Fa2qvix56640358576405.jpeg",
+            date: "15 APRIL",
             time: "TUE, 9:00 AM",
-            def: "Event description from the organizer",
             location: "USTB, Beijing China",
             fav: false,
             cat: 'One Day Trip',
             bookmark: false
           },
           {
-            title: "Favorite road trips1",
+            title: "Color Art Town",
             src:
-              "https://www.uniquejungletours.com/wp-content/uploads/2017/05/3-Days-Trip-tanzania-300x100.jpg",
-            date: "15 MAY",
+              "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1530874828079&di=804df5d2593b6100629e63a9312f95ca&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fimgad%2Fpic%2Fitem%2F00e93901213fb80ef181be4a3cd12f2eb83894df.jpg",
+            date: "05 MAY",
             time: "TUE, 9:00 AM",
-            def: "Event description from the organizer",
-            location: "USTB, Beijing China",
-            fav: false,
-            cat: 'One Day Trip',
-            bookmark: false
-          },
-          {
-            title: "Best airlines1",
-            src:
-              "https://captainsmanorinn.com/wp-content/uploads/2013/01/daytripstop-300x100.jpg",
-            date: "15 MAY",
-            time: "TUE, 9:00 AM",
-            def: "Event description from the organizer",
             location: "USTB, Beijing China",
             fav: false,
             cat: 'One Day Trip',

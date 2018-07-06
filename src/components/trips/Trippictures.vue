@@ -4,7 +4,7 @@
       <v-layout>
         <v-container >
           <v-toolbar color="primary" dark dense fixed  flat >
-            <v-btn icon :to="{name:'TripDetails', param:{tripname:name}}" >
+            <v-btn icon :to="{name:'TripDetails', params:{tripname:name}}" >
                 <v-icon >chevron_left</v-icon>
             </v-btn>
             <v-toolbar-title style="width: 300px" class="ml-0 pl-3" d-block>

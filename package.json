@@ -13,6 +13,7 @@
     "material-design-icons": "^3.0.1",
     "vue": "^2.5.16",
     "vue-carousel": "^0.6.9",
+    "vue-gallery": "^1.4.0",
     "vue-router": "^3.0.1",
     "vuetify": "^1.0.0"
   },

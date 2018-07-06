@@ -79,7 +79,6 @@
 <script>
 export default {
   data: () => ({
-    name: ''
   }),
     created: function () {
          this.name = this.$route.params.cityname

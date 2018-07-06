@@ -37,7 +37,7 @@ export default new Router({
     },
     {
       path: '/Trip-Details/:tripname',
-      name: 'Trip Details',
+      name: 'TripDetails',
       component: TripDetails
     },
     {

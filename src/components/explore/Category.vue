@@ -1,6 +1,6 @@
 <template>
   <div id="">
-    <v-container >
+    <v-container  >
       <v-toolbar color="primary" dark dense fixed  flat >
         <v-btn icon :to="{ name: 'Explore'}">
           <v-icon >keyboard_arrow_left</v-icon>

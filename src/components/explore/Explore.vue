@@ -1,7 +1,7 @@
 <template>
   <div >
     <component v-bind:is="'tool-bare'"></component>
-    <v-container fluid grid-list-md >
+    <v-container fluid grid-list-xs >
       <v-layout row wrap  justify-center class="mb-5">
         <v-flex d-flex xs11 sm6 md4 v-for="(item,i) in items" :key="i" class="mt-2">
           <v-card  :style="{'border-radius': '5px'}" height="200px" dark :img="item.src"  raised :to="{ name: 'Category', params: { cityname: item.name }}">

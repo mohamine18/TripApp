@@ -3,6 +3,9 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import '../node_modules/vuetify/src/stylus/app.styl'
+import 'material-design-icons-iconfont/dist/material-design-icons.css'
+import SocialSharing from 'vue-social-sharing/dist/vue-social-sharing.min.js'
 import {
   Vuetify,
   VApp,
@@ -39,8 +42,7 @@ import {
   VProgressCircular,
   transitions
 } from 'vuetify'
-import '../node_modules/vuetify/src/stylus/app.styl'
-import 'material-design-icons-iconfont/dist/material-design-icons.css'
+
 Vue.use(Vuetify, {
   components: {
     VApp,
@@ -87,6 +89,7 @@ Vue.use(Vuetify, {
     warning: '#FFC107'
   }
 })
+Vue.use(SocialSharing);
 
 Vue.config.productionTip = false
 

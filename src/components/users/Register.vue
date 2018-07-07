@@ -16,13 +16,12 @@
         <v-layout row wrap >
           <v-flex xs12>
             <v-card flat>
-              <v-container >
+              <v-container grid-list-md>
                 <v-layout row >
                   <v-flex xs7 >
                     <div>
                       <span class="subheading">{{ item.tripname }}</span><br>
                       <span class="subheading">{{ item.tripdate }}</span> <br>
-                      <span class="subheading">{{ item.tripprice1 }} &yen;</span>
                     </div>
                   </v-flex>
                   <v-flex xs5>
@@ -239,21 +238,6 @@
               <v-btn  block color="white" depressed @click.native="sheet =true">{{ tripFinalPrice }} &yen;<v-icon right dark>arrow_drop_up</v-icon></v-btn>
             </div>
           </button>
-
-
-
-      <!-- <v-card>
-        <v-snackbar
-          :timeout="timeout"
-          top
-          v-model="snackbar"
-          :color="snackbarcolor"
-        >
-          {{ snackbartext }}
-          <v-btn flat color="white" @click.native="snackbar = false">Close</v-btn>
-        </v-snackbar>
-      </v-card> -->
-
  </div>
 </template>
 

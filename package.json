@@ -15,6 +15,7 @@
     "vue-carousel": "^0.6.9",
     "vue-gallery": "^1.4.0",
     "vue-router": "^3.0.1",
+    "vue-social-sharing": "^2.3.3",
     "vuetify": "^1.0.0"
   },
   "devDependencies": {

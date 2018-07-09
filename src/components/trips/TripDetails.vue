@@ -21,12 +21,12 @@
               <v-container fill-height fluid>
                 <v-layout fill-height>
                   <v-flex xs9>
-                    <span class="headline"><b>{{ $route.params.tripname }}</b></span><br>
+                    <span class="headline"><b>{{ item.tripname }}</b></span><br>
                     <span class="grey--text">By {{ item.tripagent }}</span>
                   </v-flex>
                   <v-spacer></v-spacer>
                   <v-flex xs2 >
-                    <v-btn flat icon :to="{ name: 'TripPictures'}">
+                    <v-btn flat icon :to="{ name: 'TripPictures', params:{tripname:item.tripname , tripid: item.tripid}}">
                       <v-icon medium color="primary ">photo_library</v-icon>
                     </v-btn>
                   </v-flex>
@@ -52,8 +52,8 @@
                 </v-list-tile-action>
                 <v-list-tile-content>
                   <v-list-tile-title>Date &amp; Time</v-list-tile-title>
-                  <v-list-tile-sub-title>{{ item.tripdate }}</v-list-tile-sub-title>
-                  <v-list-tile-sub-title>{{ item.triptime }}</v-list-tile-sub-title>
+                  <v-list-tile-sub-title>{{ getDatetrip(item.tripSdate,item.tripFdate) }}</v-list-tile-sub-title>
+                  <v-list-tile-sub-title>{{ getTimetrip(item.tripSdate,item.tripFdate) }}</v-list-tile-sub-title>
                 </v-list-tile-content>
               </v-list-tile>
               <!--trip location-->
@@ -92,7 +92,7 @@
                       :value="100"
                       color="accent"
                     >
-                      <b>{{ total }}</b>
+                      <b>blablabla</b>
                     </v-progress-circular>
                     <v-card-text>Total</v-card-text>
                   </v-card>
@@ -146,7 +146,7 @@
         </v-flex>
       </v-layout>
 
-      <v-btn :to="{name:'Checkout', params: { tripname: name}}" >
+      <v-btn :to="{name:'Checkout', params: { tripname: this.$route.params.tripname}}" >
         <div id="fixedbutton">
             <v-btn block color="success" depressed >Book this Trip</v-btn>
         </div>
@@ -161,33 +161,68 @@
 export default {
   data () {
     return {
-      name: this.$route.params.tripname,
       tripdetails:[
         {
+          tripid: this.$route.params.tripid,
+          tripname:this.$route.params.tripname,
           picurl:'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1527494647753&di=21756f38e74554d1bd87e6056b0bc2ba&imgtype=0&src=http%3A%2F%2Fmedia-cdn.tripadvisor.com%2Fmedia%2Fphoto-s%2F01%2Fbf%2F6e%2F46%2Fcaption.jpg',
           tripagent: 'SeeYou',
-          triptemperature: '15',
-          tripcondition: 'Tropical storm',
-          tripconditioncode: '20',
-          tripdate: 'Sat, March 31, 2018',
-          triptime: '8:00 am - 6:00 pm BT',
-          tripprice: '212',
+          tripSdate: '2018-07-09T00:00:00.000Z',
+          tripFdate: '2018-07-11T12:00:00.000Z',
+          tripprice: [{type:'sprout',price:'222'},{type:'blossom',price:'212'},{type:'flower',price:'207'}],
           triplocation:'Beijing Haidian district, china',
+          tripMaxcus: '62',
+          tripNowcus: '13',
+          tripMalecus: '',
+          tripFemalecus: '',
           tripdef: 'The Hong Kong Stock Exchange has proposed the biggest overhaul of its IPO listing rules in over twenty years, including allowing dual class-listing and favorable listing terms for biotech companies. These changes are expected to make the HKEX the most attractive overseas listing option for mainland Chinese firms, and potentially help Hong Kong reclaim its leading position on the global IPO league table. At the same time, after a record 437 IPOs in mainland China, raising a total of RMB45 billion last year, the outlook for domestic IPOs by Chinese companies is increasingly uncertain as the regulatory approval process becomes more strenuous. That should spark greater interests by Chinese companies, especially those in biotech sector, to seek a public share float in the neighboring Special Administrative Region, Hong Kong.',
         }
       ],
-      total: 60,
       male: 30,
       male1: 0,
       female: 30,
       female1: 0,
     }
   },
+  methods: {
+    getDatetrip(datestr1,datestr2){
+      var date1 = new Date(datestr1);
+      var date2 = new Date(datestr2);
+      var yearlong1 = date1.toLocaleDateString("en-US", { year: 'numeric'});
+      var monthlong1 = date1.toLocaleDateString("en-US", { month: 'long'});
+      var daynum1 = date1.toLocaleDateString("en-US", { day: 'numeric'});
+      var yearlong2 = date2.toLocaleDateString("en-US", { year: 'numeric'});
+      var monthlong2 = date2.toLocaleDateString("en-US", { month: 'long'});
+      var daynum2 = date2.toLocaleDateString("en-US", { day: 'numeric'});
+      if (daynum1 == daynum2 && monthlong1==monthlong2) {
+        var datetrip = monthlong1+' '+daynum1+', '+yearlong1;
+        return datetrip
+      }else {
+        var datetrip = monthlong1+' '+daynum1+' - '+monthlong2+' '+daynum2+', '+yearlong2;
+        return datetrip
+      }
+    },
+    getTimetrip(datestr1,datestr2){
+      var date1 = new Date(datestr1);
+      var date2 = new Date(datestr2);
+      var daylong1 = date1.toLocaleDateString("en-US", { weekday: 'long'});
+      var hourNum1 = date1.getHours();
+      var minNum1 = date1.getMinutes()<10?'0':'';
+      var daylong2 = date2.toLocaleDateString("en-US", { weekday: 'long'});
+      var hourNum2 = date2.getHours();
+      var minNum2 = date2.getMinutes()<10?'0':'';
+      if (daylong1 == daylong2) {
+        var dayHour = daylong1+', '+ hourNum1+':'+minNum1+ date1.getMinutes()+' - '+hourNum2+':'+minNum2+ date2.getMinutes();
+        return dayHour
+      } else {
+        var dayHour = daylong1+', '+ hourNum1+':'+minNum1+ date1.getMinutes()+' to '+daylong2+', '+ hourNum2+':'+minNum2+ date2.getMinutes();
+        return dayHour
+      }
+    }
+  },
   created() {
-    //do something after creating vue instance
-    this.male1 = (this.male*100)/this.total;
-    this.female1 = (this.female*100)/this.total;
-
+    // this.male1 = (this.male*100)/this.total;
+    // this.female1 = (this.female*100)/this.total;
   }
 }
 </script>

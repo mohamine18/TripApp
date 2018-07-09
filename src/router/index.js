@@ -36,12 +36,12 @@ export default new Router({
       component: Home
     },
     {
-      path: '/Trip-Details/:tripname',
+      path: '/Trip-Details/:tripname/:tripid',
       name: 'TripDetails',
       component: TripDetails
     },
     {
-      path: '/Trip-Pictures/:tripname',
+      path: '/Trip-Pictures/:tripname/:tripid',
       name: 'TripPictures',
       component: TripPictures
     },

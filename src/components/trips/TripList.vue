@@ -3,7 +3,7 @@
             <!--Trip List-->
             <v-layout row wrap >
               <v-flex xs12 sm6 md6 lg4 v-for="(card,index) in cards" :key="card.title">
-                <v-card class="elevation-1" flat  :to="{name:'TripDetails', params:{tripname:card.title}}">
+                <v-card class="elevation-1" flat  :to="{name:'TripDetails', params:{tripname:card.title, tripid: card.id}}">
                   <v-card-media
                     :src="card.src"
                     height="150px"
@@ -36,13 +36,10 @@
                     </div>
                     <v-spacer></v-spacer>
                     <v-btn  icon class="primary--text"
-                      @click="card.fav = !card.fav"
+                      @click="liketrips(index)"
                       >
-                      <v-badge color="red">
-                        <span ><b>206</b></span>
-                        <v-icon v-if="card.fav == false" >favorite_border</v-icon>
-                        <v-icon v-else >favorite</v-icon>
-                      </v-badge>
+                        <v-icon v-if="favtrips(index)" >favorite</v-icon>
+                        <v-icon v-else >favorite_border</v-icon>
                     </v-btn>
                     <v-btn icon @click='share(index)'>
                       <v-icon color="primary">share</v-icon>
@@ -112,60 +109,55 @@
         sharemedia:'',
         cards: [
           {
-            id: "0000",
+            id: "0001",
             title: "Beidaihe Camping and Music",
             src:"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1530874374551&di=839988958b0449bd64c6693626f8a574&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fimgad%2Fpic%2Fitem%2Fe1fe9925bc315c608dc5863b87b1cb1348547796.jpg",
             date: "2018-06-12T02:20:00.000Z",
             location: "USTB, Beijing China",
-            fav: false,
             cat: 'Camping Trip',
           },
           {
-            id: "0000",
+            id: "0002",
             title: "Great Wall water side",
             src:"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1530874440517&di=56060ead2b6ae842f06bff9afb938059&imgtype=0&src=http%3A%2F%2Fwww.chinadaily.com.cn%2Fbeijing%2Fimg%2Fattachement%2Fjpg%2Fsite1%2F20140527%2F002564bc654b14ee8b2d02.jpg",
             date: "2018-07-20T02:10:00.000Z",
             location: "USTB, Beijing China",
-            fav: true,
             cat: 'One Day Trip',
           },
           {
-            id: "0000",
+            id: "0003",
             title: "Tianjin Eye",
             src:"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1530874486682&di=333a662177246c7e32f4ab1e711d8240&imgtype=0&src=http%3A%2F%2Fimg.kj-cy.cn%2Fuploads%2Flitimg%2F20170218%2F1487390247641431.jpg",
             date: "2018-08-31T02:01:00.000Z",
             location: "USTB, Beijing China",
-            fav: false,
             cat: 'Deep Tour',
           },
           {
-            id: "0000",
+            id: "0004",
             title: "Shidu water rafting",
             src:"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1530874546799&di=374720d64fe35831e8b3bb50ea25f4c9&imgtype=0&src=http%3A%2F%2Fwww.shidu.cn%2Fyiriyou%2FUploadFiles_1589%2F201212%2F2012123018201658.jpg",
             date: "2018-09-01T02:05:00.000Z",
             location: "USTB, Beijing China",
-            fav: false,
             cat: 'One Day Trip',
           },
           {
-            id: "0000",
+            id: "0005",
             title: "River Camping",
             src:"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1530874724480&di=4909c66b03799412d3b6b75f8c375247&imgtype=0&src=http%3A%2F%2Fs9.rr.itc.cn%2Fr%2FwapChange%2F20174_5_0%2Fa2qvix56640358576405.jpeg",
             date: "2018-04-10T02:07:00.000Z",
             location: "USTB, Beijing China",
-            fav: false,
             cat: 'One Day Trip',
           },
           {
-            id: "0000",
+            id: "0006",
             title: "Color Art Town",
             src:"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1530874828079&di=804df5d2593b6100629e63a9312f95ca&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fimgad%2Fpic%2Fitem%2F00e93901213fb80ef181be4a3cd12f2eb83894df.jpg",
             date: "2018-11-11T02:00:00.000Z",
             location: "USTB, Beijing China",
-            fav: false,
             cat: 'One Day Trip',
           }
         ],
+        favlist: ['0001','0003','0005']
       }
     },
     methods: {
@@ -190,7 +182,25 @@
         var daynum = date.toLocaleDateString("en-US", { day: 'numeric'});
         var finaledate = daynum +'\n'+ monthnum.substring(0, 3);
         return finaledate
-      }
+      },
+     favtrips(index){
+       var fav = this.cards[index].id;
+       for (var i = 0; i < this.favlist.length; i++) {
+         if (this.favlist[i] == fav) {
+           return true
+         }
+       }
+     },
+     liketrips(index){
+       var trip  = this.cards[index].id;
+       for (var i = 0; i < this.favlist.length; i++) {
+         if (this.favlist[i] == trip) {
+           this.favlist.splice(i,1);
+           return
+         }
+       }
+       this.favlist.push(trip)
+     }
     }
   }
 </script>

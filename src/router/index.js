@@ -126,7 +126,7 @@ export default new Router({
       component: Faq
     },
     {
-      path: '/checkout/:tripname',
+      path: '/checkout/:tripid/:tripname',
       name: 'Checkout',
       component: Register
     }

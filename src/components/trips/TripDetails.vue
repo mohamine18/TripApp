@@ -73,7 +73,7 @@
                 </v-list-tile-action>
                 <v-list-tile-content>
                   <v-list-tile-title>Trip Cost</v-list-tile-title>
-                  <v-list-tile-sub-title>{{ item.tripprice }} &yen;</v-list-tile-sub-title>
+                  <v-list-tile-sub-title>{{ item.tripprice[0].price }} &yen;</v-list-tile-sub-title>
                 </v-list-tile-content>
               </v-list-tile>
             </v-list>
@@ -89,10 +89,10 @@
                       :size="80"
                       :width="9"
                       :rotate="360"
-                      :value="100"
+                      :value="gender(item.tripNowcus,item.tripMaxcus)"
                       color="accent"
                     >
-                      <b>blablabla</b>
+                      <b class="caption">{{item.tripNowcus}} / {{item.tripMaxcus}}</b>
                     </v-progress-circular>
                     <v-card-text>Total</v-card-text>
                   </v-card>
@@ -103,12 +103,12 @@
                       :size="80"
                       :width="9"
                       :rotate="360"
-                      :value="male1"
+                      :value="gender(item.tripMalecus,item.tripNowcus)"
                       color="primary"
                     >
-                      <b>{{ male }}</b>
+                      <b class="caption">{{ item.tripMalecus }} / {{ item.tripNowcus }}</b>
                     </v-progress-circular>
-                    <v-card-text>male</v-card-text>
+                    <v-card-text>Male</v-card-text>
                   </v-card>
                 </v-flex>
                 <v-flex xs4>
@@ -117,10 +117,10 @@
                       :size="80"
                       :width="9"
                       :rotate="360"
-                      :value="female1"
+                      :value="gender(item.tripFemalecus,item.tripNowcus)"
                       color="primary"
                     >
-                      <b>{{ female }}</b>
+                      <b class="caption">{{ item.tripFemalecus }} / {{ item.tripNowcus }}</b>
                     </v-progress-circular>
                     <v-card-text>Female</v-card-text>
                   </v-card>
@@ -146,13 +146,11 @@
         </v-flex>
       </v-layout>
 
-      <v-btn :to="{name:'Checkout', params: { tripname: this.$route.params.tripname}}" >
+      <v-btn :to="{name:'Checkout', params: { tripname: this.$route.params.tripname, tripid: this.$route.params.tripid}}" >
         <div id="fixedbutton">
             <v-btn block color="success" depressed >Book this Trip</v-btn>
         </div>
       </v-btn>
-
-
 </div>
 </template>
 
@@ -171,10 +169,10 @@ export default {
           tripFdate: '2018-07-11T12:00:00.000Z',
           tripprice: [{type:'sprout',price:'222'},{type:'blossom',price:'212'},{type:'flower',price:'207'}],
           triplocation:'Beijing Haidian district, china',
-          tripMaxcus: '62',
-          tripNowcus: '13',
-          tripMalecus: '',
-          tripFemalecus: '',
+          tripMaxcus: '50',
+          tripNowcus: '31',
+          tripMalecus: '19',
+          tripFemalecus: '12',
           tripdef: 'The Hong Kong Stock Exchange has proposed the biggest overhaul of its IPO listing rules in over twenty years, including allowing dual class-listing and favorable listing terms for biotech companies. These changes are expected to make the HKEX the most attractive overseas listing option for mainland Chinese firms, and potentially help Hong Kong reclaim its leading position on the global IPO league table. At the same time, after a record 437 IPOs in mainland China, raising a total of RMB45 billion last year, the outlook for domestic IPOs by Chinese companies is increasingly uncertain as the regulatory approval process becomes more strenuous. That should spark greater interests by Chinese companies, especially those in biotech sector, to seek a public share float in the neighboring Special Administrative Region, Hong Kong.',
         }
       ],
@@ -218,11 +216,11 @@ export default {
         var dayHour = daylong1+', '+ hourNum1+':'+minNum1+ date1.getMinutes()+' to '+daylong2+', '+ hourNum2+':'+minNum2+ date2.getMinutes();
         return dayHour
       }
+    },
+    gender(value,total){
+      var gender = (value*100)/total
+      return gender
     }
-  },
-  created() {
-    // this.male1 = (this.male*100)/this.total;
-    // this.female1 = (this.female*100)/this.total;
   }
 }
 </script>

@@ -8,7 +8,7 @@
                 <v-icon >chevron_left</v-icon>
             </v-btn>
             <v-toolbar-title style="width: 300px" class="ml-0 pl-3" d-block>
-              <span >{{name}}</span>
+              <span><h5>{{name}}</h5></span>
             </v-toolbar-title>
           </v-toolbar>
         </v-container>
@@ -16,7 +16,7 @@
     </v-container>
     <v-container fluid grid-list-xs>
       <v-layout row wrap>
-        <gallery :images="images" :index="index" @close="index = null"></gallery>
+        <gallery :images="images" :index="index" @close="index = null" ></gallery>
         <v-flex
           v-for="(image, imageIndex) in images"
           :key="imageIndex"

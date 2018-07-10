@@ -34,17 +34,23 @@
               </v-container>
 
               <v-divider></v-divider>
-              <v-list two-line subheader>
+              <v-list two-line subheader class="pt-3">
               <!--trip forcast-->
               <v-list-tile avatar>
                 <v-list-tile-action>
                   <v-icon >wi-yahoo-{{ conditioncode }}</v-icon>
                 </v-list-tile-action>
                 <v-list-tile-content>
-                  <v-list-tile-title>Trip Weather {{weathercond()}}</v-list-tile-title>
+                  <v-list-tile-title>Trip Weather </v-list-tile-title>
                   <v-list-tile-sub-title></v-list-tile-sub-title>
-                  <v-list-tile-sub-title>{{ condition.charAt(0).toUpperCase() + condition.slice(1) }} ( {{ temp }} C&deg; )</v-list-tile-sub-title>
+                  <v-list-tile-sub-title>{{ condition }}</v-list-tile-sub-title>
+                  <v-list-tile-sub-title>&uarr; {{ temphigh }} C&deg; - &darr;	 {{ templow }} C&deg; </v-list-tile-sub-title>
                 </v-list-tile-content>
+                <v-list-tile-action>
+                  <v-btn icon ripple  @click.native="dialog =! dialog">
+                    <v-icon color="grey lighten-1">info</v-icon>
+                  </v-btn>
+                </v-list-tile-action>
               </v-list-tile>
               <!--trip date and time -->
               <v-list-tile avatar>
@@ -152,6 +158,32 @@
             <v-btn block color="success" depressed >Book this Trip</v-btn>
         </div>
       </v-btn>
+
+      <!-- Total forecast of the week -->
+      <v-dialog v-model="dialog" width="500" scrollable>
+        <v-card>
+          <v-card-title class="grey lighten-2"> <h3>Forecast of the Week</h3> </v-card-title>
+          <v-card-text>
+            <v-list two-line >
+            <v-list-tile avatar v-for="(elem,index) in forecast" :key="index">
+              <v-list-tile-action>
+                <v-icon >wi-yahoo-{{ elem.code }}</v-icon>
+              </v-list-tile-action>
+              <v-list-tile-content>
+                <v-list-tile-sub-title><b>{{elem.day}}, {{elem.date}}</b></v-list-tile-sub-title>
+                <v-list-tile-sub-title>{{ elem.text }}</v-list-tile-sub-title>
+                <v-list-tile-sub-title>&uarr; {{ elem.high }} C&deg; - &darr;	 {{ elem.low }} C&deg; </v-list-tile-sub-title>
+              </v-list-tile-content>
+            </v-list-tile>
+          </v-list>
+          </v-card-text>
+          <v-divider></v-divider>
+          <v-card-actions>
+            <v-spacer></v-spacer>
+            <v-btn color="primary" flat @click="dialog = false" >Close</v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-dialog>
 </div>
 </template>
 
@@ -159,32 +191,31 @@
 export default {
   data () {
     return {
-      condition: 'hot',
-      conditioncode: '36',
-      temp: '42',
+      dialog: false ,
+      condition: 'Unknown',
+      conditioncode: 3200,
+      temphigh: 'NaN',
+      templow: 'NaN',
+      forecast: [],
       tripdetails:[
         {
           tripid: this.$route.params.tripid,
           tripname:this.$route.params.tripname,
           picurl:'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1527494647753&di=21756f38e74554d1bd87e6056b0bc2ba&imgtype=0&src=http%3A%2F%2Fmedia-cdn.tripadvisor.com%2Fmedia%2Fphoto-s%2F01%2Fbf%2F6e%2F46%2Fcaption.jpg',
           tripagent: 'SeeYou',
-          tripSdate: '2018-07-09T00:00:00.000Z',
-          tripFdate: '2018-07-11T12:00:00.000Z',
+          tripSdate: '2018-07-14T00:00:00.000Z',
+          tripFdate: '2018-07-14T12:00:00.000Z',
           tripprice: [{type:'sprout',price:'222'},{type:'blossom',price:'212'},{type:'flower',price:'207'}],
           triplocation:'Beijing Haidian district, china',
           tripMaxcus: '50',
           tripNowcus: '31',
           tripMalecus: '19',
           tripFemalecus: '12',
-          tripdef: 'The Hong Kong Stock Exchange has proposed the biggest overhaul of its IPO listing rules in over twenty years, including allowing dual class-listing and favorable listing terms for biotech companies. These changes are expected to make the HKEX the most attractive overseas listing option for mainland Chinese firms, and potentially help Hong Kong reclaim its leading position on the global IPO league table. At the same time, after a record 437 IPOs in mainland China, raising a total of RMB45 billion last year, the outlook for domestic IPOs by Chinese companies is increasingly uncertain as the regulatory approval process becomes more strenuous. That should spark greater interests by Chinese companies, especially those in biotech sector, to seek a public share float in the neighboring Special Administrative Region, Hong Kong.',
+          tripdef: 'The Hong Kong Stock Exchane has proposed the biggest overhaul of its IPO listing rules in over twenty years, including allowing dual class-listing and favorable listing terms for biotech companies. These changes are expected to make the HKEX the most attractive overseas listing option for mainland Chinese firms, and potentially help Hong Kong reclaim its leading position on the global IPO league table. At the same time, after a record 437 IPOs in mainland China, raising a total of RMB45 billion last year, the outlook for domestic IPOs by Chinese companies is increasingly uncertain as the regulatory approval process becomes more strenuous. That should spark greater interests by Chinese companies, especially those in biotech sector, to seek a public share float in the neighboring Special Administrative Region, Hong Kong.',
         }
-      ],
-      male: 30,
-      male1: 0,
-      female: 30,
-      female1: 0,
+      ]
     }
-  },
+    },
   methods: {
     getDatetrip(datestr1,datestr2){
       var date1 = new Date(datestr1);
@@ -224,22 +255,38 @@ export default {
       var gender = (value*100)/total
       return gender
     },
-    weathercond(){
-      var queryURL = "https://query.yahooapis.com/v1/public/yql?q=select wind from weather.forecast where woeid in (select woeid from geo.places(1) where text='chicago, il')&format=json&callback=callbackFunction";
-      this.$http.get(queryURL, function (data) {
-        var results = data.query.results
-        var firstResult = results.channel.item.condition
-        console.log(firstResult);
-        console.log(result);
-
-        var location = 'beijing' // not returned in response
-        var temp = firstResult.temp
-        var text = firstResult.text
-
-        console.log('The temperature is ' + temp + '. Forecast calls for '+text);
-
-      });
+    tripweather(){
+      var date1 = new Date(this.tripdetails[0].tripSdate);
+      var daynum1 = date1.toLocaleDateString("en-US", { day: 'numeric'});
+      for (var i = 0; i < this.forecast.length; i++) {
+        var date2 = new Date(this.forecast[i].date);
+        var daynum2 = date2.toLocaleDateString("en-US", { day: 'numeric'});
+        if (daynum1 == daynum2) {
+          this.condition =this.forecast[i].text
+          this.conditioncode = this.forecast[i].code
+          this.temphigh = this.forecast[i].high
+          this.templow = this.forecast[i].low
+        }
+      }
     }
+  },
+  created(){
+    this.forecast = [];
+    var city = "三里屯";
+    var query1 = "select * from weather.forecast where woeid in (select woeid from geo.places(1) where text='" + city + "') and u='c'";
+    this.$http.get("https://query.yahooapis.com/v1/public/yql?q=" + query1 + "&format=json")
+      .then((res) => {
+        const data = res.data.query.results.channel.item.forecast
+        for (var i = 0; i < 7; i++) {
+          this.forecast[i]=data[i]
+        }
+        this.tripweather();
+      })
+      .catch((err) => {
+        this.condition = 'Network problem - Try again later'
+        console.log('erreur: '+err);
+      })
+
   }
 }
 </script>

@@ -38,11 +38,12 @@
               <!--trip forcast-->
               <v-list-tile avatar>
                 <v-list-tile-action>
-                  <v-icon >wi-yahoo-{{ item.tripconditioncode }}</v-icon>
+                  <v-icon >wi-yahoo-{{ conditioncode }}</v-icon>
                 </v-list-tile-action>
                 <v-list-tile-content>
-                  <v-list-tile-title>{{ item.tripcondition }}</v-list-tile-title>
-                  <v-list-tile-sub-title>Temperature {{ item.triptemperature }} C&deg;</v-list-tile-sub-title>
+                  <v-list-tile-title>Trip Weather {{weathercond()}}</v-list-tile-title>
+                  <v-list-tile-sub-title></v-list-tile-sub-title>
+                  <v-list-tile-sub-title>{{ condition.charAt(0).toUpperCase() + condition.slice(1) }} ( {{ temp }} C&deg; )</v-list-tile-sub-title>
                 </v-list-tile-content>
               </v-list-tile>
               <!--trip date and time -->
@@ -155,10 +156,12 @@
 </template>
 
 <script>
-
 export default {
   data () {
     return {
+      condition: 'hot',
+      conditioncode: '36',
+      temp: '42',
       tripdetails:[
         {
           tripid: this.$route.params.tripid,
@@ -220,6 +223,22 @@ export default {
     gender(value,total){
       var gender = (value*100)/total
       return gender
+    },
+    weathercond(){
+      var queryURL = "https://query.yahooapis.com/v1/public/yql?q=select wind from weather.forecast where woeid in (select woeid from geo.places(1) where text='chicago, il')&format=json&callback=callbackFunction";
+      this.$http.get(queryURL, function (data) {
+        var results = data.query.results
+        var firstResult = results.channel.item.condition
+        console.log(firstResult);
+        console.log(result);
+
+        var location = 'beijing' // not returned in response
+        var temp = firstResult.temp
+        var text = firstResult.text
+
+        console.log('The temperature is ' + temp + '. Forecast calls for '+text);
+
+      });
     }
   }
 }

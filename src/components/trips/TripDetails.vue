@@ -161,9 +161,9 @@
 
       <!-- Total forecast of the week -->
       <v-dialog v-model="dialog" width="500" scrollable>
-        <v-card>
-          <v-card-title class="grey lighten-2"> <h3>Forecast of the Week</h3> </v-card-title>
-          <v-card-text>
+        <v-card >
+          <v-card-title class="grey lighten-2"> <h3>Forecast of next 9 days</h3> </v-card-title>
+          <v-card-text class="text-xs-center" >
             <v-list two-line >
             <v-list-tile avatar v-for="(elem,index) in forecast" :key="index">
               <v-list-tile-action>
@@ -258,6 +258,7 @@ export default {
     tripweather(){
       var date1 = new Date(this.tripdetails[0].tripSdate);
       var daynum1 = date1.toLocaleDateString("en-US", { day: 'numeric'});
+      var exist  = true;
       for (var i = 0; i < this.forecast.length; i++) {
         var date2 = new Date(this.forecast[i].date);
         var daynum2 = date2.toLocaleDateString("en-US", { day: 'numeric'});
@@ -266,7 +267,11 @@ export default {
           this.conditioncode = this.forecast[i].code
           this.temphigh = this.forecast[i].high
           this.templow = this.forecast[i].low
+          exist = false
         }
+      }
+      if (exist){
+        this.condition = "Available 10 days before the trip"
       }
     }
   },
@@ -277,7 +282,7 @@ export default {
     this.$http.get("https://query.yahooapis.com/v1/public/yql?q=" + query1 + "&format=json")
       .then((res) => {
         const data = res.data.query.results.channel.item.forecast
-        for (var i = 0; i < 7; i++) {
+        for (var i = 0; i < data.length; i++) {
           this.forecast[i]=data[i]
         }
         this.tripweather();

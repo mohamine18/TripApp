@@ -112,7 +112,7 @@ export default new Router({
     },
     {
       path: '/Add-Hiker-info',
-      name: 'Add-Hiker-info',
+      name: 'AddHikerInfo',
       component: Addhikersinfo
     },
     {

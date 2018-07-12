@@ -169,7 +169,7 @@
 
         <!--Terms Dialogue-->
         <v-layout row justify-center >
-          <v-dialog v-model="termdialog" scrollable max-width="300px" persistent >
+          <v-dialog v-model="termdialog" scrollable  persistent >
             <v-card>
               <v-card-title>Terms of Service</v-card-title>
               <v-divider></v-divider>

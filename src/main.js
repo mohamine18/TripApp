@@ -3,7 +3,8 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import Axios from 'axios';
+import Axios from 'axios'
+import Vuex from 'vuex'
 import '../node_modules/vuetify/src/stylus/app.styl'
 import 'material-design-icons-iconfont/dist/material-design-icons.css'
 import SocialSharing from 'vue-social-sharing/dist/vue-social-sharing.js'
@@ -90,6 +91,7 @@ Vue.use(Vuetify, {
     warning: '#FFC107'
   }
 })
+Vue.use(Vuex)
 Vue.use(SocialSharing);
 Vue.prototype.$http = Axios;
 Vue.config.productionTip = false

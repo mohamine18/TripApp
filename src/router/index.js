@@ -86,42 +86,42 @@ export default new Router({
       component: spotdetail
     },
     {
-      path: '/Edit-Profile',
-      name: 'Edit Profile',
+      path: '/edit-profile/:userid',
+      name: 'editProfile',
       component: Editprofile
     },
     {
-      path: '/Hikers-Info',
-      name: 'hikers Info',
+      path: '/travelers-info',
+      name: 'hikersInfo',
       component: Hikersinfo
     },
     {
       path: '/trips-recipe',
-      name: 'trips-recipe',
+      name: 'tripsRecipe',
       component: TripRecipe
     },
     {
-      path: '/Profile',
+      path: '/profile',
       name: 'Profile',
       component: Profile
     },
     {
-      path: '/User-support',
-      name: 'user-support',
+      path: '/user-support',
+      name: 'userSupport',
       component: Usersupport
     },
     {
-      path: '/Add-Hiker-info',
+      path: '/add-traveler',
       name: 'AddHikerInfo',
       component: Addhikersinfo
     },
     {
-      path: '/Edit-Hiker-info',
-      name: 'Edit-Hiker-info',
+      path: '/edit-travelers',
+      name: 'editHikerInfo',
       component: Edithikersinfo
     },
     {
-      path: '/Frequently-Asked-Questions',
+      path: '/frequently-asked-questions',
       name: 'Faq',
       component: Faq
     },
@@ -129,6 +129,11 @@ export default new Router({
       path: '/checkout/:tripid/:tripname',
       name: 'Checkout',
       component: Register
+    },
+    {
+      path: '/favorite-trips/:userid',
+      name: 'tripFav',
+      component: TripFavorite
     }
   ],
 })

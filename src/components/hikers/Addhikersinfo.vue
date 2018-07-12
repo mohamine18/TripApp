@@ -3,7 +3,7 @@
     <!--Toolbar-->
     <v-container >
       <v-toolbar color="primary" dark dense fixed  flat >
-        <v-btn icon to="/hikers-info">
+        <v-btn icon @click.native="$router.back">
           <v-icon >close</v-icon>
         </v-btn>
         <v-toolbar-title style="width: 300px" class="ml-0 pl-3" d-block>
@@ -23,13 +23,13 @@
           <v-container grid-list-md>
             <v-layout wrap>
               <v-flex xs12 sm6 md4>
-                <v-subheader>Please enter the hiker's information as it appears on their ID.</v-subheader>
+                <v-subheader>Please enter the information as it appears on the ID.</v-subheader>
               </v-flex>
               <v-flex xs12 sm6 md4>
-                <v-text-field label="Surename (Last name)" required prepend-icon="person" v-model="userfirstname"></v-text-field>
+                <v-text-field label="Given name" required prepend-icon="person" v-model="userfirstname"></v-text-field>
               </v-flex>
               <v-flex xs12 sm6 md4>
-                <v-text-field label="Given names (first &amp; middle name)" required prepend-icon="remove" v-model="userlastname"></v-text-field>
+                <v-text-field label="Family name" required prepend-icon="remove" v-model="userlastname"></v-text-field>
               </v-flex>
               <v-flex xs12 sm6>
                 <v-select

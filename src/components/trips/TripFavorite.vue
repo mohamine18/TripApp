@@ -3,8 +3,8 @@
               <!--Toolbar-->
               <v-container >
                 <v-toolbar color="primary" dark dense fixed  flat >
-                  <v-btn icon to="/">
-                    <v-icon >fas fa-times</v-icon>
+                  <v-btn icon :to="{ name:'Profile'}">
+                    <v-icon >close</v-icon>
                   </v-btn>
                   <v-toolbar-title style="width: 300px" class="ml-0 pl-3" d-block>
                     <span >Favorite Trips</span>
@@ -13,7 +13,6 @@
               </v-container>
             <!--Trip List-->
             <v-layout row wrap >
-              <v-subheader>All My Favorite Trips</v-subheader>
               <v-flex xs12 md6 lg4 v-for="card in cards" :key="card.title">
                 <v-card class="elevation-1"  >
                   <v-card-media
@@ -37,8 +36,8 @@
                       <v-icon v-if="card.fav == false" >favorite_border</v-icon>
                       <v-icon v-else >favorite</v-icon>
                     </v-btn>
-                    <v-btn icon>
-                      <v-icon color="primary">share</v-icon>
+                    <v-btn icon @click="show = !show">
+                      <v-icon>{{ show ? 'keyboard_arrow_down' : 'keyboard_arrow_up' }}</v-icon>
                     </v-btn>
                   </v-card-actions>
                 </v-card>
@@ -52,6 +51,7 @@
   export default {
     data () {
       return {
+        show:false,
        cards: [
           {
             title: "Pre-fab homes",

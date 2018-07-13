@@ -40,7 +40,7 @@
                   select Travelers
                 </v-btn>
               </div>
-              <v-select
+              <v-combobox
                 flat
                 chips
                 tags
@@ -48,6 +48,7 @@
                 prepend-icon=""
                 append-icon=""
                 v-model="hikers"
+                multiple
                 readonly
               >
                 <template slot="selection" slot-scope="data" d-block>
@@ -61,7 +62,7 @@
                       <strong>{{ data.item.hikername }}</strong>&nbsp;
                     </v-chip>
                 </template>
-              </v-select>
+              </v-combobox>
             </v-card>
           </v-flex>
         </v-layout>
@@ -160,7 +161,7 @@
                   add traveler
                 </v-btn>
                 <v-btn color="blue darken-1" flat @click.native="dialog = false">
-                  Close
+                  Done
                 </v-btn>
               </v-card-actions>
             </v-card>

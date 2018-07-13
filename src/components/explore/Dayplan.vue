@@ -97,7 +97,6 @@ export default {
     ]
   }),
   created() {
-    //do something after creating vue instance
     this.title = this.$route.params.cat
   },
   methods: {

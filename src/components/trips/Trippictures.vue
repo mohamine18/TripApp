@@ -1,7 +1,7 @@
 <template>
   <div >
-    <v-container fluid grid-list-xs>
-      <v-layout>
+
+
         <v-container >
           <v-toolbar color="primary" dark dense fixed  flat >
             <v-btn icon :to="{name:'TripDetails', params:{tripname:name}}" >
@@ -12,9 +12,9 @@
             </v-toolbar-title>
           </v-toolbar>
         </v-container>
-      </v-layout>
-    </v-container>
-    <v-container fluid grid-list-xs>
+
+
+    <v-container fluid grid-list-xs class="mt-1 pl-1 pr-1">
       <v-layout row wrap>
         <gallery :images="images" :index="index" @close="index = null" ></gallery>
         <v-flex
@@ -25,6 +25,7 @@
           <v-card flat tile >
             <v-card-media class="imggallery" :src="'images'+imageIndex" @click="index = imageIndex"
               :style="{ backgroundImage: 'url(' + image + ')',  height: '150px' }"
+              contain
             >
             </v-card-media>
           </v-card>

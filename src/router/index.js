@@ -116,7 +116,7 @@ export default new Router({
       component: Addhikersinfo
     },
     {
-      path: '/edit-travelers',
+      path: '/edit-travelers/:travid',
       name: 'editHikerInfo',
       component: Edithikersinfo
     },

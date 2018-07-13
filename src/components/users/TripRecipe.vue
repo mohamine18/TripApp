@@ -3,30 +3,28 @@
     <!--Toolbar-->
     <v-container >
       <v-toolbar color="primary" dark dense fixed  flat >
-        <v-btn icon to="/Profile">
+        <v-btn icon :to="{name: 'Profile'}">
           <v-icon >close</v-icon>
         </v-btn>
-        <v-toolbar-title style="width: 300px" class="ml-0 pl-3" d-block>
+        <v-toolbar-title  class="ml-0 pl-3" d-block>
           <span >All Bookings</span>
         </v-toolbar-title>
       </v-toolbar>
     </v-container>
     <!--recipes of Trips-->
-    <v-container
-        fluid
-        grid-list-lg
-      >
-      <v-layout row wrap>
-        <v-subheader>All attended Trips</v-subheader>
+    <v-container fluid grid-list-lg class="pt-4" >
+      <v-layout row wrap >
           <v-flex xs12 v-for="(trip,i) in trips" :key="i">
-          <v-card  flat class="borderleft" v-bind:style="{ 'border-left-color': trip.color }">
+          <v-card  flat class="borderleft" v-bind:style="{ 'border-left-color': trip.color }" >
             <v-container fluid grid-list-lg >
               <v-layout row>
-                <v-flex xs7>
+                <v-flex xs7 class="pb-0 pt-0">
                   <div>
-                    <span class="body-2">{{ trip.tripname }}</span><br>
-                    <span class="body-2">{{ trip.tripdate }}</span> <br><br>
-                    <span class="body-2" v-bind:style="{ 'color': trip.color }">{{ trip.tripstatu }}</span>
+                    <span class="body-2"><b>{{ trip.tripname }}</b></span><br>
+                    <span class="caption">{{ getDatetrip(trip.tripSdate,trip.tripFdate) }}</span> <br>
+                    <span class="caption">QTY: {{ trip.qty }}</span> <br>
+                    <span class="caption">Amount: {{ trip.amount }}</span> <br>
+                    <span class="body-2" v-bind:style="{ 'color': trip.color }"><b>{{ trip.tripstatu }}</b></span>
                   </div>
                 </v-flex>
                 <v-flex xs5>
@@ -48,18 +46,60 @@
 export default {
   data: () => ({
     trips:[
-      {tripname: 'Beijing Great Wall', tripdate: '2017-02-10', tripstatu:'UpComing', color:'#2196F3',
-      img:'https://www.apec.org/-/media/Images/NewsRelease/2017/0620_Tourism.jpg'},
-      {tripname: 'Beijing Potinical Garden', tripdate: '2017-02-11', tripstatu:'Cancled', color:'#FFA726',
-      img:'http://www.travelnewsdigest.in/wp-content/uploads/2013/01/hurghada.jpg' },
-      {tripname: 'Beijing Summer Palace', tripdate: '2017-02-12', tripstatu:'Booked', color:'#4CAF50',
-      img:'https://static.independent.co.uk/s3fs-public/styles/story_medium/public/thumbnails/image/2017/05/12/16/cinq-terre.jpg' },
-      {tripname: 'Tianjin Eye', tripdate: '2017-02-13', tripstatu:'Refunded', color:'#FF5252',
-      img:'https://static.independent.co.uk/s3fs-public/styles/article_small/public/thumbnails/image/2017/02/22/09/paris.jpg' },
-      {tripname: 'Xian Carottes', tripdate: '2017-02-14', tripstatu:'UpComing', color:'#2196F3',
-      img:'https://kerala.me/wp-content/uploads/2015/11/Tourism.jpg' }
+      {
+        tripid: '01258232165',
+        tripname: 'Beijing Potinical Garden',
+        tripSdate: '2018-07-14T00:00:00.000Z',
+        tripFdate: '2018-07-15T12:00:00.000Z',
+        amount: '475',
+        qty: '3',
+        tripstatu:'Canceled',
+        color:'#FFA726',
+        img:'http://www.travelnewsdigest.in/wp-content/uploads/2013/01/hurghada.jpg'
+      },
+      {
+        tripid: '01258232165',
+        tripname: 'Beijing Summer Palace',
+        tripSdate: '2018-07-14T00:00:00.000Z',
+        tripFdate: '2018-07-14T12:00:00.000Z',
+        amount: '475',
+        qty: '3',
+        tripstatu:'Booked',
+        color:'#4CAF50',
+        img:'https://static.independent.co.uk/s3fs-public/styles/story_medium/public/thumbnails/image/2017/05/12/16/cinq-terre.jpg'
+      },
+      {
+        tripid: '01258232165',
+        tripname: 'Tianjin Eye',
+        tripSdate: '2018-07-20T00:00:00.000Z',
+        tripFdate: '2018-07-23T12:00:00.000Z',
+        amount: '475',
+        qty: '3',
+        tripstatu:'Refunded',
+        color:'#FF5252',
+        img:'https://static.independent.co.uk/s3fs-public/styles/article_small/public/thumbnails/image/2017/02/22/09/paris.jpg'
+      }
     ]
-  })
+  }),
+  methods: {
+    getDatetrip(datestr1,datestr2){
+      var date1 = new Date(datestr1);
+      var date2 = new Date(datestr2);
+      var yearlong1 = date1.toLocaleDateString("en-US", { year: 'numeric'});
+      var monthlong1 = date1.toLocaleDateString("en-US", { month: 'long'});
+      var daynum1 = date1.toLocaleDateString("en-US", { day: 'numeric'});
+      var yearlong2 = date2.toLocaleDateString("en-US", { year: 'numeric'});
+      var monthlong2 = date2.toLocaleDateString("en-US", { month: 'long'});
+      var daynum2 = date2.toLocaleDateString("en-US", { day: 'numeric'});
+      if (daynum1 == daynum2 && monthlong1==monthlong2) {
+        var datetrip = monthlong1+' '+daynum1+', '+yearlong1;
+        return datetrip
+      }else {
+        var datetrip = monthlong1+' '+daynum1+' - '+monthlong2+' '+daynum2+', '+yearlong2;
+        return datetrip
+      }
+    }
+  }
 }
 </script>
 <style scoped>

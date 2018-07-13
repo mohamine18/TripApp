@@ -42,6 +42,9 @@ import {
   VRadioGroup,
   VBottomSheet,
   VProgressCircular,
+  VRangeSlider,
+  VSlider,
+  VCombobox,
   transitions
 } from 'vuetify'
 
@@ -79,6 +82,9 @@ Vue.use(Vuetify, {
     VRadioGroup,
     VBottomSheet,
     VProgressCircular,
+    VRangeSlider,
+    VSlider,
+    VCombobox,
     transitions
   },
   theme: {

@@ -38,7 +38,7 @@
           <v-list-tile :to="{ name: 'tripsRecipe'}">
             <v-list-tile-content>
               <v-list-tile-title class="text title">My Trips</v-list-tile-title>
-              <v-list-tile-sub-title>All my Attended Trips</v-list-tile-sub-title>
+              <v-list-tile-sub-title>Receipt of My Trips</v-list-tile-sub-title>
             </v-list-tile-content>
             <v-list-tile-action>
               <v-icon medium>receipt</v-icon>

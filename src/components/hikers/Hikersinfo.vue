@@ -16,7 +16,7 @@
       </v-toolbar>
     </v-container>
     <!--Travelers Information-->
-    <v-container fluid grid-list-lg>
+    <v-container fluid grid-list-lg class="pt-4">
       <v-layout row wrap>
         <v-flex xs12 sm6 v-for="(hiker, i) in hikers" :key="i">
            <v-card :style="{'border-radius': '5px'}" :to="{name:'editHikerInfo', params:{travid: hiker.travid}}">

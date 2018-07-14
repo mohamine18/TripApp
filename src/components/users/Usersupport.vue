@@ -15,8 +15,24 @@
     <v-container fluid grid-list-lg>
       <v-layout row wrap>
         <v-flex xs12 sm6 >
-           <v-card>
-             <v-list two-line>
+           <v-card  :to="{name: 'Faq'}">
+             <v-list >
+               <v-list-tile >
+                 <v-list-tile-content>
+                   <v-list-tile-title>Frequently Asked Questions</v-list-tile-title>
+                 </v-list-tile-content>
+                 <v-list-tile-action>
+                   <v-icon color="primary">keyboard_arrow_right</v-icon>
+                 </v-list-tile-action>
+               </v-list-tile>
+             </v-list>
+           </v-card>
+         </v-flex>
+      </v-layout>
+      <v-layout row wrap>
+        <v-flex xs12 sm6 >
+           <v-card  >
+             <v-list two-line >
                <v-list-tile>
                  <v-list-tile-action>
                    <v-icon color="primary">chat</v-icon>
@@ -71,23 +87,6 @@
                    <v-list-tile-title>1400 College Street</v-list-tile-title>
                    <v-list-tile-sub-title>Haidian, BJ 10050, China</v-list-tile-sub-title>
                  </v-list-tile-content>
-               </v-list-tile>
-             </v-list>
-           </v-card>
-         </v-flex>
-      </v-layout>
-      <v-layout row wrap>
-        <v-flex xs12 sm6 >
-           <v-card  to="/Frequently-Asked-Questions">
-             <v-list two-line >
-               <v-list-tile >
-                 <v-list-tile-content>
-                   <v-list-tile-title>FAQ</v-list-tile-title>
-                   <v-list-tile-sub-title>Frequently Asked Questions</v-list-tile-sub-title>
-                 </v-list-tile-content>
-                 <v-list-tile-action>
-                   <v-icon color="primary">keyboard_arrow_right</v-icon>
-                 </v-list-tile-action>
                </v-list-tile>
              </v-list>
            </v-card>

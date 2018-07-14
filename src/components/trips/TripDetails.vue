@@ -1,6 +1,6 @@
 <template>
 <div >
-      <v-layout row fill-height>
+      <v-layout row fill-height >
         <v-flex xs12 v-for="(item,i) in tripdetails" :key="i">
           <v-card flat>
             <v-card-media
@@ -146,8 +146,8 @@
                 </v-list-tile-content>
               </v-list-tile>
             </v-list>
-            <div class="destext">
-              <span>{{ item.tripdef }}</span>
+            <div class="destext" >
+              <span v-html="item.tripdef"></span>
             </div>
             </v-card>
         </v-flex>
@@ -211,7 +211,7 @@ export default {
           tripNowcus: '31',
           tripMalecus: '19',
           tripFemalecus: '12',
-          tripdef: 'The Hong Kong Stock Exchane has proposed the biggest overhaul of its IPO listing rules in over twenty years, including allowing dual class-listing and favorable listing terms for biotech companies. These changes are expected to make the HKEX the most attractive overseas listing option for mainland Chinese firms, and potentially help Hong Kong reclaim its leading position on the global IPO league table. At the same time, after a record 437 IPOs in mainland China, raising a total of RMB45 billion last year, the outlook for domestic IPOs by Chinese companies is increasingly uncertain as the regulatory approval process becomes more strenuous. That should spark greater interests by Chinese companies, especially those in biotech sector, to seek a public share float in the neighboring Special Administrative Region, Hong Kong.',
+          tripdef: '<b>The Hong Kong Stock Exchane has proposed the biggest </b> overhaul of its IPO listing rules in over twenty years, including allowing dual class-listing and favorable listing terms for biotech companies. These changes are expected to make the HKEX the most attractive overseas listing option for mainland Chinese firms, and potentially help Hong Kong reclaim its leading position on the global IPO league table. At the same time, after a record 437 IPOs in mainland China, raising a total of RMB45 billion last year, the outlook for domestic IPOs by Chinese companies is increasingly uncertain as the regulatory approval process becomes more strenuous. That should spark greater interests by Chinese companies, especially those in biotech sector, to seek a public share float in the neighboring Special Administrative Region, Hong Kong.',
         }
       ]
     }
@@ -276,8 +276,9 @@ export default {
     }
   },
   created(){
+    // Weather Api call
     this.forecast = [];
-    var city = "三里屯";
+    var city = "wudaoko";
     var query1 = "select * from weather.forecast where woeid in (select woeid from geo.places(1) where text='" + city + "') and u='c'";
     this.$http.get("https://query.yahooapis.com/v1/public/yql?q=" + query1 + "&format=json")
       .then((res) => {
@@ -291,6 +292,17 @@ export default {
         this.condition = 'Network problem - Try again later'
         console.log('erreur: '+err);
       })
+      // Trip details call
+      // var tripsjason = [];
+      // this.$http.get("http://cus.superyue.top/trip")
+      // .then((res)=>{
+      //   const data = res.data.result
+      //  console.log(res);
+      //  console.log(data);
+      // })
+      // .catch((err)=>{
+      //   console.log(err);
+      // })
 
   }
 }

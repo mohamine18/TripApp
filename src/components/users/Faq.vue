@@ -3,7 +3,7 @@
     <!--Toolbar-->
     <v-container >
       <v-toolbar color="primary" dark dense fixed  flat >
-        <v-btn icon to="/User-support">
+        <v-btn icon :to="{name:'userSupport'}">
           <v-icon >keyboard_arrow_left</v-icon>
         </v-btn>
         <v-toolbar-title style="width: 300px" class="ml-0 pl-3" d-block>
@@ -12,17 +12,17 @@
       </v-toolbar>
     </v-container>
     <!--support-->
-    <v-container fluid grid-list-lg>
+    <v-container fluid grid-list-md class="pt-4">
       <v-layout row wrap >
         <v-flex xs12 sm6 >
-          <v-expansion-panel expand>
+          <v-expansion-panel >
            <v-expansion-panel-content v-for="(item,i) in questions" :key="i">
              <div slot="header">{{ item.qst }}</div>
              <v-card>
                <v-card-text>{{ item.answer }}</v-card-text>
              </v-card>
            </v-expansion-panel-content>
-         </v-expansion-panel>
+          </v-expansion-panel>
          </v-flex>
       </v-layout>
     </v-container>

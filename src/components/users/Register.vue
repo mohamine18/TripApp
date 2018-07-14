@@ -14,8 +14,8 @@
         <!-- Trip information -->
         <v-layout row wrap>
           <v-flex xs12 >
-            <v-card flat  >
-              <v-list three-line light>
+            <v-card flat >
+              <v-list three-line class="grey lighten-5" >
                 <v-list-tile>
                   <v-list-tile-content>
                     <v-list-tile-title><b>{{ item.tripname }}</b></v-list-tile-title>
@@ -33,12 +33,12 @@
         <!-- Hikers selection -->
         <v-layout row wrap  pb-1 pt-1>
           <v-flex xs12>
-            <v-card flat>
+            <v-card flat class="grey lighten-5 ">
               <div class="text-xs-center" >
                 <v-btn  depressed color="primary" dark @click.native="dialog =! dialog" >
                   <v-icon left dark>add_circle_outline</v-icon>
-                  select Travelers
-                </v-btn>
+                    select Travelers
+                  </v-btn>
               </div>
               <v-combobox
                 flat
@@ -50,6 +50,8 @@
                 v-model="hikers"
                 multiple
                 readonly
+                background-color="grey lighten-5"
+                class="pt-3"
               >
                 <template slot="selection" slot-scope="data" d-block>
                     <v-chip
@@ -72,7 +74,7 @@
         <v-container fluid grid-list-lg>
           <v-layout row wrap >
             <v-flex xs4 :id="blur1" >
-              <v-card flat>
+              <v-card flat class="grey lighten-5">
                 <v-card-media
                   contain
                   height="40px"
@@ -88,7 +90,7 @@
               </v-card>
             </v-flex>
             <v-flex xs4 :id="blur2">
-              <v-card flat>
+              <v-card flat class="grey lighten-5">
                 <v-card-media
                   contain
                   height="40px"
@@ -104,7 +106,7 @@
               </v-card>
             </v-flex>
             <v-flex xs4 :id="blur3">
-              <v-card flat>
+              <v-card flat class="grey lighten-5">
                 <v-card-media
                   contain
                   height="40px"
@@ -126,7 +128,7 @@
         <!-- Agree with the rules -->
         <v-layout  row wrap>
           <v-flex xs12>
-            <v-list dense subheader>
+            <v-list dense subheader class="grey lighten-5">
               <v-list-tile avatar>
               <v-list-tile-action>
                 <v-checkbox v-model="termscheck" color="primary"></v-checkbox>
@@ -143,7 +145,7 @@
         <!--select hikers dialog-->
         <v-layout row justify-center>
           <v-dialog v-model="dialog" scrollable  persistent  >
-            <v-card>
+            <v-card >
               <v-card-title><h3>Select Travelers</h3>
                 <v-spacer></v-spacer>
 
@@ -151,7 +153,7 @@
               <v-divider></v-divider>
               <v-card-text >
                 <div class="text-xs-left" v-for="(item,i) in hikersDB" :key="i">
-                  <v-checkbox :label="item.hikername" v-model="hikers" :value="item" color="primary"></v-checkbox>
+                  <v-checkbox :label="item.hikername" v-model="hikers" :value="item" color="primary" class="pt-0 pb-0"></v-checkbox>
                 </div>
               </v-card-text>
               <v-divider></v-divider>
@@ -226,12 +228,12 @@
           <!-- checkout button -->
 
               <v-container >
-                <button>
+                <button >
                   <div id="fixedbutton">
                     <v-btn  block color="success" depressed :disabled='!termscheck' to="#" >Chekout</v-btn>
                   </div>
                   <div id="fixedbutton1">
-                    <v-btn  block color="white" depressed @click.native="sheet =true">{{ tripFinalPrice }} &yen;<v-icon right dark>arrow_drop_up</v-icon></v-btn>
+                    <v-btn  block color="#FAFAFA" flat @click.native="sheet =true">{{ tripFinalPrice }} &yen;<v-icon right >arrow_drop_up</v-icon></v-btn>
                   </div>
                 </button>
               </v-container>
@@ -373,7 +375,7 @@ a:hover {
     padding-bottom: 6px;
     padding-top: 6px;
     width: 70%;
-    background-color:white;
+    background-color:#FAFAFA;
 }
 #fixedbutton1 {
     position: fixed;
@@ -384,7 +386,7 @@ a:hover {
     padding-bottom: 6px;
     padding-top: 6px;
     width: 30%;
-    background-color:white;
+    background-color:#FAFAFA;
 }
 #blureclass {
   -webkit-filter: opacity(.25);

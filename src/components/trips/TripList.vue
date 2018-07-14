@@ -23,7 +23,7 @@
                     <v-card-title >
                       <div >
                         <span class="title" v-text="card.title"></span><br>
-                        <span class="grey--body-1" v-text="getDayname(card.date)"></span> &nbsp;
+                        <span class="grey--body-1" v-text="getDayname(card.date)"></span>
                         <span class="grey--body-1" v-text="card.location"></span>
                       </div>
                     </v-card-title>
@@ -32,7 +32,7 @@
                 <v-card>
                   <v-card-actions >
                     <div >
-                      <span class="grey--body-1" >&num;{{ card.cat }}</span>
+                      <span class="grey--body-1" >&num;{{ getDatetrip(card.date,card.enddate) }}</span>
                     </div>
                     <v-spacer></v-spacer>
                     <v-btn  icon class="primary--text"
@@ -61,6 +61,7 @@
                       :title="sharetitle"
                       :description="sharedes"
                       :media="sharemedia"
+                      :networks="overriddenNetworks"
                       inline-template>
                       <v-layout d-blok >
                       <v-flex xs2 >
@@ -102,61 +103,22 @@
   export default {
     data () {
       return {
+        overriddenNetworks: {
+          "qzone": {
+            "sharer": "http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=@url&title=@title",
+            "type": "popup"
+          },
+          "weibo": {
+            "sharer": "http://service.weibo.com/share/share.php?url=@url&title=@title&pic=@media",
+            "type": "popup"
+          }
+        },
         sheet: false,
         shareurl:'',
         sharetitle:'',
         sharedes:'',
         sharemedia:'',
-        cards: [
-          {
-            id: "0001",
-            title: "Beidaihe Camping and Music",
-            src:"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1530874374551&di=839988958b0449bd64c6693626f8a574&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fimgad%2Fpic%2Fitem%2Fe1fe9925bc315c608dc5863b87b1cb1348547796.jpg",
-            date: "2018-06-12T02:20:00.000Z",
-            location: "USTB, Beijing China",
-            cat: 'Camping Trip',
-          },
-          {
-            id: "0002",
-            title: "Great Wall water side",
-            src:"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1530874440517&di=56060ead2b6ae842f06bff9afb938059&imgtype=0&src=http%3A%2F%2Fwww.chinadaily.com.cn%2Fbeijing%2Fimg%2Fattachement%2Fjpg%2Fsite1%2F20140527%2F002564bc654b14ee8b2d02.jpg",
-            date: "2018-07-20T02:10:00.000Z",
-            location: "USTB, Beijing China",
-            cat: 'One Day Trip',
-          },
-          {
-            id: "0003",
-            title: "Tianjin Eye",
-            src:"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1530874486682&di=333a662177246c7e32f4ab1e711d8240&imgtype=0&src=http%3A%2F%2Fimg.kj-cy.cn%2Fuploads%2Flitimg%2F20170218%2F1487390247641431.jpg",
-            date: "2018-08-31T02:01:00.000Z",
-            location: "USTB, Beijing China",
-            cat: 'Deep Tour',
-          },
-          {
-            id: "0004",
-            title: "Shidu water rafting",
-            src:"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1530874546799&di=374720d64fe35831e8b3bb50ea25f4c9&imgtype=0&src=http%3A%2F%2Fwww.shidu.cn%2Fyiriyou%2FUploadFiles_1589%2F201212%2F2012123018201658.jpg",
-            date: "2018-09-01T02:05:00.000Z",
-            location: "USTB, Beijing China",
-            cat: 'One Day Trip',
-          },
-          {
-            id: "0005",
-            title: "River Camping",
-            src:"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1530874724480&di=4909c66b03799412d3b6b75f8c375247&imgtype=0&src=http%3A%2F%2Fs9.rr.itc.cn%2Fr%2FwapChange%2F20174_5_0%2Fa2qvix56640358576405.jpeg",
-            date: "2018-04-10T02:07:00.000Z",
-            location: "USTB, Beijing China",
-            cat: 'One Day Trip',
-          },
-          {
-            id: "0006",
-            title: "Color Art Town",
-            src:"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1530874828079&di=804df5d2593b6100629e63a9312f95ca&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fimgad%2Fpic%2Fitem%2F00e93901213fb80ef181be4a3cd12f2eb83894df.jpg",
-            date: "2018-11-11T02:00:00.000Z",
-            location: "USTB, Beijing China",
-            cat: 'One Day Trip',
-          }
-        ],
+        cards: [],
         favlist: ['0001','0003','0005']
       }
     },
@@ -183,6 +145,24 @@
         var finaledate = daynum +'\n'+ monthnum.substring(0, 3);
         return finaledate
       },
+      getDatetrip(datestr1,datestr2){
+        var duration
+        var date1 = new Date(datestr1);
+        var date2 = new Date(datestr2);
+        var daynum1 = date1.toLocaleDateString("en-US", { day: 'numeric'});
+        var daynum2 = date2.toLocaleDateString("en-US", { day: 'numeric'});
+        // var yearlong1 = date1.toLocaleDateString("en-US", { year: 'numeric'});
+        // var monthlong1 = date1.toLocaleDateString("en-US", { month: 'long'});
+        // var yearlong2 = date2.toLocaleDateString("en-US", { year: 'numeric'});
+        // var monthlong2 = date2.toLocaleDateString("en-US", { month: 'long'});
+        if (daynum1 == daynum2 && monthlong1==monthlong2) {
+          var datetrip = 'One day trip';
+          return datetrip
+        }else {
+          var datetrip = ' Deep tour';
+          return datetrip
+        }
+      },
      favtrips(index){
        var fav = this.cards[index].id;
        for (var i = 0; i < this.favlist.length; i++) {
@@ -201,7 +181,27 @@
        }
        this.favlist.push(trip)
      }
-    }
+   },
+   created(){
+     this.$http.get("http://cus.superyue.top/trip")
+     .then((res)=>{
+      const data = res.data.result
+      for (var i = 0; i < data.length; i++) {
+        const trips = []
+        trips.id = data[i].tid
+        trips.title = data[i].title
+        trips.date = data[i].start_time
+        trips.enddate = data[i].end_time
+        trips.src = data[i].head_img
+        trips.location = data[i].place
+        trips.cat = ''
+        this.cards.push(trips)
+      }
+     })
+     .catch((err)=>{
+       console.log(err);
+     })
+   }
   }
 </script>
 

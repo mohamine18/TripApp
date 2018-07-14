@@ -6,7 +6,7 @@
         <v-btn icon :to="{name: 'Profile'}">
           <v-icon >close</v-icon>
         </v-btn>
-        <v-toolbar-title style="width: 300px" class="ml-0 pl-3" d-block>
+        <v-toolbar-title  d-block>
           <span >Edit Profile</span>
         </v-toolbar-title>
         <v-spacer></v-spacer>
@@ -20,7 +20,7 @@
     <v-layout row justify-center>
       <v-card flat class="grey lighten-5">
         <v-card-text>
-          <v-container grid-list-md>
+          <v-container grid-list-xs class="pt-0">
             <v-layout wrap>
               <v-flex xs12 sm6 md4>
                 <v-subheader>General Information:</v-subheader>

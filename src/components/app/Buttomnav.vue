@@ -9,19 +9,20 @@
             fixed
             app
             dense
+            height = "50"
             >
               <v-btn  color="primary" value="Home" flat :to="{ name: 'Home'}" exact>
-                <span>Home</span>
+                <span class="caption">Home</span>
                 <v-icon flat>home</v-icon>
               </v-btn>
 
               <v-btn flat color="primary" value="Explore" :to="{ name: 'Explore'}">
-                <span>Explore</span>
+                <span class="caption">Explore</span>
                 <v-icon>explore</v-icon>
               </v-btn>
 
               <v-btn flat color="primary" value="Profile" :to="{ name: 'Profile'}">
-                <span>Me</span>
+                <span class="caption">Me</span>
                 <v-icon>person</v-icon>
               </v-btn>
           </v-bottom-nav>

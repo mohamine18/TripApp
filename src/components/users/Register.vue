@@ -263,6 +263,7 @@ export default {
     ],
     item:
       {
+        tripid: '',
         tripname: '',
         tripagent: 'SeeYou',
         triplocation: 'Beidaihu, Hebei',

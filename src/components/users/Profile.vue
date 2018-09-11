@@ -93,7 +93,8 @@ import Buttomnav from '@/components/app/Buttomnav'
         item: {
           userid: '01001',
           avatar:"https://i.pinimg.com/474x/7c/c7/a6/7cc7a630624d20f7797cb4c8e93c09c1--flat-icons-free-icon.jpg",
-          profilename: 'Sahraoui Delhim'}
+          profilename: 'Sahraoui Delhim'
+        }
       }
     },
     components:{

@@ -1,6 +1,13 @@
+<<<<<<< HEAD
 # Trip App
+=======
+# Trip App made by VueJs and Vuetify JS
+>>>>>>> f25826896b0f3899733bdb69127027d07f8640a9
 
-> SeeYou Trip Web App
+Made for a Travel agency in Beijing but it did't visit any server 
+
+> SeeYou Trip was the name of the project
+> The data is fetched from (https://jsonplaceholder.typicode.com) and other data is sotored locally
 
 ## Build Setup
 
@@ -18,4 +25,4 @@ npm run build
 npm run build --report
 ```
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+For more explanation on how the app works, don't hesitat to contact Amine (mohamine19@gmail.com)

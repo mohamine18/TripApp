@@ -19,6 +19,9 @@ npm run build
 
 # build for production and view the bundle analyzer report
 npm run build --report
+
+# The app was made to run on Wechat
+Open the Dev Tool of the browser and toggle the view to phones
 ```
 
 For more explanation on how the app works, don't hesitat to contact Amine (mohamine19@gmail.com)

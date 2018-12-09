@@ -1,6 +1,8 @@
-# tripapp
+# Trip App made by VueJs and Vuetify JS
 
-> SeeYou Trip Web App
+Made for a Travel agency in Beijing but it did't visit any server 
+
+> TreckTrack was the name of the project
 
 ## Build Setup
 
@@ -18,4 +20,4 @@ npm run build
 npm run build --report
 ```
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+For more explanation on how the app works, don't hesitat to contact Amine (mohamine19@gmail.com)

@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-# Trip App
-=======
 # Trip App made by VueJs and Vuetify JS
->>>>>>> f25826896b0f3899733bdb69127027d07f8640a9
 
 Made for a Travel agency in Beijing but it did't visit any server 
 

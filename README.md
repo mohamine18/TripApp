@@ -3,6 +3,7 @@
 Made for a Travel agency in Beijing but it did't visit any server 
 
 > SeeYou Trip was the name of the project
+> The data is fetched from (https://jsonplaceholder.typicode.com) and other data is sotored locally
 
 ## Build Setup
 

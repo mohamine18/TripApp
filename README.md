@@ -2,7 +2,7 @@
 
 Made for a Travel agency in Beijing but it did't visit any server 
 
-> TreckTrack was the name of the project
+> SeeYou Trip was the name of the project
 
 ## Build Setup
 

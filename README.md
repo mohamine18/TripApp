@@ -1,4 +1,4 @@
-# tripapp
+# Trip App
 
 > SeeYou Trip Web App
 

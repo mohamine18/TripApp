@@ -12,7 +12,7 @@
                       <v-card-title>
                         <v-spacer></v-spacer>
                         <v-avatar class="primary" tile >
-                          <span class="white--text" v-text="getDatemonth(card.date)"></span>
+                          <!-- <span class="white--text" v-text="getDatemonth(card.date)"></span> -->
                         </v-avatar>
                       </v-card-title>
                      </v-layout>
@@ -23,7 +23,7 @@
                     <v-card-title >
                       <div >
                         <span class="title" v-text="card.title"></span><br>
-                        <span class="grey--body-1" v-text="getDayname(card.date)"></span>
+                        <!-- <span class="grey--body-1" v-text="getDayname(card.date)"></span> -->
                         <span class="grey--body-1" v-text="card.location"></span>
                       </div>
                     </v-card-title>
@@ -32,7 +32,7 @@
                 <v-card>
                   <v-card-actions >
                     <div >
-                      <span class="grey--body-1" >&num;{{ getDatetrip(card.date,card.enddate) }}</span>
+                      <!-- <span class="grey--body-1" >&num;{{ getDatetrip(card.date,card.enddate) }}</span> -->
                     </div>
                     <v-spacer></v-spacer>
                     <v-btn  icon class="primary--text"
@@ -183,24 +183,23 @@
      }
    },
    created(){
-     this.$http.get("http://cus.superyue.top/trip")
+     this.$http.get("https://jsonplaceholder.typicode.com/photos")
      .then((res)=>{
-      const data = res.data.result
-      for (var i = 0; i < data.length; i++) {
+      for (var i = 0; i < 20; i++) {
         const trips = []
-        trips.id = data[i].tid
-        trips.title = data[i].title
-        trips.date = data[i].start_time
-        trips.enddate = data[i].end_time
-        trips.src = data[i].head_img
-        trips.location = data[i].place
-        trips.cat = ''
+        trips.id = res.data[i].id
+        trips.title = res.data[i].title
+        //trips.date = data[i].start_time
+        //trips.enddate = data[i].end_time
+        trips.src = res.data[i].url
+        //trips.location = data[i].place
+        //trips.cat = ''
         this.cards.push(trips)
       }
      })
      .catch((err)=>{
        console.log(err);
-     })
+     });
    }
   }
 </script>
